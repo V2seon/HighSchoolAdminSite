@@ -145,11 +145,11 @@ public class GradeType1DataDto implements Serializable {
 
     private int MyThirdVolunteerActivityTime;
 
-    private int MyCurriculumGrades;
+    private double MyCurriculumGrades;
 
-    private int MyNonCurriculumGrades;
+    private double MyNonCurriculumGrades;
 
-    private int MyTotalGrades;
+    private double MyTotalGrades;
 
     @Builder
     public GradeType1DataDto(Long mySeq, String mySecondFirstType1, String mySecondFirstType2, String mySecondFirstType3, String mySecondFirstType4, String mySecondFirstType5,
@@ -165,7 +165,7 @@ public class GradeType1DataDto implements Serializable {
                              double myFirstExpActivities, int myFirstVolunteerActivityTime, int mySecondAbsant, int mySecondLate, int mySecondLeave, int mySecondResult,
                              double mySecondBehaviorDevelopment, double mySecondExpActivities, int mySecondVolunteerActivityTime, int myThirdAbsant, int myThirdLate,
                              int myThirdLeave, int myThirdResult, double myThirdBehaviorDevelopment, double myThirdExpActivities, int myThirdVolunteerActivityTime,
-                             int myCurriculumGrades, int myNonCurriculumGrades, int myTotalGrades) {
+                             double myCurriculumGrades, double myNonCurriculumGrades, double myTotalGrades) {
         this.MySeq = mySeq;
         this.MySecondFirstType1 = mySecondFirstType1;
         this.MySecondFirstType2 = mySecondFirstType2;

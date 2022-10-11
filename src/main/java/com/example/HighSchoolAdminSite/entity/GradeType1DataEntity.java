@@ -221,13 +221,13 @@ public class GradeType1DataEntity {
     private int ThirdVolunteerActivityTime;
 
     @Column(name = "curriculum_grades")
-    private int CurriculumGrades;
+    private double CurriculumGrades;
 
     @Column(name = "non_curriculum_grades")
-    private int NonCurriculumGrades;
+    private double NonCurriculumGrades;
 
     @Column(name = "total_grades")
-    private int TotalGrades;
+    private double TotalGrades;
 
     @Builder
     public GradeType1DataEntity(Long mySeq, String mySecondFirstType1, String mySecondFirstType2, String mySecondFirstType3, String mySecondFirstType4,
@@ -243,7 +243,7 @@ public class GradeType1DataEntity {
                                 int myFirstLeave, int myFirstResult, double myFirstBehaviorDevelopment, double myFirstExpActivities, int myFirstVolunteerActivityTime,
                                 int mySecondAbsant, int mySecondLate, int mySecondLeave, int mySecondResult, double mySecondBehaviorDevelopment, double mySecondExpActivities,
                                 int mySecondVolunteerActivityTime, int myThirdAbsant, int myThirdLate, int myThirdLeave, int myThirdResult, double myThirdBehaviorDevelopment,
-                                double myThirdExpActivities, int myThirdVolunteerActivityTime, int myCurriculumGrades, int myNonCurriculumGrades, int myTotalGrades) {
+                                double myThirdExpActivities, int myThirdVolunteerActivityTime, double myCurriculumGrades, double myNonCurriculumGrades, double myTotalGrades) {
         this.Seq = mySeq;
         this.SecondFirstType1 = mySecondFirstType1;
         this.SecondFirstType2 = mySecondFirstType2;

@@ -11,14 +11,14 @@ public class GradeType3DataDto {
 
     private Long MySeq;
 
-    private int MyGrade1;
+    private double MyGrade1;
 
-    private int MyGrade2;
+    private double MyGrade2;
 
-    private int MyTotalGrads;
+    private double MyTotalGrads;
 
     @Builder
-    public GradeType3DataDto(Long mySeq, int myGrade1, int myGrade2, int myTotalGrads) {
+    public GradeType3DataDto(Long mySeq, double myGrade1, double myGrade2, double myTotalGrads) {
         this.MySeq = mySeq;
         this.MyGrade1 = myGrade1;
         this.MyGrade2 = myGrade2;

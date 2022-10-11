@@ -17,8 +17,8 @@ public class PersonalDataService {
     private PersonalDataRepository personalDataRepository;
 
     @Transactional
-    public Page <PersonalDataEntity> selectALLTable(String mname, Pageable pageable){
-        return personalDataRepository.findAll(PersonalDataPredicate.search(mname),pageable);
+    public Page <PersonalDataEntity> selectALLTable(String mname,String titleText, Pageable pageable){
+        return personalDataRepository.findAll(PersonalDataPredicate.search(mname, titleText),pageable);
     }
 
     @Transactional
@@ -26,4 +26,8 @@ public class PersonalDataService {
         return personalDataRepository.findAgraduation_typeBy(agraduation_type,pageable);
     }
 
+    @Transactional
+    public Page<PersonalDataEntity> treasurehunt_list(String selectKey, String titleText, Pageable pageable) {
+        return personalDataRepository.findAll(PersonalDataPredicate.search(selectKey, titleText),pageable);
+    }
 }

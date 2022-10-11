@@ -23,16 +23,16 @@ public class GradeType3DataEntity {
     private Long Seq;
 
     @Column(name = "grade1")
-    private int Grade1;
+    private double Grade1;
 
     @Column(name = "grade2")
-    private int Grade2;
+    private double Grade2;
 
     @Column(name = "total_grades")
-    private int TotalGrades;
+    private double TotalGrades;
 
     @Builder
-    public GradeType3DataEntity(Long mySeq, int myGrade1, int myGrade2, int myTotalGrades) {
+    public GradeType3DataEntity(Long mySeq, double myGrade1, double myGrade2, double myTotalGrades) {
         this.Seq = mySeq;
         this.Grade1 = myGrade1;
         this.Grade2 = myGrade2;

@@ -36,12 +36,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>졸업예정자 원서정보</h1>
+                        <h1>졸업예정자 성적현황</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">대시보드</a></li>
-                            <li class="breadcrumb-item active">졸업예정자 원서정보</li>
+                            <li class="breadcrumb-item active">졸업예정자 성적현황</li>
                         </ol>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                                 <table class="table table-hover text-nowrap">
                                     <thead>
                                     <tr>
-                                        <th style="text-align:center;">No</th>
+                                        <th style="text-align:center;">접수번호</th>
                                         <th style="text-align:center;">이름</th>
 <!--                                        <th style="text-align:center;">상태</th>-->
                                         <th style="text-align:center;">교과점수</th>
@@ -98,101 +98,102 @@
                                     <tr th:if="${userlist}!=null" th:each="Co : ${userlist}" style="text-align:center;">
 
                                         <td style="text-align:center;">
-                                            <span th:if="${Co.aseq}!= null"
-                                                  th:text="${Co.aseq}">
+                                            <span th:if="${Co.Seq}!= null"
+                                                  th:text="${Co.Seq}">
                                             </span>
                                         </td>
                                         <td style="text-align:center;">
-                                            <span th:if="${Co.aname}!= null"
-                                                  th:text="${Co.aname}"
+                                            <span th:if="${Co.Seq}!= null"
+                                                  th:text="${Co.Seq}"
                                                   id="tiuserid">
                                             </span>
                                         </td>
                                         <td style="text-align:center;">
-                                            <span th:if="${Co.abirthday}!= null"
-                                                  th:text="${Co.abirthday}">
+                                            <span th:if="${Co.CurriculumGrades}!= null"
+                                                  th:text="${Co.CurriculumGrades}">
                                             </span>
                                         </td>
 
                                         <td style="text-align:center;" >
-                                            <span th:if="${Co.asex} == 0"
+                                            <span th:if="${Co} == 0"
                                                   th:text="남"
                                             ></span>
-                                            <span th:if="${Co.asex} == 1"
+                                            <span th:if="${Co} == 1"
                                             th:text="여">
                                             </span>
                                         </td>
 
                                         <td style="text-align:center;" >
-                                            <span th:if="${Co.aphone}!= null"
-                                                  th:text="${Co.aphone}">
+                                            <span th:if="${Co.FirstBehaviorDevelopment}!= null"
+                                                  th:text="${Co.FirstBehaviorDevelopment + Co.SecondBehaviorDevelopment + Co.ThirdBehaviorDevelopment}">
                                             </span>
                                         </td>
 
                                         <td style="text-align:center;" >
-                                            <span th:if="${Co.apostal_code}!= null"
-                                                  th:text="${Co.apostal_code}">
+                                            <span th:if="${Co}!= null"
+                                                  th:text="${Co.FirstExpActivities + Co.SecondExpActivities + Co.ThirdExpActivities}">
                                             </span>
                                         </td>
 
                                         <td style="text-align:center;" >
-                                            <span th:if="${Co.aaddress}!= null"
-                                                  th:text="${Co.aaddress}">
+                                            <span th:if="${Co.TotalGrades}!= null"
+                                                  th:text="${Co.TotalGrades}">
                                             </span>
                                         </td>
                                         <td style="text-align:center;" >
-                                            <span th:if="${Co.adetailed_address}!= null"
-                                                  th:text="${Co.adetailed_address}">
+                                            <span>
                                             </span>
                                         </td>
-                                        <td style="text-align:center;"><span text="획득한 상품 없음"></span></td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer clearfix">
-                                    <ul class="pagination pagination-sm m-0 justify-content-center" id="pageList">
+                                <ul class="pagination pagination-sm m-0 justify-content-center" id="pageList">
 
 
-                                        <li class="page-item">
-                                            <a class="page-link" aria-label="Previous"
-                                              ><span>처음</span></a>
-                                        </li>
+                                    <li class="page-item">
+                                        <a class="page-link" aria-label="Previous"
+                                           th:onclick="|javascript:paging(0)|"><span>처음</span></a>
+                                    </li>
 
-                                        <li class="page-item prev-page" th:if="${isPrevSection}"
+                                    <li class="page-item prev-page" th:if="${isPrevSection}"
 
-                                            >
-                                            <a class="page-link" aria-label="Previous"
-                                               >이전</a>
-                                        </li>
+                                        th:value="${thisSection}">
+                                        <a class="page-link" aria-label="Previous"
+                                           th:onclick="|javascript:paging(${firstBtnIndex}-1)|">이전</a>
+                                    </li>
 
-                                        <!--            <li th:each="page: ${#numbers.sequence(0,9)}" th:id="pageItem+${page}" class="page-item" th:classappend="${thisPage} ==  ${page} ?  'active'"><a class="page-link" th:href="@{/testDB(page=${page})}"><span th:text="${page+1}"></span></a></li>-->
+                                    <!--            <li th:each="page: ${#numbers.sequence(0,9)}" th:id="pageItem+${page}" class="page-item" th:classappend="${thisPage} ==  ${page} ?  'active'"><a class="page-link" th:href="@{/testDB(page=${page})}"><span th:text="${page+1}"></span></a></li>-->
 
-                                        <!--            onclick 구현-->
-                                        <li
-                                            id="pageItem" class="page-item"
-                                            ><a
-                                                class="page-link" ><span
-                                                ></span></a></li>
-                                        <!--            onclick 구현-->
-
-
-                                        <!--다음버튼2-->
-                                        <li class="page-item next-page">
-                                            <a class="page-link" aria-label="Next">
-                                                <span aria-hidden="true">다음</span>
-                                                <span class="sr-only">Next</span>
-                                            </a>
-                                        </li>
-                                        <!--다음버튼2-->
+                                    <!--            onclick 구현-->
+                                    <li th:each="page: ${#numbers.sequence(firstBtnIndex,lastBtnIndex)}"
+                                        id="pageItem" class="page-item"
+                                        th:classappend="${thisPage} ==  ${page} ?  'active'" th:value="${page}"><a
+                                            class="page-link" th:onclick="|javascript:paging(${page})|"><span
+                                            th:text="${page+1}"></span></a></li>
+                                    <!--            onclick 구현-->
 
 
-                                        <li class="page-item">
-                                            <a class="page-link" id="pageItem2"
-                                               aria-label="Previous">끝</a>
-                                        </li>
-                                    </ul>
+                                    <!--다음버튼2-->
+                                    <li class="page-item next-page" th:if="${isNextSection}"
+                                        th:onclick="|javascript:paging(${lastBtnIndex}+1)|"
+                                        th:value="${thisSection}">
+                                        <a class="page-link" aria-label="Next">
+                                            <span aria-hidden="true">다음</span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </li>
+                                    <!--다음버튼2-->
+
+
+                                    <li class="page-item">
+                                        <a class="page-link" id="pageItem2"
+                                           th:onclick="|javascript:paging(${totalPage})|"
+                                           aria-label="Previous">끝</a>
+                                    </li>
+                                </ul>
                             </div>
                             <!-- /.card-body -->
                         </div>

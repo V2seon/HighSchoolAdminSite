@@ -26,10 +26,10 @@ public class GradeType2DataEntity {
     private int IsCheck;
 
     @Column(name = "order_percentage")
-    private int OrderPercentage;
+    private double OrderPercentage;
 
     @Column(name = "order_total")
-    private int OrderTotal;
+    private double OrderTotal;
 
     @Column(name = "second_first_type1")
     private String SecondFirstType1;
@@ -194,16 +194,16 @@ public class GradeType2DataEntity {
     private int ThirdVolunteerActivityTime;
 
     @Column(name = "curriculum_grades")
-    private int CurriculumGrades;
+    private double CurriculumGrades;
 
     @Column(name = "non_curriculum_grades")
-    private int NonCurriculumGrades;
+    private double NonCurriculumGrades;
 
     @Column(name = "total_grades")
-    private int TotalGrades;
+    private double TotalGrades;
 
     @Builder
-    public GradeType2DataEntity(Long mySeq, int myIsCheck, int myOrderPercentage, int myOrderTotal, String mySecondFirstType1, String mySecondFirstType2,
+    public GradeType2DataEntity(Long mySeq, int myIsCheck, double myOrderPercentage, double myOrderTotal, String mySecondFirstType1, String mySecondFirstType2,
                                 String mySecondFirstType3, String mySecondFirstType4,
                                 String mySecondFirstType5, String mySecondFirstType6, String mySecondFirstType7, String mySecondFirstType8, String mySecondFirstType9,
                                 String mySecondFirstType10, String mySecondFirstType11, String mySecondSecondType1, String mySecondSecondType2, String mySecondSecondType3,
@@ -214,7 +214,7 @@ public class GradeType2DataEntity {
                                 int myFirstLeave, int myFirstResult, double myFirstBehaviorDevelopment, double myFirstExpActivities, int myFirstVolunteerActivityTime,
                                 int mySecondAbsant, int mySecondLate, int mySecondLeave, int mySecondResult, double mySecondBehaviorDevelopment, double mySecondExpActivities,
                                 int mySecondVolunteerActivityTime, int myThirdAbsant, int myThirdLate, int myThirdLeave, int myThirdResult, double myThirdBehaviorDevelopment,
-                                double myThirdExpActivities, int myThirdVolunteerActivityTime, int myCurriculumGrades, int myNonCurriculumGrades, int myTotalGrades) {
+                                double myThirdExpActivities, int myThirdVolunteerActivityTime, double myCurriculumGrades, double myNonCurriculumGrades, double myTotalGrades) {
         this.Seq = mySeq;
         this.IsCheck = myIsCheck;
         this.OrderPercentage = myOrderPercentage;

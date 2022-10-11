@@ -7,7 +7,7 @@ import com.querydsl.core.types.Predicate;
 
 public class PersonalDataPredicate {
 
-    public static BooleanBuilder search(String aname){
+    public static BooleanBuilder search(String aname, String titleText){
         QPersonalDataEntity qPersonalDataEntity = QPersonalDataEntity.personalDataEntity;
 
         BooleanBuilder builder = new BooleanBuilder();
