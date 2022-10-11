@@ -25,4 +25,5 @@ public class PersonalDataService {
     public Page <PersonalDataEntity> selectALLTable0(int agraduation_type, Pageable pageable){
         return personalDataRepository.findAgraduation_typeBy(agraduation_type,pageable);
     }
+
 }

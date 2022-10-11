@@ -73,7 +73,6 @@ public class PersonalDataController {
             return "redirect:/";
         }
     }
-
     @GetMapping("/Personaldata2")
     public String Personaldata2(Model model, Pageable pageable, HttpServletRequest session,
                                 @RequestParam(required = false, defaultValue = "0", value = "page") int page){
