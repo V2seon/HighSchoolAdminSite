@@ -25,14 +25,4 @@ public class PersonalDataService {
     public Page <PersonalDataEntity> selectALLTable0(int agraduation_type, Pageable pageable){
         return personalDataRepository.findAgraduation_typeBy(agraduation_type,pageable);
     }
-
-    @Transactional
-    public Long save(PersonalDataDto personalDataDto){
-        return personalDataRepository.save(personalDataDto.toEntity()).getAseq();
-    }
-
-    @Transactional
-    public Long set_modify(PersonalDataDto personalDataDto){
-        return personalDataRepository.save(personalDataDto.toEntity()).getAseq();
-    }
 }

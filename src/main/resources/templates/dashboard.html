@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>원서관리 사이트 | 대시보드</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <!-- IonIcons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="/plugins/summernote/summernote-bs4.min.css">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Bootstrap Color Picker -->
+    <link rel="stylesheet" href="/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- Bootstrap4 Duallistbox -->
+    <link rel="stylesheet" href="/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+    <!-- BS Stepper -->
+    <link rel="stylesheet" href="/plugins/bs-stepper/css/bs-stepper.min.css">
+    <!-- dropzonejs -->
+    <link rel="stylesheet" href="/plugins/dropzone/min/dropzone.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css"/>
+    <!--    로딩CSS-->
+    <link rel="stylesheet" href="/dist/css/loadscene.css">
+    <style>
+        .card-in-p{
+            text-align:right;
+        }
+        #header {
+          position: fixed;
+        }
+    </style>
+</head>
+<!--
+`body` tag options:
+
+Apply one or more of the following classes to to the body tag
+to get the desired effect
+
+* sidebar-collapse
+* sidebar-mini
+-->
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+    <!-- Navbar -->
+    <div  th:insert="common/navbar.html"></div>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <div  th:insert="common/mainsidbar.html"></div>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header" style="padding-bottom:0px;">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <input hidden="hidden" th:id="mydays" th:value="${mydays}">
+                        <h1 class="m-0" th:id="finaldyaname" th:text="'일별 이용현황 : ' + '[' + ${finaldyaname} + ']'">
+                        </h1>
+<!--                        <div class="input-group input-group-sm card-title mr-3" id="reservationdate" data-target-input="nearest" style="width:50%; zoom:130%;">-->
+<!--                            <input readonly="readonly" type="text" name="days" class="form-control datetimepicker-input" data-target="#reservationdate" id="type" style="background-color:white;">-->
+<!--                            <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">-->
+<!--                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>-->
+<!--                            </div>-->
+<!--                            <div class="input-group input-group-sm card-title mr-3" style="width:30%;">-->
+<!--                                <div class="input-group-append">-->
+<!--                                    <button type="submit" class="btn btn-sm btn-default" onclick="js_today()">-->
+<!--                                        <i class="fa fa-search"></i>-->
+<!--                                    </button>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">입학원서 관리</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+        <div class="content-header" style="padding-bottom:0px;">
+            <div class="content-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6"></div>
+                    <div class="col-sm-6">
+                        <div class="input-group input-group-sm card-title mr-3" id="reservationdate" data-target-input="nearest" style="width:40%; zoom:130%; float:right;">
+                            <input type="text" name="days" class="form-control datetimepicker-input" data-target="#reservationdate" id="type" style="background-color:white;">
+                            <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            </div>
+                            <div class="input-group input-group-sm card-title mr-3" style="width:1%;">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-sm btn-default" onclick="js_today()">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3 style="text-align:center; font-weight: 700;">신규가입 현황</h3>
+                                <h3 style="text-align:center;" th:id="new_users_count_today" th:text="${new_users_count_today}+명"></h3>
+<!--                                <p>1일전 : <span th:id="new_users_count_1" th:text="${new_users_count_1}+명"></span></p>-->
+<!--                                <p>2일전 : <span th:id="new_users_count_2" th:text="${new_users_count_2}+명"></span></p>-->
+<!--                                <p>3일전 : <span th:id="new_users_count_3" th:text="${new_users_count_3}+명"></span></p>-->
+<!--                                <p>4일전 : <span th:id="new_users_count_4" th:text="${new_users_count_4}+명"></span></p>-->
+<!--                                <p>5일전 : <span th:id="new_users_count_5" th:text="${new_users_count_5}+명"></span></p>-->
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-person-add"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-4 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3 style="text-align:center; font-weight: 700;">앱 이용현황</h3>
+                                <h3 style="text-align:center; "th:id="app_run_count_today" th:text="${app_run_count_today}+회"></h3>
+<!--                                <p>1일전 : <span th:id="app_run_count_1" th:text="${app_run_count_1}+회"></span></p>-->
+<!--                                <p>2일전 : <span th:id="app_run_count_2" th:text="${app_run_count_2}+회"></span></p>-->
+<!--                                <p>3일전 : <span th:id="app_run_count_3" th:text="${app_run_count_3}+회"></span></p>-->
+<!--                                <p>4일전 : <span th:id="app_run_count_4" th:text="${app_run_count_4}+회"></span></p>-->
+<!--                                <p>5일전 : <span th:id="app_run_count_5" th:text="${app_run_count_5}+회"></span></p>-->
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-tablet-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-4 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3 style="text-align:center; font-weight: 700;">보물찾기 이용현황</h3>
+                                <h3 style="text-align:center;" th:id="treasurehunt_count_today" th:text="${treasurehunt_count_today}+회"></h3>
+<!--                                <p>1일전 : <span th:id="treasurehunt_count_1" th:text="${treasurehunt_count_1}+회"></span></p>-->
+<!--                                <p>2일전 : <span th:id="treasurehunt_count_2" th:text="${treasurehunt_count_2}+회"></span></p>-->
+<!--                                <p>3일전 : <span th:id="treasurehunt_count_3" th:text="${treasurehunt_count_3}+회"></span></p>-->
+<!--                                <p>4일전 : <span th:id="treasurehunt_count_4" th:text="${treasurehunt_count_4}+회"></span></p>-->
+<!--                                <p>5일전 : <span th:id="treasurehunt_count_5" th:text="${treasurehunt_count_5}+회"></span></p>-->
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-gifts"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+<!--                    <div class="col-lg-3 col-6">-->
+<!--                        &lt;!&ndash; small box &ndash;&gt;-->
+<!--                        <div class="small-box bg-danger">-->
+<!--                            <div class="inner">-->
+<!--                                <h4 style="font-weight: 700;">전시물탐지 (일)</h4>-->
+<!--                                <p>오늘: <span th:id="detecting_count_today" th:text="${detecting_count_today}+회"></span></p>-->
+<!--                                <p>1일전 : <span th:id="detecting_count_1" th:text="${detecting_count_1}+회"></span></p>-->
+<!--                                <p>2일전 : <span th:id="detecting_count_2" th:text="${detecting_count_2}+회"></span></p>-->
+<!--                                <p>3일전 : <span th:id="detecting_count_3" th:text="${detecting_count_3}+회"></span></p>-->
+<!--                                <p>4일전 : <span th:id="detecting_count_4" th:text="${detecting_count_4}+회"></span></p>-->
+<!--                                <p>5일전 : <span th:id="detecting_count_5" th:text="${detecting_count_5}+회"></span></p>-->
+<!--                            </div>-->
+<!--                            <div class="icon">-->
+<!--                                <i class="fas fa-search"></i>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                    <!-- ./col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">애니메이션 이용현황</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-bordered table-hover dataTable dtr-inline">
+                                    <thead class="bg-gray disabled color-palette">
+                                    <tr>
+                                        <th style="text-align:center;">왕인탄생</th>
+                                        <th style="text-align:center;">학문수학</th>
+                                        <th style="text-align:center;">초빙의례</th>
+                                        <th style="text-align:center;">도일행차</th>
+                                        <th style="text-align:center;">도일출항</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr style="text-align:center;">
+                                        <td style="text-align:center;" th:text="${one}+'건'"></td>
+                                        <td style="text-align:center;" th:text="${two}+'건'"></td>
+                                        <td style="text-align:center;" th:text="${three}+'건'"></td>
+                                        <td style="text-align:center;" th:text="${four}+'건'"></td>
+                                        <td style="text-align:center;" th:text="${five}+'건'"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </div>
+
+
+
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">전시물 관광 안내 이용현황</h1>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+<!--        <div class="content">-->
+<!--            <div class="container-fluid">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-12">-->
+<!--                        <div class="card">-->
+<!--                            &lt;!&ndash; /.card-header &ndash;&gt;-->
+<!--                            <div class="card-body table-responsive p-0">-->
+<!--                                <table class="table table-hover text-nowrap">-->
+<!--                                    <thead>-->
+<!--                                    <tr>-->
+<!--                                        <th style="text-align:center;">외부 시설물 이름</th>-->
+<!--                                        <th style="text-align:center;">횟수</th>-->
+<!--                                    </tr>-->
+<!--                                    </thead>-->
+<!--                                    <tbody>-->
+<!--                                    <tr style="text-align:center;">-->
+<!--                                        <td style="text-align:center;">학의정현판</td>-->
+<!--                                        <td style="text-align:center;" th:text="${hakeijung_panel}+'건'"></td>-->
+<!--                                    </tr>-->
+<!--                                    </tbody>-->
+<!--                                </table>-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash; /.card-body &ndash;&gt;-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; /.card &ndash;&gt;-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>&lt;!&ndash; /.container-fluid &ndash;&gt;-->
+<!--        </div>-->
+
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- ./col -->
+                    <div class="col-lg-6 col-6">
+                        <!-- /.content-header -->
+                                <div class="content">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="card card-primary">
+                                                    <div class="card-header">
+                                                        <h3 class="card-title" style="text-align:center;">
+                                                            <i class="far fa-building"></i> 외부 시설물</h3>
+                                                    </div>
+                                                    <!-- /.card-header -->
+                                                    <div class="card-body table-responsive p-0">
+                                                        <table class="table table-bordered table-hover dataTable dtr-inline">
+                                                            <thead class="bg-gray disabled color-palette">
+                                                            <tr>
+                                                                <th style="text-align:center;">시설물 이름</th>
+                                                                <th style="text-align:center;">횟수</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">학의정현판</td>
+                                                                <td style="text-align:center;" th:text="${hakeijung_panel}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">망월정현판</td>
+                                                                <td style="text-align:center;" th:text="${mangwoljung_panel}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">부조5</td>
+                                                                <td style="text-align:center;" th:text="${boojo5}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">홍살문</td>
+                                                                <td style="text-align:center;" th:text="${hongsalmoon}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">성천</td>
+                                                                <td style="text-align:center;" th:text="${sungcheon}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">천인천자문</td>
+                                                                <td style="text-align:center;" th:text="${cheonjamoon}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">부조1</td>
+                                                                <td style="text-align:center;" th:text="${boojo1}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">수신정</td>
+                                                                <td style="text-align:center;" th:text="${susinjeong}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">최지몽비</td>
+                                                                <td style="text-align:center;" th:text="${choizimongbi}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">정화기념비</td>
+                                                                <td style="text-align:center;" th:text="${jeonghwabee}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">노래비</td>
+                                                                <td style="text-align:center;" th:text="${noraebee}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">망우정</td>
+                                                                <td style="text-align:center;" th:text="${mangwujeong}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">문산재</td>
+                                                                <td style="text-align:center;" th:text="${moonsanjae}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">문산재현판</td>
+                                                                <td style="text-align:center;" th:text="${moonsanjae_panel}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">백제문</td>
+                                                                <td style="text-align:center;" th:text="${baekjemoon}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">봉선대</td>
+                                                                <td style="text-align:center;" th:text="${bongseondae}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">부조2</td>
+                                                                <td style="text-align:center;" th:text="${boojo2}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">부조3</td>
+                                                                <td style="text-align:center;" th:text="${boojo3}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">부조4</td>
+                                                                <td style="text-align:center;" th:text="${boojo4}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">부조6</td>
+                                                                <td style="text-align:center;" th:text="${boojo6}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">상대포</td>
+                                                                <td style="text-align:center;" th:text="${sangdaepo}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">소정수석전시관</td>
+                                                                <td style="text-align:center;" th:text="${sojeongsuseokjeonsigwan_panel}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">신선태극정원</td>
+                                                                <td style="text-align:center;" th:text="${sinseontaeguek}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">애향수석전시관</td>
+                                                                <td style="text-align:center;" th:text="${aehyangsuseok}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">양사재</td>
+                                                                <td style="text-align:center;" th:text="${yangsajae}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">영월관</td>
+                                                                <td style="text-align:center;" th:text="${yeongwolgwan}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">영월관앞비석</td>
+                                                                <td style="text-align:center;" th:text="${yeongwolbee}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">왕인박사 탄생지</td>
+                                                                <td style="text-align:center;" th:text="${wanginrock}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">왕인박사묘</td>
+                                                                <td style="text-align:center;" th:text="${wanginsadang}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">왕인박사묘비</td>
+                                                                <td style="text-align:center;" th:text="${wanginmyobi}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">왕인박사상</td>
+                                                                <td style="text-align:center;" th:text="${wanginstatue}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">왕인박사진짜(책굴옆)</td>
+                                                                <td style="text-align:center;" th:text="${wangin_stonestatue_real}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">왕인학당</td>
+                                                                <td style="text-align:center;" th:text="${wanginhakdang}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">월악루</td>
+                                                                <td style="text-align:center;" th:text="${wolakru}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">유허비</td>
+                                                                <td style="text-align:center;" th:text="${yuheobi}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">제명당</td>
+                                                                <td style="text-align:center;" th:text="${jaemyeongdang}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">제명당현판</td>
+                                                                <td style="text-align:center;" th:text="${jaemyeongdangpanel}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">준홍수석전시관 및 현판</td>
+                                                                <td style="text-align:center;" th:text="${junhongsuseokjeonsigwan_panel}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">천자문계단</td>
+                                                                <td style="text-align:center;" th:text="${cheonjamoon_step}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">학의정</td>
+                                                                <td style="text-align:center;" th:text="${hakeijung}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">학이문</td>
+                                                                <td style="text-align:center;" th:text="${hakeimoon}+'건'"></td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <!-- /.card-body -->
+                                                </div>
+                                                <!-- /.card -->
+                                            </div>
+                                        </div>
+                                    </div><!-- /.container-fluid -->
+                                </div>
+
+                        <!-- small box -->
+<!--                        <div class="small-box bg-success">-->
+<!--                            <div class="inner">-->
+<!--                                <h4 style="font-weight: 700;">외부 시설물</h4>-->
+<!--                                <p>학의정현판: <span th:id="hakeijung_panel" th:text="${hakeijung_panel}+회"></span></p>-->
+<!--                                <p>망월정현판 : <span th:id="mangwoljung_panel" th:text="${mangwoljung_panel}+회"></span></p>-->
+<!--                                <p>부조5 : <span th:id="boojo5" th:text="${boojo5}+회"></span></p>-->
+<!--                                <p>홍살문 : <span th:id="hongsalmoon" th:text="${hongsalmoon}+회"></span></p>-->
+<!--                                <p>성천 : <span th:id="sungcheon" th:text="${sungcheon}+회"></span></p>-->
+<!--                                <p>천인천자문 : <span th:id="cheonjamoon" th:text="${cheonjamoon}+회"></span></p>-->
+<!--                                <p>부조1 : <span th:id="boojo1" th:text="${boojo1}+회"></span></p>-->
+<!--                                <p>수신정 : <span th:id="susinjeong" th:text="${susinjeong}+회"></span></p>-->
+<!--                                <p>최지몽비 : <span th:id="choizimongbi" th:text="${choizimongbi}+회"></span></p>-->
+<!--                                <p>정화기념비 : <span th:id="jeonghwabee" th:text="${jeonghwabee}+회"></span></p>-->
+<!--                                <p>노래비 : <span th:id="noraebee" th:text="${noraebee}+회"></span></p>-->
+<!--                                <p>망우정 : <span th:id="mangwujeong" th:text="${mangwujeong}+회"></span></p>-->
+<!--                                <p>문산재 : <span th:id="moonsanjae" th:text="${moonsanjae}+회"></span></p>-->
+<!--                                <p>문산재현판 : <span th:id="moonsanjae_panel" th:text="${moonsanjae_panel}+회"></span></p>-->
+<!--                                <p>백제문 : <span th:id="baekjemoon" th:text="${baekjemoon}+회"></span></p>-->
+<!--                                <p>봉선대 : <span th:id="bongseondae" th:text="${bongseondae}+회"></span></p>-->
+<!--                                <p>부조2 : <span th:id="boojo2" th:text="${boojo2}+회"></span></p>-->
+<!--                                <p>부조3 : <span th:id="boojo3" th:text="${boojo3}+회"></span></p>-->
+<!--                                <p>부조4 : <span th:id="boojo4" th:text="${boojo4}+회"></span></p>-->
+<!--                                <p>부조6 : <span th:id="boojo6" th:text="${boojo6}+회"></span></p>-->
+<!--                                <p>상대포 : <span th:id="sangdaepo" th:text="${sangdaepo}+회"></span></p>-->
+<!--                                <p>소정수석전시관 및 현판 : <span th:id="sojeongsuseokjeonsigwan_panel" th:text="${sojeongsuseokjeonsigwan_panel}+회"></span></p>-->
+<!--                                <p>신선태극정원 : <span th:id="sinseontaeguek" th:text="${sinseontaeguek}+회"></span></p>-->
+<!--                                <p>애향수석전시관 : <span th:id="aehyangsuseok" th:text="${aehyangsuseok}+회"></span></p>-->
+<!--                                <p>양사재 : <span th:id="yangsajae" th:text="${yangsajae}+회"></span></p>-->
+<!--                                <p>영월관 : <span th:id="yeongwolgwan" th:text="${yeongwolgwan}+회"></span></p>-->
+<!--                                <p>영월관앞비석 : <span th:id="yeongwolbee" th:text="${yeongwolbee}+회"></span></p>-->
+<!--                                <p>왕인박사 탄생지 : <span th:id="wanginrock" th:text="${wanginrock}+회"></span></p>-->
+<!--                                <p>왕인박사묘 : <span th:id="wanginsadang" th:text="${wanginsadang}+회"></span></p>-->
+<!--                                <p>왕인박사묘비 : <span th:id="wanginmyobi" th:text="${wanginmyobi}+회"></span></p>-->
+<!--                                <p>왕인박사상 : <span th:id="wanginstatue" th:text="${wanginstatue}+회"></span></p>-->
+<!--                                <p>왕인박사진짜(책굴옆) : <span th:id="wangin_stonestatue_real" th:text="${wangin_stonestatue_real}+회"></span></p>-->
+<!--                                <p>왕인학당 : <span th:id="wanginhakdang" th:text="${wanginhakdang}+회"></span></p>-->
+<!--                                <p>월악루 : <span th:id="wolakru" th:text="${wolakru}+회"></span></p>-->
+<!--                                <p>유허비 : <span th:id="yuheobi" th:text="${yuheobi}+회"></span></p>-->
+<!--                                <p>제명당 : <span th:id="jaemyeongdang" th:text="${jaemyeongdang}+회"></span></p>-->
+<!--                                <p>제명당현판 : <span th:id="jaemyeongdangpanel" th:text="${jaemyeongdangpanel}+회"></span></p>-->
+<!--                                <p>준홍수석전시관 및 현판 : <span th:id="junhongsuseokjeonsigwan_panel" th:text="${junhongsuseokjeonsigwan_panel}+회"></span></p>-->
+<!--                                <p>천자문계단 : <span th:id="cheonjamoon_step" th:text="${cheonjamoon_step}+회"></span></p>-->
+<!--                                <p>학의정 : <span th:id="hakeijung" th:text="${hakeijung}+회"></span></p>-->
+<!--                                <p>학이문 : <span th:id="hakeimoon" th:text="${hakeimoon}+회"></span></p>-->
+<!--                            </div>-->
+<!--                            <div class="icon">-->
+<!--                                <i class="fas fa-tablet-alt"></i>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-6 col-6">
+                        <!-- /.content-header -->
+                                <div class="content">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="card card-primary">
+                                                    <div class="card-header">
+                                                        <h3 class="card-title" style="text-align:center;">
+                                                            <i class="far fa-image"></i> 내부 시설물</h3>
+                                                    </div>
+                                                    <!-- /.card-header -->
+                                                    <div class="card-body table-responsive p-0">
+                                                        <table class="table table-bordered table-hover dataTable dtr-inline">
+                                                            <thead class="bg-gray disabled color-palette">
+                                                            <tr>
+                                                                <th style="text-align:center;">시설물 이름</th>
+                                                                <th style="text-align:center;">횟수</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">묘역도</td>
+                                                                <td style="text-align:center;" th:text="${wangin_drawing8}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">오경박사등용도</td>
+                                                                <td style="text-align:center;" th:text="${wangin_drawing3}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">아직기상</td>
+                                                                <td style="text-align:center;" th:text="${wangin_smallstatue2}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">구세관음상</td>
+                                                                <td style="text-align:center;" th:text="${gusegwaneum}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">백제관음상</td>
+                                                                <td style="text-align:center;" th:text="${wangin_threebuddha}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">단지와그릇받침</td>
+                                                                <td style="text-align:center;" th:text="${danji}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">금동제관모</td>
+                                                                <td style="text-align:center;" th:text="${geumdongjegwanmo}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">금동관</td>
+                                                                <td style="text-align:center;" th:text="${wangin_goldcrown}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">왕인석상</td>
+                                                                <td style="text-align:center;" th:text="${wangin_stonestatue1}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">왕인그림</td>
+                                                                <td style="text-align:center;" th:text="${wangin_drawing2}+'건'"></td>
+                                                            </tr>
+                                                            <tr style="text-align:center;">
+                                                                <td style="text-align:center;">백제모델</td>
+                                                                <td style="text-align:center;" th:text="${wangin_baekjemodel}+'건'"></td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <!-- /.card-body -->
+                                                </div>
+                                                <!-- /.card -->
+                                            </div>
+                                        </div>
+                                    </div><!-- /.container-fluid -->
+                                </div>
+
+                        <!-- small box -->
+<!--                        <div class="small-box bg-warning" style="height:98.8%;">-->
+<!--                            <div class="inner">-->
+<!--                                <h4 style="font-weight: 700;">내부 시설물</h4>-->
+<!--                                <p>묘역도: <span th:id="wangin_drawing8" th:text="${wangin_drawing8}+회"></span></p>-->
+<!--                                <p>오경박사등용도 : <span th:id="wangin_drawing3" th:text="${wangin_drawing3}+회"></span></p>-->
+<!--                                <p>아직기상 : <span th:id="wangin_smallstatue2" th:text="${wangin_smallstatue2}+회"></span></p>-->
+<!--                                <p>구세관음상 : <span th:id="gusegwaneum" th:text="${gusegwaneum}+회"></span></p>-->
+<!--                                <p>백제관음상 : <span th:id="wangin_kwanumsang" th:text="${wangin_kwanumsang}+회"></span></p>-->
+<!--                                <p>금동삼존불 : <span th:id="wangin_threebuddha" th:text="${wangin_threebuddha}+회"></span></p>-->
+<!--                                <p>단지와그릇받침 : <span th:id="danji" th:text="${danji}+회"></span></p>-->
+<!--                                <p>금동제관모 : <span th:id="geumdongjegwanmo" th:text="${geumdongjegwanmo}+회"></span></p>-->
+<!--                                <p>금동관 : <span th:id="wangin_goldcrown" th:text="${wangin_goldcrown}+회"></span></p>-->
+<!--                                <p>왕인석상 : <span th:id="wangin_stonestatue1" th:text="${wangin_stonestatue1}+회"></span></p>-->
+<!--                                <p>왕인그림 : <span th:id="wangin_drawing2" th:text="${wangin_drawing2}+회"></span></p>-->
+<!--                                <p>백제모델 : <span th:id="wangin_baekjemodel" th:text="${wangin_baekjemodel}+회"></span></p>-->
+<!--                            </div>-->
+<!--                            <div class="icon">-->
+<!--                                <i class="fas fa-gifts"></i>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                    </div>
+                    <!-- ./col -->
+                    <!-- ./col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /.content -->
+    </div>
+
+    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <!-- Main Footer -->
+    <div th:insert="common/footer.html"></div>
+</div>
+<!-- ./wrapper -->
+<div id="load"><img src="/dist/img/spinner.gif" alt="loading"></div>
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE -->
+<script src="/dist/js/adminlte.js"></script>
+
+<!-- bs-custom-file-input -->
+<script src="/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<!-- 에디터 -->
+<script src="/plugins/summernote/summernote-bs4.min.js"></script>
+
+<!-- 달력 -->
+<!-- Select2 -->
+<script src="/plugins/select2/js/select2.full.min.js"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<!-- InputMask -->
+<script src="/plugins/moment/moment.min.js"></script>
+<script src="/plugins/inputmask/jquery.inputmask.min.js"></script>
+<!-- date-range-picker -->
+<script src="/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap color picker -->
+<script src="/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Bootstrap Switch -->
+<script src="/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<!-- BS-Stepper -->
+<script src="/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+<!-- dropzonejs -->
+<script src="/plugins/dropzone/min/dropzone.min.js"></script>
+<!--<script src="/dist/js/pages/dashboard.js"></script>-->
+<script src="/js/dashboard/dashboard.js"></script>
+<script type="text/javascript">
+    window.onbeforeunload = function () {
+        $('#load').show();
+    }
+    $(window).on('load', function () {
+        $("#load").hide();
+    });
+    window.onpageshow = function(event) {
+        if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+            $('#load').hide();
+        }
+    }
+</script>
+</body>
+</html>
