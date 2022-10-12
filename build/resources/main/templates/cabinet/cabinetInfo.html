@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>왕인박사관리사이트 | 보물찾기 위치정보</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <!--    로딩CSS-->
+    <link rel="stylesheet" href="/dist/css/loadscene.css">
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/plugins/select2/css/select2.min.css">
+
+    <style>
+        .red_box{
+            background-color: #ff4d4d;
+            padding: 10px;
+            font-weight: 900;
+            color: white;
+            width: auto;
+            border-radius: 5px;
+            margin: auto;
+            border: 1px solid black;
+        }
+        .blue_box{
+            background-color: #32a345;
+            padding: 10px;
+            font-weight: 900;
+            color: white;
+            width: auto;
+            border-radius: 5px;
+            margin: auto;
+            border: 1px solid black;
+        }
+        .red_box p{
+            text-align: left;
+            margin: 0px;
+        }
+        .blue_box p{
+            text-align: left;
+            margin: 0px;
+        }
+        .red_box h3{
+            text-align: right;
+            font-size: 14px;
+        }
+        .blue_box h3{
+            text-align: right;
+            font-size: 14px;
+        }
+        .select2{
+
+        }
+        #header {
+          position: fixed;
+        }
+
+
+
+
+
+    </style>
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+    <!-- Navbar -->
+    <div th:insert="common/navbar.html"></div>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <div th:insert="common/mainsidbar.html"></div>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>선물함 상태</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">대시보드</a></li>
+                            <li class="breadcrumb-item active">선물함 상태</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- Main content -->
+        <section class="content" id="example3">
+            <div class="container-fluid">
+                <h3 class="btn btn-primary btn-block mb-0">상품 재고 현황</h3>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"></h3>
+
+                        <form action="" onsubmit="return false;">
+                            <div class="input-group input-group-sm card-title" style="width: 20%;">
+                                <input type="search" class="form-control form-control-sm"
+                                       placeholder="검색어를 입력하세요" id="titleText" name="titleText">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-sm btn-default"
+                                            onclick="searching()">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover text-nowrap">
+                            <thead>
+                            <tr>
+                                <th style="text-align:center;">No</th>
+                                <th style="text-align:center;">상품이름</th>
+<!--                                <th style="text-align:center;">최초 등록 수량</th>-->
+                                <th style="text-align:center;">현재 남은 재고 수량</th>
+                            </tr>
+                            </thead>
+                            <tbody id="wangin_survey_list">
+                            <tr th:each="List : ${boardList}">
+                                <td style="text-align:center;"><span th:text="${List.giPk}"
+                                                                     th:id="goodsPk+${List.giPk}"></span>
+                                </td>
+                                <td style="text-align:center;"><span th:text="${List.giName}"
+                                                                     th:id="names+${List.giPk}"></span></td>
+<!--                                <td style="text-align:center;"><span th:text="${List.giFirstCnt}"-->
+<!--                                                                     th:id="first_number+${List.giPk}"></span>-->
+<!--                                </td>-->
+                                <td style="text-align:center;"><span th:text="${List.giCnt}"
+                                                                     th:id="numbers+${List.giPk}"></span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer clearfix">
+                        <ul class="pagination pagination-sm m-0 justify-content-center" id="pageList">
+
+
+                            <li class="page-item">
+                                <a class="page-link" aria-label="Previous"
+                                   th:onclick="|javascript:paging(0)|"><span>처음</span></a>
+                            </li>
+
+                            <li class="page-item prev-page" th:if="${isPrevSection}"
+                                th:value="${thisSection}">
+                                <a class="page-link" aria-label="Previous"
+                                   th:onclick="|javascript:paging(${firstBtnIndex}-1)|">이전</a>
+                            </li>
+
+                            <!--            onclick 구현-->
+                            <li th:each="page: ${#numbers.sequence(firstBtnIndex,lastBtnIndex)}"
+                                id="pageItem" class="page-item"
+                                th:classappend="${thisPage} ==  ${page} ?  'active'" th:value="${page}"><a
+                                    class="page-link" th:onclick="|javascript:paging(${page})|"><span
+                                    th:text="${page+1}"></span></a></li>
+                            <!--            onclick 구현-->
+
+
+                            <!--다음버튼2-->
+                            <li class="page-item next-page" th:if="${isNextSection}"
+                                th:onclick="|javascript:paging(${lastBtnIndex}+1)|"
+                                th:value="${thisSection}">
+                                <a class="page-link" aria-label="Next">
+                                    <span aria-hidden="true">다음</span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                            <!--다음버튼2-->
+
+
+                            <li class="page-item">
+                                <a class="page-link" id="pageItem2"
+                                   th:onclick="|javascript:paging(${totalPage})|"
+                                   aria-label="Previous">끝</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">캐비넷 번호 : 001</h3>
+                                <div class="card-tools">
+                                    <div class="input-group input-group-sm" style="width: 150px;">
+                                        <a class="btn btn-block btn-primary" data-toggle="modal"
+                                           data-target="#modal-narrative">
+                                            <i class="fas fa-question"></i> 도움말 보기
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 col-6">
+                        <div class="card card-primary">
+                            <h3 class="btn btn-primary btn-block mb-0">1번 선물함</h3>
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-hover text-nowrap">
+                                    <tbody id="cabinet_goods_info">
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            <div th:id="cabinet1"
+                                                 th:class="${isgoods1}==0 ? 'red_box' : 'blue_box'">
+                                                <p>1번</p>
+                                                <h3 th:text="${cabinet1}==0 ? '문 상태 : 문 닫힘' : '문 상태 : 문 열림'"></h3>
+                                                <h3 th:text="${isgoods1}==0 ? '상품 여부 : 상품 없음' : '상품 여부 : 상품 있음'"
+                                                    style="color:white;"></h3>
+
+                                                <h3>보관상품 종류 :
+                                                    <select id="cabinets1"
+                                                            th:onchange="|javascript:changevalue(${cabientpk1})|">
+                                                        <option>없음</option>
+                                                        <option th:each="List1: ${goodsList}" th:text="${List1.giName}"
+                                                                th:value="${List1.giPk}"
+                                                                th:selected="${List1.giPk} == ${cabinetgoods1}">없음
+                                                        </option>
+                                                    </select>
+                                                </h3>
+                                                <h3 style="text-align:right;">상품보관 수동설정 :
+                                                    <a class="badge badge-primary" onclick="setInsertGoods(1);"
+                                                       style="cursor: pointer;">있음</a>
+                                                    <a class="badge badge-primary" onclick="setDeleteGoods(1);"
+                                                       style="cursor: pointer;">없음</a>
+                                                </h3>
+                                                <hr style="margin-top:3px; margin-bottom:3px;">
+                                                <!--                                                <p style="text-align:right;">상품보관 수동설정 :-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setInsertGoods(1);" style="cursor: pointer;">있음</a>-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setDeleteGoods(1);" style="cursor: pointer;">없음</a>-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setOpenDoor(1);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setCloseDoor(1);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>&ndash;&gt;-->
+                                                <!--                                                </p>-->
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" id="PwValue_1" th:value="${password1}"
+                                                           class="form-control" style="text-align: right;" maxlength="6"
+                                                           readonly>
+                                                    <span class="input-group-append">
+                                                        <button type="button" id="BtnChangePw_1"
+                                                                class="btn btn-warning btn-flat" onclick="ChangePw(1);">비밀번호 변경</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <div th:id="cabinet7"
+                                                 th:class="${isgoods7}==0 ? 'red_box' : 'blue_box'">
+                                                <p>7번</p>
+                                                <h3 th:text="${cabinet7}==0 ? '문 상태 : 문 닫힘' : '문 상태 : 문 열림'"></h3>
+                                                <h3 th:text="${isgoods7}==0 ? '상품 여부 : 상품 없음' : '상품 여부 : 상품 있음'"
+                                                    style="color:white;"></h3>
+
+                                                <h3>보관상품 종류 :
+                                                    <select id="cabinets7"
+                                                            th:onchange="|javascript:changevalue(${cabientpk7})|">
+                                                        <option>없음</option>
+                                                        <option th:each="List1: ${goodsList}" th:text="${List1.giName}"
+                                                                th:value="${List1.giPk}"
+                                                                th:selected="${List1.giPk} == ${cabinetgoods7}">없음
+                                                        </option>
+                                                    </select>
+                                                </h3>
+                                                <h3 style="text-align:right;">상품보관 수동설정 :
+                                                    <a class="badge badge-primary" onclick="setInsertGoods(7);"
+                                                       style="cursor: pointer;">있음</a>
+                                                    <a class="badge badge-primary" onclick="setDeleteGoods(7);"
+                                                       style="cursor: pointer;">없음</a>
+                                                </h3>
+                                                <hr style="margin-top:3px; margin-bottom:3px;">
+                                                <!--                                                <p style="text-align:right;">-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setInsertGoods(7);" style="cursor: pointer;">있음</a>-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setDeleteGoods(7);" style="cursor: pointer;">없음</a>-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setOpenDoor(7);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setCloseDoor(7);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>&ndash;&gt;-->
+                                                <!--                                                </p>-->
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" id="PwValue_7" th:value="${password7}"
+                                                           class="form-control" style="text-align: right;" maxlength="6"
+                                                           readonly>
+                                                    <span class="input-group-append">
+                                                        <button type="button" id="BtnChangePw_7"
+                                                                class="btn btn-warning btn-flat" onclick="ChangePw(7);">비밀번호 변경</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            <div th:id="cabinet2"
+                                                 th:class="${isgoods2}==0 ? 'red_box' : 'blue_box'">
+                                                <p>2번</p>
+                                                <h3 th:text="${cabinet2}==0 ? '문 상태 : 문 닫힘' : '문 상태 : 문 열림'"></h3>
+                                                <h3 th:text="${isgoods2}==0 ? '상품 여부 : 상품 없음' : '상품 여부 : 상품 있음'"
+                                                    style="color:white;"></h3>
+
+                                                <h3>보관상품 종류 :
+                                                    <select id="cabinets2"
+                                                            th:onchange="|javascript:changevalue(${cabientpk2})|">
+                                                        <option>없음</option>
+                                                        <option th:each="List1: ${goodsList}" th:text="${List1.giName}"
+                                                                th:value="${List1.giPk}"
+                                                                th:selected="${List1.giPk} == ${cabinetgoods2}">없음
+                                                        </option>
+                                                    </select>
+                                                </h3>
+                                                <h3 style="text-align:right;">상품보관 수동설정 :
+                                                    <a class="badge badge-primary" onclick="setInsertGoods(2);"
+                                                       style="cursor: pointer;">있음</a>
+                                                    <a class="badge badge-primary" onclick="setDeleteGoods(2);"
+                                                       style="cursor: pointer;">없음</a>
+                                                    <!--                                                    <a onclick="setOpenDoor(19);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>-->
+                                                    <!--                                                    <a onclick="setCloseDoor(19);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>-->
+                                                </h3>
+                                                <hr style="margin-top:3px; margin-bottom:3px;">
+                                                <!--                                                <p style="text-align:right;">-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setInsertGoods(2);" style="cursor: pointer;">있음</a>-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setDeleteGoods(2);" style="cursor: pointer;">없음</a>-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setOpenDoor(2);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setCloseDoor(2);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>&ndash;&gt;-->
+                                                <!--                                                </p>-->
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" id="PwValue_2" th:value="${password2}"
+                                                           class="form-control" style="text-align: right;" maxlength="6"
+                                                           readonly>
+                                                    <span class="input-group-append">
+                                                        <button type="button" id="BtnChangePw_2"
+                                                                class="btn btn-warning btn-flat" onclick="ChangePw(2);">비밀번호 변경</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <div th:id="cabinet8"
+                                                 th:class="${isgoods8}==0 ? 'red_box' : 'blue_box'">
+                                                <p>8번</p>
+                                                <h3 th:text="${cabinet8}==0 ? '문 상태 : 문 닫힘' : '문 상태 : 문 열림'"></h3>
+                                                <h3 th:text="${isgoods8}==0 ? '상품 여부 : 상품 없음' : '상품 여부 : 상품 있음'"
+                                                    style="color:white;"></h3>
+
+                                                <h3>보관상품 종류 :
+                                                    <select id="cabinets8"
+                                                            th:onchange="|javascript:changevalue(${cabientpk8})|">
+                                                        <option>없음</option>
+                                                        <option th:each="List1: ${goodsList}" th:text="${List1.giName}"
+                                                                th:value="${List1.giPk}"
+                                                                th:selected="${List1.giPk} == ${cabinetgoods8}">없음
+                                                        </option>
+                                                    </select>
+                                                </h3>
+                                                <h3 style="text-align:right;">상품보관 수동설정 :
+                                                    <a class="badge badge-primary" onclick="setInsertGoods(8);"
+                                                       style="cursor: pointer;">있음</a>
+                                                    <a class="badge badge-primary" onclick="setDeleteGoods(8);"
+                                                       style="cursor: pointer;">없음</a>
+                                                    <!--                                                    <a onclick="setOpenDoor(8);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>-->
+                                                    <!--                                                    <a onclick="setCloseDoor(8);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>-->
+                                                </h3>
+                                                <hr style="margin-top:3px; margin-bottom:3px;">
+                                                <!--                                                <p style="text-align:right;">-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setInsertGoods(8);" style="cursor: pointer;">있음</a>-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setDeleteGoods(8);" style="cursor: pointer;">없음</a>-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setOpenDoor(8);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setCloseDoor(8);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>&ndash;&gt;-->
+                                                <!--                                                </p>-->
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" id="PwValue_8" th:value="${password8}"
+                                                           class="form-control" style="text-align: right;" maxlength="6"
+                                                           readonly>
+                                                    <span class="input-group-append">
+                                                        <button type="button" id="BtnChangePw_8"
+                                                                class="btn btn-warning btn-flat" onclick="ChangePw(8);">비밀번호 변경</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            <div th:id="cabinet3"
+                                                 th:class="${isgoods3}==0 ? 'red_box' : 'blue_box'">
+                                                <p>3번</p>
+                                                <h3 th:text="${cabinet3}==0 ? '문 상태 : 문 닫힘' : '문 상태 : 문 열림'"></h3>
+                                                <h3 th:text="${isgoods3}==0 ? '상품 여부 : 상품 없음' : '상품 여부 : 상품 있음'"
+                                                    style="color:white;"></h3>
+
+                                                <h3>보관상품 종류 :
+                                                    <select id="cabinets3"
+                                                            th:onchange="|javascript:changevalue(${cabientpk3})|">
+                                                        <option>없음</option>
+                                                        <option th:each="List1: ${goodsList}" th:text="${List1.giName}"
+                                                                th:value="${List1.giPk}"
+                                                                th:selected="${List1.giPk} == ${cabinetgoods3}">없음
+                                                        </option>
+                                                    </select>
+                                                </h3>
+                                                <h3 style="text-align:right;">상품보관 수동설정 :
+                                                    <a class="badge badge-primary" onclick="setInsertGoods(3);"
+                                                       style="cursor: pointer;">있음</a>
+                                                    <a class="badge badge-primary" onclick="setDeleteGoods(3);"
+                                                       style="cursor: pointer;">없음</a>
+                                                    <!--                                                    <a onclick="setOpenDoor(3);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>-->
+                                                    <!--                                                    <a onclick="setCloseDoor(3);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>-->
+                                                </h3>
+                                                <hr style="margin-top:3px; margin-bottom:3px;">
+                                                <!--                                                <p style="text-align:right;">-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setInsertGoods(3);" style="cursor: pointer;">있음</a>-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setDeleteGoods(3);" style="cursor: pointer;">없음</a>-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setOpenDoor(3);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setCloseDoor(3);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>&ndash;&gt;-->
+                                                <!--                                                </p>-->
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" id="PwValue_3" th:value="${password3}"
+                                                           class="form-control" style="text-align: right;" maxlength="6"
+                                                           readonly>
+                                                    <span class="input-group-append">
+                                                        <button type="button" id="BtnChangePw_3"
+                                                                class="btn btn-warning btn-flat" onclick="ChangePw(3);">비밀번호 변경</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <div th:id="cabinet9"
+                                                 th:class="${isgoods9}==0 ? 'red_box' : 'blue_box'">
+                                                <p>9번</p>
+                                                <h3 th:text="${cabinet9}==0 ? '문 상태 : 문 닫힘' : '문 상태 : 문 열림'"></h3>
+                                                <h3 th:text="${isgoods9}==0 ? '상품 여부 : 상품 없음' : '상품 여부 : 상품 있음'"
+                                                    style="color:white;"></h3>
+
+                                                <h3>보관상품 종류 :
+                                                    <select id="cabinets9"
+                                                            th:onchange="|javascript:changevalue(${cabientpk9})|">
+                                                        <option>없음</option>
+                                                        <option th:each="List1: ${goodsList}" th:text="${List1.giName}"
+                                                                th:value="${List1.giPk}"
+                                                                th:selected="${List1.giPk} == ${cabinetgoods9}">없음
+                                                        </option>
+                                                    </select>
+                                                </h3>
+                                                <h3 style="text-align:right;">상품보관 수동설정 :
+                                                    <a class="badge badge-primary" onclick="setInsertGoods(9);"
+                                                       style="cursor: pointer;">있음</a>
+                                                    <a class="badge badge-primary" onclick="setDeleteGoods(9);"
+                                                       style="cursor: pointer;">없음</a>
+                                                    <!--                                                    <a onclick="setOpenDoor(9);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>-->
+                                                    <!--                                                    <a onclick="setCloseDoor(9);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>-->
+                                                </h3>
+                                                <hr style="margin-top:3px; margin-bottom:3px;">
+                                                <!--                                                <p style="text-align:right;">-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setInsertGoods(9);" style="cursor: pointer;">있음</a>-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setDeleteGoods(9);" style="cursor: pointer;">없음</a>-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setOpenDoor(9);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setCloseDoor(9);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>&ndash;&gt;-->
+                                                <!--                                                </p>-->
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" id="PwValue_9" th:value="${password9}"
+                                                           class="form-control" style="text-align: right;" maxlength="6"
+                                                           readonly>
+                                                    <span class="input-group-append">
+                                                        <button type="button" id="BtnChangePw_9"
+                                                                class="btn btn-warning btn-flat" onclick="ChangePw(9);">비밀번호 변경</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            <div th:id="cabinet4"
+                                                 th:class="${isgoods4}==0 ? 'red_box' : 'blue_box'">
+                                                <p>4번</p>
+                                                <h3 th:text="${cabinet4}==0 ? '문 상태 : 문 닫힘' : '문 상태 : 문 열림'"></h3>
+                                                <h3 th:text="${isgoods4}==0 ? '상품 여부 : 상품 없음' : '상품 여부 : 상품 있음'"
+                                                    style="color:white;"></h3>
+
+                                                <h3>보관상품 종류 :
+                                                    <select id="cabinets4"
+                                                            th:onchange="|javascript:changevalue(${cabientpk4})|">
+                                                        <option>없음</option>
+                                                        <option th:each="List1: ${goodsList}" th:text="${List1.giName}"
+                                                                th:value="${List1.giPk}"
+                                                                th:selected="${List1.giPk} == ${cabinetgoods4}">없음
+                                                        </option>
+                                                    </select>
+                                                </h3>
+                                                <h3 style="text-align:right;">상품보관 수동설정 :
+                                                    <a class="badge badge-primary" onclick="setInsertGoods(4);"
+                                                       style="cursor: pointer;">있음</a>
+                                                    <a class="badge badge-primary" onclick="setDeleteGoods(4);"
+                                                       style="cursor: pointer;">없음</a>
+                                                    <!--                                                    <a onclick="setOpenDoor(4);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>-->
+                                                    <!--                                                    <a onclick="setCloseDoor(4);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>-->
+                                                </h3>
+                                                <hr style="margin-top:3px; margin-bottom:3px;">
+                                                <!--                                                <p style="text-align:right;">-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setInsertGoods(4);" style="cursor: pointer;">있음</a>-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setDeleteGoods(4);" style="cursor: pointer;">없음</a>-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setOpenDoor(4);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setCloseDoor(4);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>&ndash;&gt;-->
+                                                <!--                                                </p>-->
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" id="PwValue_4" th:value="${password4}"
+                                                           class="form-control" style="text-align: right;" maxlength="6"
+                                                           readonly>
+                                                    <span class="input-group-append">
+                                                        <button type="button" id="BtnChangePw_4"
+                                                                class="btn btn-warning btn-flat" onclick="ChangePw(4);">비밀번호 변경</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <div th:id="cabinet10"
+                                                 th:class="${isgoods10}==0 ? 'red_box' : 'blue_box'">
+                                                <p>10번</p>
+                                                <h3 th:text="${cabinet10}==0 ? '문 상태 : 문 닫힘' : '문 상태 : 문 열림'"></h3>
+                                                <h3 th:text="${isgoods10}==0 ? '상품 여부 : 상품 없음' : '상품 여부 : 상품 있음'"
+                                                    style="color:white;"></h3>
+
+                                                <h3>보관상품 종류 :
+                                                    <select id="cabinets10"
+                                                            th:onchange="|javascript:changevalue(${cabientpk10})|">
+                                                        <option>없음</option>
+                                                        <option th:each="List1: ${goodsList}" th:text="${List1.giName}"
+                                                                th:value="${List1.giPk}"
+                                                                th:selected="${List1.giPk} == ${cabinetgoods10}">없음
+                                                        </option>
+                                                    </select>
+                                                </h3>
+                                                <h3 style="text-align:right;">상품보관 수동설정 :
+                                                    <a class="badge badge-primary" onclick="setInsertGoods(10);"
+                                                       style="cursor: pointer;">있음</a>
+                                                    <a class="badge badge-primary" onclick="setDeleteGoods(10);"
+                                                       style="cursor: pointer;">없음</a>
+                                                    <!--                                                    <a onclick="setOpenDoor(10);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>-->
+                                                    <!--                                                    <a onclick="setCloseDoor(10);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>-->
+                                                </h3>
+                                                <hr style="margin-top:3px; margin-bottom:3px;">
+                                                <!--                                                <p style="text-align:right;">-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setInsertGoods(10);" style="cursor: pointer;">있음</a>-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setDeleteGoods(10);" style="cursor: pointer;">없음</a>-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setOpenDoor(10);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setCloseDoor(10);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>&ndash;&gt;-->
+                                                <!--                                                </p>-->
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" id="PwValue_10" th:value="${password10}"
+                                                           class="form-control" style="text-align: right;" maxlength="6"
+                                                           readonly>
+                                                    <span class="input-group-append">
+                                                        <button type="button" id="BtnChangePw_10"
+                                                                class="btn btn-warning btn-flat"
+                                                                onclick="ChangePw(10);">비밀번호 변경</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            <div th:id="cabinet5"
+                                                 th:class="${isgoods5}==0 ? 'red_box' : 'blue_box'">
+                                                <p>5번</p>
+                                                <h3 th:text="${cabinet5}==0 ? '문 상태 : 문 닫힘' : '문 상태 : 문 열림'"></h3>
+                                                <h3 th:text="${isgoods5}==0 ? '상품 여부 : 상품 없음' : '상품 여부 : 상품 있음'"
+                                                    style="color:white;"></h3>
+
+                                                <h3>보관상품 종류 :
+                                                    <select id="cabinets5"
+                                                            th:onchange="|javascript:changevalue(${cabientpk5})|">
+                                                        <option>없음</option>
+                                                        <option th:each="List1: ${goodsList}" th:text="${List1.giName}"
+                                                                th:value="${List1.giPk}"
+                                                                th:selected="${List1.giPk} == ${cabinetgoods5}">없음
+                                                        </option>
+                                                    </select>
+                                                </h3>
+                                                <h3 style="text-align:right;">상품보관 수동설정 :
+                                                    <a class="badge badge-primary" onclick="setInsertGoods(5);"
+                                                       style="cursor: pointer;">있음</a>
+                                                    <a class="badge badge-primary" onclick="setDeleteGoods(5);"
+                                                       style="cursor: pointer;">없음</a>
+                                                    <!--                                                    <a onclick="setOpenDoor(5);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>-->
+                                                    <!--                                                    <a onclick="setCloseDoor(5);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>-->
+                                                </h3>
+                                                <hr style="margin-top:3px; margin-bottom:3px;">
+                                                <!--                                                <p style="text-align:right;">-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setInsertGoods(5);" style="cursor: pointer;">있음</a>-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setDeleteGoods(5);" style="cursor: pointer;">없음</a>-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setOpenDoor(5);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setCloseDoor(5);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>&ndash;&gt;-->
+                                                <!--                                                </p>-->
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" id="PwValue_5" th:value="${password5}"
+                                                           class="form-control" style="text-align: right;" maxlength="6"
+                                                           readonly>
+                                                    <span class="input-group-append">
+                                                        <button type="button" id="BtnChangePw_5"
+                                                                class="btn btn-warning btn-flat" onclick="ChangePw(5);">비밀번호 변경</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <div th:id="cabinet11"
+                                                 th:class="${isgoods11}==0 ? 'red_box' : 'blue_box'">
+                                                <p>11번</p>
+                                                <h3 th:text="${cabinet11}==0 ? '문 상태 : 문 닫힘' : '문 상태 : 문 열림'"></h3>
+                                                <h3 th:text="${isgoods11}==0 ? '상품 여부 : 상품 없음' : '상품 여부 : 상품 있음'"
+                                                    style="color:white;"></h3>
+
+                                                <h3>보관상품 종류 :
+                                                    <select id="cabinets11"
+                                                            th:onchange="|javascript:changevalue(${cabientpk11})|">
+                                                        <option>없음</option>
+                                                        <option th:each="List1: ${goodsList}" th:text="${List1.giName}"
+                                                                th:value="${List1.giPk}"
+                                                                th:selected="${List1.giPk} == ${cabinetgoods11}">없음
+                                                        </option>
+                                                    </select>
+                                                </h3>
+                                                <h3 style="text-align:right;">상품보관 수동설정 :
+                                                    <a class="badge badge-primary" onclick="setInsertGoods(11);"
+                                                       style="cursor: pointer;">있음</a>
+                                                    <a class="badge badge-primary" onclick="setDeleteGoods(11);"
+                                                       style="cursor: pointer;">없음</a>
+                                                    <!--                                                    <a onclick="setOpenDoor(11);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>-->
+                                                    <!--                                                    <a onclick="setCloseDoor(11);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>-->
+                                                </h3>
+                                                <hr style="margin-top:3px; margin-bottom:3px;">
+                                                <!--                                                <p style="text-align:right;">-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setInsertGoods(11);" style="cursor: pointer;">있음</a>-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setDeleteGoods(11);" style="cursor: pointer;">없음</a>-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setOpenDoor(11);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setCloseDoor(11);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>&ndash;&gt;-->
+                                                <!--                                                </p>-->
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" id="PwValue_11" th:value="${password11}"
+                                                           class="form-control" style="text-align: right;" maxlength="6"
+                                                           readonly>
+                                                    <span class="input-group-append">
+                                                        <button type="button" id="BtnChangePw_11"
+                                                                class="btn btn-warning btn-flat"
+                                                                onclick="ChangePw(11);">비밀번호 변경</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            <div th:id="cabinet6"
+                                                 th:class="${isgoods6}==0 ? 'red_box' : 'blue_box'">
+                                                <p>6번</p>
+                                                <h3 th:text="${cabinet6}==0 ? '문 상태 : 문 닫힘' : '문 상태 : 문 열림'"></h3>
+                                                <h3 th:text="${isgoods6}==0 ? '상품 여부 : 상품 없음' : '상품 여부 : 상품 있음'"
+                                                    style="color:white;"></h3>
+
+                                                <h3>보관상품 종류 :
+                                                    <select id="cabinets6"
+                                                            th:onchange="|javascript:changevalue(${cabientpk6})|">
+                                                        <option>없음</option>
+                                                        <option th:each="List1: ${goodsList}" th:text="${List1.giName}"
+                                                                th:value="${List1.giPk}"
+                                                                th:selected="${List1.giPk} == ${cabinetgoods6}">없음
+                                                        </option>
+                                                    </select>
+                                                </h3>
+                                                <h3 style="text-align:right;">상품보관 수동설정 :
+                                                    <a class="badge badge-primary" onclick="setInsertGoods(6);"
+                                                       style="cursor: pointer;">있음</a>
+                                                    <a class="badge badge-primary" onclick="setDeleteGoods(6);"
+                                                       style="cursor: pointer;">없음</a>
+                                                    <!--                                                    <a onclick="setOpenDoor(6);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>-->
+                                                    <!--                                                    <a onclick="setCloseDoor(6);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>-->
+                                                </h3>
+                                                <hr style="margin-top:3px; margin-bottom:3px;">
+                                                <!--                                                <p style="text-align:right;">-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setInsertGoods(6);" style="cursor: pointer;">있음</a>-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setDeleteGoods(6);" style="cursor: pointer;">없음</a>-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setOpenDoor(6);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setCloseDoor(6);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>&ndash;&gt;-->
+                                                <!--                                                </p>-->
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" id="PwValue_6" th:value="${password6}"
+                                                           class="form-control" style="text-align: right;" maxlength="6"
+                                                           readonly>
+                                                    <span class="input-group-append">
+                                                        <button type="button" id="BtnChangePw_6"
+                                                                class="btn btn-warning btn-flat" onclick="ChangePw(6);">비밀번호 변경</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <div th:id="cabinet12"
+                                                 th:class="${isgoods12}==0 ? 'red_box' : 'blue_box'">
+                                                <p>12번</p>
+                                                <h3 th:text="${cabinet12}==0 ? '문 상태 : 문 닫힘' : '문 상태 : 문 열림'"></h3>
+                                                <h3 th:text="${isgoods12}==0 ? '상품 여부 : 상품 없음' : '상품 여부 : 상품 있음'"
+                                                    style="color:white;"></h3>
+
+                                                <h3>보관상품 종류 :
+                                                    <select id="cabinets12"
+                                                            th:onchange="|javascript:changevalue(${cabientpk12})|">
+                                                        <option>없음</option>
+                                                        <option th:each="List1: ${goodsList}" th:text="${List1.giName}"
+                                                                th:value="${List1.giPk}"
+                                                                th:selected="${List1.giPk} == ${cabinetgoods12}">없음
+                                                        </option>
+                                                    </select>
+                                                </h3>
+                                                <h3 style="text-align:right;">상품보관 수동설정 :
+                                                    <a class="badge badge-primary" onclick="setInsertGoods(12);"
+                                                       style="cursor: pointer;">있음</a>
+                                                    <a class="badge badge-primary" onclick="setDeleteGoods(12);"
+                                                       style="cursor: pointer;">없음</a>
+                                                    <!--                                                    <a onclick="setOpenDoor(12);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>-->
+                                                    <!--                                                    <a onclick="setCloseDoor(12);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>-->
+                                                </h3>
+                                                <hr style="margin-top:3px; margin-bottom:3px;">
+                                                <!--                                                <p style="text-align:right;">-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setInsertGoods(12);" style="cursor: pointer;">있음</a>-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setDeleteGoods(12);" style="cursor: pointer;">없음</a>-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setOpenDoor(12);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setCloseDoor(12);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>&ndash;&gt;-->
+                                                <!--                                                </p>-->
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" id="PwValue_12" th:value="${password12}"
+                                                           class="form-control" style="text-align: right;" maxlength="6"
+                                                           readonly>
+                                                    <span class="input-group-append">
+                                                        <button type="button" id="BtnChangePw_12"
+                                                                class="btn btn-warning btn-flat"
+                                                                onclick="ChangePw(12);">비밀번호 변경</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-6">
+                        <div class="card card-primary">
+                            <h3 class="btn btn-primary btn-block mb-0">2번 선물함</h3>
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-hover text-nowrap">
+                                    <tbody id="cabinet_goods_info">
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            <div th:id="cabinet13"
+                                                 th:class="${isgoods13}==0 ? 'red_box' : 'blue_box'">
+                                                <p>13번</p>
+                                                <h3 th:text="${cabinet13}==0 ? '문 상태 : 문 닫힘' : '문 상태 : 문 열림'"></h3>
+                                                <h3 th:text="${isgoods13}==0 ? '상품 여부 : 상품 없음' : '상품 여부 : 상품 있음'"
+                                                    style="color:white;"></h3>
+
+                                                <h3>보관상품 종류 :
+                                                    <select id="cabinets13"
+                                                            th:onchange="|javascript:changevalue(${cabientpk13})|">
+                                                        <option>없음</option>
+                                                        <option th:each="List1: ${goodsList}" th:text="${List1.giName}"
+                                                                th:value="${List1.giPk}"
+                                                                th:selected="${List1.giPk} == ${cabinetgoods13}">없음
+                                                        </option>
+                                                    </select>
+                                                </h3>
+                                                <h3 style="text-align:right;">상품보관 수동설정 :
+                                                    <a class="badge badge-primary" onclick="setInsertGoods(13);"
+                                                       style="cursor: pointer;">있음</a>
+                                                    <a class="badge badge-primary" onclick="setDeleteGoods(13);"
+                                                       style="cursor: pointer;">없음</a>
+                                                    <!--                                                    <a onclick="setOpenDoor(13);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>-->
+                                                    <!--                                                    <a onclick="setCloseDoor(13);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>-->
+                                                </h3>
+                                                <hr style="margin-top:3px; margin-bottom:3px;">
+                                                <!--                                                <p style="text-align:right;">-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setInsertGoods(13);" style="cursor: pointer;">있음</a>-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setDeleteGoods(13);" style="cursor: pointer;">없음</a>-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setOpenDoor(13);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setCloseDoor(13);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>&ndash;&gt;-->
+                                                <!--                                                </p>-->
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" id="PwValue_13" th:value="${password13}"
+                                                           class="form-control" style="text-align: right;" maxlength="6"
+                                                           readonly>
+                                                    <span class="input-group-append">
+                                                        <button type="button" id="BtnChangePw_13"
+                                                                class="btn btn-warning btn-flat"
+                                                                onclick="ChangePw(13);">비밀번호 변경</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <div th:id="cabinet19"
+                                                 th:class="${isgoods19}==0 ? 'red_box' : 'blue_box'">
+                                                <p>19번</p>
+                                                <h3 th:text="${cabinet19}==0 ? '문 상태 : 문 닫힘' : '문 상태 : 문 열림'"></h3>
+                                                <h3 th:text="${isgoods19}==0 ? '상품 여부 : 상품 없음' : '상품 여부 : 상품 있음'"
+                                                    style="color:white;"></h3>
+
+                                                <h3>보관상품 종류 :
+                                                    <select id="cabinets19"
+                                                            th:onchange="|javascript:changevalue(${cabientpk19})|">
+                                                        <option>없음</option>
+                                                        <option th:each="List1: ${goodsList}" th:text="${List1.giName}"
+                                                                th:value="${List1.giPk}"
+                                                                th:selected="${List1.giPk} == ${cabinetgoods19}">없음
+                                                        </option>
+                                                    </select>
+                                                </h3>
+                                                <h3 style="text-align:right;">상품보관 수동설정 :
+                                                    <a class="badge badge-primary" onclick="setInsertGoods(19);"
+                                                       style="cursor: pointer;">있음</a>
+                                                    <a class="badge badge-primary" onclick="setDeleteGoods(19);"
+                                                       style="cursor: pointer;">없음</a>
+                                                    <!--                                                    <a onclick="setOpenDoor(19);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>-->
+                                                    <!--                                                    <a onclick="setCloseDoor(19);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>-->
+                                                </h3>
+                                                <hr style="margin-top:3px; margin-bottom:3px;">
+                                                <!--                                                <p style="text-align:right;">-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setInsertGoods(19);" style="cursor: pointer;">있음</a>-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setDeleteGoods(19);" style="cursor: pointer;">없음</a>-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setOpenDoor(19);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setCloseDoor(19);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>&ndash;&gt;-->
+                                                <!--                                                </p>-->
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" id="PwValue_19" th:value="${password19}"
+                                                           class="form-control" style="text-align: right;" maxlength="6"
+                                                           readonly>
+                                                    <span class="input-group-append">
+                                                        <button type="button" id="BtnChangePw_19"
+                                                                class="btn btn-warning btn-flat"
+                                                                onclick="ChangePw(19);">비밀번호 변경</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            <div th:id="cabinet14"
+                                                 th:class="${isgoods14}==0 ? 'red_box' : 'blue_box'">
+                                                <p>14번</p>
+                                                <h3 th:text="${cabinet14}==0 ? '문 상태 : 문 닫힘' : '문 상태 : 문 열림'"></h3>
+                                                <h3 th:text="${isgoods14}==0 ? '상품 여부 : 상품 없음' : '상품 여부 : 상품 있음'"
+                                                    style="color:white;"></h3>
+
+                                                <h3>보관상품 종류 :
+                                                    <select id="cabinets14"
+                                                            th:onchange="|javascript:changevalue(${cabientpk14})|">
+                                                        <option>없음</option>
+                                                        <option th:each="List1: ${goodsList}" th:text="${List1.giName}"
+                                                                th:value="${List1.giPk}"
+                                                                th:selected="${List1.giPk} == ${cabinetgoods14}">없음
+                                                        </option>
+                                                    </select>
+                                                </h3>
+                                                <h3 style="text-align:right;">상품보관 수동설정 :
+                                                    <a class="badge badge-primary" onclick="setInsertGoods(14);"
+                                                       style="cursor: pointer;">있음</a>
+                                                    <a class="badge badge-primary" onclick="setDeleteGoods(14);"
+                                                       style="cursor: pointer;">없음</a>
+                                                    <!--                                                    <a onclick="setOpenDoor(14);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>-->
+                                                    <!--                                                    <a onclick="setCloseDoor(14);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>-->
+                                                </h3>
+                                                <hr style="margin-top:3px; margin-bottom:3px;">
+                                                <!--                                                <p style="text-align:right;">-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setInsertGoods(14);" style="cursor: pointer;">있음</a>-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setDeleteGoods(14);" style="cursor: pointer;">없음</a>-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setOpenDoor(14);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setCloseDoor(14);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>&ndash;&gt;-->
+                                                <!--                                                </p>-->
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" id="PwValue_14" th:value="${password14}"
+                                                           class="form-control" style="text-align: right;" maxlength="6"
+                                                           readonly>
+                                                    <span class="input-group-append">
+                                                        <button type="button" id="BtnChangePw_14"
+                                                                class="btn btn-warning btn-flat"
+                                                                onclick="ChangePw(14);">비밀번호 변경</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <div th:id="cabinet20"
+                                                 th:class="${isgoods20}==0 ? 'red_box' : 'blue_box'">
+                                                <p>20번</p>
+                                                <h3 th:text="${cabinet20}==0 ? '문 상태 : 문 닫힘' : '문 상태 : 문 열림'"></h3>
+                                                <h3 th:text="${isgoods20}==0 ? '상품 여부 : 상품 없음' : '상품 여부 : 상품 있음'"
+                                                    style="color:white;"></h3>
+
+                                                <h3>보관상품 종류 :
+                                                    <select id="cabinets20"
+                                                            th:onchange="|javascript:changevalue(${cabientpk20})|">
+                                                        <option>없음</option>
+                                                        <option th:each="List1: ${goodsList}" th:text="${List1.giName}"
+                                                                th:value="${List1.giPk}"
+                                                                th:selected="${List1.giPk} == ${cabinetgoods20}">없음
+                                                        </option>
+                                                    </select>
+                                                </h3>
+                                                <h3 style="text-align:right;">상품보관 수동설정 :
+                                                    <a class="badge badge-primary" onclick="setInsertGoods(20);"
+                                                       style="cursor: pointer;">있음</a>
+                                                    <a class="badge badge-primary" onclick="setDeleteGoods(20);"
+                                                       style="cursor: pointer;">없음</a>
+                                                    <!--                                                    <a onclick="setOpenDoor(20);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>-->
+                                                    <!--                                                    <a onclick="setCloseDoor(20);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>-->
+                                                </h3>
+                                                <hr style="margin-top:3px; margin-bottom:3px;">
+                                                <!--                                                <p style="text-align:right;">-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setInsertGoods(20);" style="cursor: pointer;">있음</a>-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setDeleteGoods(20);" style="cursor: pointer;">없음</a>-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setOpenDoor(20);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setCloseDoor(20);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>&ndash;&gt;-->
+                                                <!--                                                </p>-->
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" id="PwValue_20" th:value="${password20}"
+                                                           class="form-control" style="text-align: right;" maxlength="6"
+                                                           readonly>
+                                                    <span class="input-group-append">
+                                                        <button type="button" id="BtnChangePw_20"
+                                                                class="btn btn-warning btn-flat"
+                                                                onclick="ChangePw(20);">비밀번호 변경</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            <div th:id="cabinet15"
+                                                 th:class="${isgoods15}==0 ? 'red_box' : 'blue_box'">
+                                                <p>15번</p>
+                                                <h3 th:text="${cabinet15}==0 ? '문 상태 : 문 닫힘' : '문 상태 : 문 열림'"></h3>
+                                                <h3 th:text="${isgoods15}==0 ? '상품 여부 : 상품 없음' : '상품 여부 : 상품 있음'"
+                                                    style="color:white;"></h3>
+
+                                                <h3>보관상품 종류 :
+                                                    <select id="cabinets15"
+                                                            th:onchange="|javascript:changevalue(${cabientpk15})|">
+                                                        <option>없음</option>
+                                                        <option th:each="List1: ${goodsList}" th:text="${List1.giName}"
+                                                                th:value="${List1.giPk}"
+                                                                th:selected="${List1.giPk} == ${cabinetgoods15}">없음
+                                                        </option>
+                                                    </select>
+                                                </h3>
+                                                <h3 style="text-align:right;">상품보관 수동설정 :
+                                                    <a class="badge badge-primary" onclick="setInsertGoods(15);"
+                                                       style="cursor: pointer;">있음</a>
+                                                    <a class="badge badge-primary" onclick="setDeleteGoods(15);"
+                                                       style="cursor: pointer;">없음</a>
+                                                    <!--                                                    <a onclick="setOpenDoor(15);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>-->
+                                                    <!--                                                    <a onclick="setCloseDoor(15);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>-->
+                                                </h3>
+                                                <hr style="margin-top:3px; margin-bottom:3px;">
+                                                <!--                                                <p style="text-align:right;">-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setInsertGoods(15);" style="cursor: pointer;">있음</a>-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setDeleteGoods(15);" style="cursor: pointer;">없음</a>-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setOpenDoor(15);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setCloseDoor(15);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>&ndash;&gt;-->
+                                                <!--                                                </p>-->
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" id="PwValue_15" th:value="${password15}"
+                                                           class="form-control" style="text-align: right;" maxlength="6"
+                                                           readonly>
+                                                    <span class="input-group-append">
+                                                        <button type="button" id="BtnChangePw_15"
+                                                                class="btn btn-warning btn-flat"
+                                                                onclick="ChangePw(15);">비밀번호 변경</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <div th:id="cabinet21"
+                                                 th:class="${isgoods21}==0 ? 'red_box' : 'blue_box'">
+                                                <p>21번</p>
+                                                <h3 th:text="${cabinet21}==0 ? '문 상태 : 문 닫힘' : '문 상태 : 문 열림'"></h3>
+                                                <h3 th:text="${isgoods21}==0 ? '상품 여부 : 상품 없음' : '상품 여부 : 상품 있음'"
+                                                    style="color:white;"></h3>
+
+                                                <h3>보관상품 종류 :
+                                                    <select id="cabinets21"
+                                                            th:onchange="|javascript:changevalue(${cabientpk21})|">
+                                                        <option>없음</option>
+                                                        <option th:each="List1: ${goodsList}" th:text="${List1.giName}"
+                                                                th:value="${List1.giPk}"
+                                                                th:selected="${List1.giPk} == ${cabinetgoods21}">없음
+                                                        </option>
+                                                    </select>
+                                                </h3>
+                                                <h3 style="text-align:right;">상품보관 수동설정 :
+                                                    <a class="badge badge-primary" onclick="setInsertGoods(21);"
+                                                       style="cursor: pointer;">있음</a>
+                                                    <a class="badge badge-primary" onclick="setDeleteGoods(21);"
+                                                       style="cursor: pointer;">없음</a>
+                                                    <!--                                                    <a onclick="setOpenDoor(21);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>-->
+                                                    <!--                                                    <a onclick="setCloseDoor(21);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>-->
+                                                </h3>
+                                                <hr style="margin-top:3px; margin-bottom:3px;">
+                                                <!--                                                <p style="text-align:right;">-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setInsertGoods(21);" style="cursor: pointer;">있음</a>-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setDeleteGoods(21);" style="cursor: pointer;">없음</a>-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setOpenDoor(21);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setCloseDoor(21);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>&ndash;&gt;-->
+                                                <!--                                                </p>-->
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" id="PwValue_21" th:value="${password21}"
+                                                           class="form-control" style="text-align: right;" maxlength="6"
+                                                           readonly>
+                                                    <span class="input-group-append">
+                                                        <button type="button" id="BtnChangePw_21"
+                                                                class="btn btn-warning btn-flat"
+                                                                onclick="ChangePw(21);">비밀번호 변경</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            <div th:id="cabinet16"
+                                                 th:class="${isgoods16}==0 ? 'red_box' : 'blue_box'">
+                                                <p>16번</p>
+                                                <h3 th:text="${cabinet16}==0 ? '문 상태 : 문 닫힘' : '문 상태 : 문 열림'"></h3>
+                                                <h3 th:text="${isgoods16}==0 ? '상품 여부 : 상품 없음' : '상품 여부 : 상품 있음'"
+                                                    style="color:white;"></h3>
+
+                                                <h3>보관상품 종류 :
+                                                    <select id="cabinets16"
+                                                            th:onchange="|javascript:changevalue(${cabientpk16})|">
+                                                        <option>없음</option>
+                                                        <option th:each="List1: ${goodsList}" th:text="${List1.giName}"
+                                                                th:value="${List1.giPk}"
+                                                                th:selected="${List1.giPk} == ${cabinetgoods16}">없음
+                                                        </option>
+                                                    </select>
+                                                </h3>
+                                                <h3 style="text-align:right;">상품보관 수동설정 :
+                                                    <a class="badge badge-primary" onclick="setInsertGoods(16);"
+                                                       style="cursor: pointer;">있음</a>
+                                                    <a class="badge badge-primary" onclick="setDeleteGoods(16);"
+                                                       style="cursor: pointer;">없음</a>
+                                                    <!--                                                    <a onclick="setOpenDoor(16);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>-->
+                                                    <!--                                                    <a onclick="setCloseDoor(16);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>-->
+                                                </h3>
+                                                <hr style="margin-top:3px; margin-bottom:3px;">
+                                                <!--                                                <p style="text-align:right;">-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setInsertGoods(16);" style="cursor: pointer;">있음</a>-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setDeleteGoods(16);" style="cursor: pointer;">없음</a>-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setOpenDoor(16);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setCloseDoor(16);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>&ndash;&gt;-->
+                                                <!--                                                </p>-->
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" id="PwValue_16" th:value="${password16}"
+                                                           class="form-control" style="text-align: right;" maxlength="6"
+                                                           readonly>
+                                                    <span class="input-group-append">
+                                                        <button type="button" id="BtnChangePw_16"
+                                                                class="btn btn-warning btn-flat"
+                                                                onclick="ChangePw(16);">비밀번호 변경</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <div th:id="cabinet22"
+                                                 th:class="${isgoods22}==0 ? 'red_box' : 'blue_box'">
+                                                <p>22번</p>
+                                                <h3 th:text="${cabinet22}==0 ? '문 상태 : 문 닫힘' : '문 상태 : 문 열림'"></h3>
+                                                <h3 th:text="${isgoods22}==0 ? '상품 여부 : 상품 없음' : '상품 여부 : 상품 있음'"
+                                                    style="color:white;"></h3>
+
+                                                <h3>보관상품 종류 :
+                                                    <select id="cabinets22"
+                                                            th:onchange="|javascript:changevalue(${cabientpk22})|">
+                                                        <option>없음</option>
+                                                        <option th:each="List1: ${goodsList}" th:text="${List1.giName}"
+                                                                th:value="${List1.giPk}"
+                                                                th:selected="${List1.giPk} == ${cabinetgoods22}">없음
+                                                        </option>
+                                                    </select>
+                                                </h3>
+                                                <h3 style="text-align:right;">상품보관 수동설정 :
+                                                    <a class="badge badge-primary" onclick="setInsertGoods(22);"
+                                                       style="cursor: pointer;">있음</a>
+                                                    <a class="badge badge-primary" onclick="setDeleteGoods(22);"
+                                                       style="cursor: pointer;">없음</a>
+                                                    <!--                                                    <a onclick="setOpenDoor(22);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>-->
+                                                    <!--                                                    <a onclick="setCloseDoor(22);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>-->
+                                                </h3>
+                                                <hr style="margin-top:3px; margin-bottom:3px;">
+                                                <!--                                                <p style="text-align:right;">-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setInsertGoods(22);" style="cursor: pointer;">있음</a>-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setDeleteGoods(22);" style="cursor: pointer;">없음</a>-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setOpenDoor(22);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setCloseDoor(22);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>&ndash;&gt;-->
+                                                <!--                                                </p>-->
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" id="PwValue_22" th:value="${password22}"
+                                                           class="form-control" style="text-align: right;" maxlength="6"
+                                                           readonly>
+                                                    <span class="input-group-append">
+                                                        <button type="button" id="BtnChangePw_22"
+                                                                class="btn btn-warning btn-flat"
+                                                                onclick="ChangePw(22);">비밀번호 변경</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            <div th:id="cabinet17"
+                                                 th:class="${isgoods17}==0 ? 'red_box' : 'blue_box'">
+                                                <p>17번</p>
+                                                <h3 th:text="${cabinet17}==0 ? '문 상태 : 문 닫힘' : '문 상태 : 문 열림'"></h3>
+                                                <h3 th:text="${isgoods17}==0 ? '상품 여부 : 상품 없음' : '상품 여부 : 상품 있음'"
+                                                    style="color:white;"></h3>
+
+                                                <h3>보관상품 종류 :
+                                                    <select id="cabinets17"
+                                                            th:onchange="|javascript:changevalue(${cabientpk17})|">
+                                                        <option>없음</option>
+                                                        <option th:each="List1: ${goodsList}" th:text="${List1.giName}"
+                                                                th:value="${List1.giPk}"
+                                                                th:selected="${List1.giPk} == ${cabinetgoods17}">없음
+                                                        </option>
+                                                    </select>
+                                                </h3>
+                                                <h3 style="text-align:right;">상품보관 수동설정 :
+                                                    <a class="badge badge-primary" onclick="setInsertGoods(17);"
+                                                       style="cursor: pointer;">있음</a>
+                                                    <a class="badge badge-primary" onclick="setDeleteGoods(17);"
+                                                       style="cursor: pointer;">없음</a>
+                                                    <!--                                                    <a onclick="setOpenDoor(17);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>-->
+                                                    <!--                                                    <a onclick="setCloseDoor(17);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>-->
+                                                </h3>
+                                                <hr style="margin-top:3px; margin-bottom:3px;">
+                                                <!--                                                <p style="text-align:right;">-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setInsertGoods(17);" style="cursor: pointer;">있음</a>-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setDeleteGoods(17);" style="cursor: pointer;">없음</a>-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setOpenDoor(17);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setCloseDoor(17);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>&ndash;&gt;-->
+                                                <!--                                                </p>-->
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" id="PwValue_17" th:value="${password17}"
+                                                           class="form-control" style="text-align: right;" maxlength="6"
+                                                           readonly>
+                                                    <span class="input-group-append">
+                                                        <button type="button" id="BtnChangePw_17"
+                                                                class="btn btn-warning btn-flat"
+                                                                onclick="ChangePw(17);">비밀번호 변경</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <div th:id="cabinet23"
+                                                 th:class="${isgoods23}==0 ? 'red_box' : 'blue_box'">
+                                                <p>23번</p>
+                                                <h3 th:text="${cabinet23}==0 ? '문 상태 : 문 닫힘' : '문 상태 : 문 열림'"></h3>
+                                                <h3 th:text="${isgoods23}==0 ? '상품 여부 : 상품 없음' : '상품 여부 : 상품 있음'"
+                                                    style="color:white;"></h3>
+
+                                                <h3>보관상품 종류 :
+                                                    <select id="cabinets23"
+                                                            th:onchange="|javascript:changevalue(${cabientpk23})|">
+                                                        <option>없음</option>
+                                                        <option th:each="List1: ${goodsList}" th:text="${List1.giName}"
+                                                                th:value="${List1.giPk}"
+                                                                th:selected="${List1.giPk} == ${cabinetgoods23}">없음
+                                                        </option>
+                                                    </select>
+                                                </h3>
+                                                <h3 style="text-align:right;">상품보관 수동설정 :
+                                                    <a class="badge badge-primary" onclick="setInsertGoods(23);"
+                                                       style="cursor: pointer;">있음</a>
+                                                    <a class="badge badge-primary" onclick="setDeleteGoods(23);"
+                                                       style="cursor: pointer;">없음</a>
+                                                    <!--                                                    <a onclick="setOpenDoor(23);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>-->
+                                                    <!--                                                    <a onclick="setCloseDoor(23);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>-->
+                                                </h3>
+                                                <hr style="margin-top:3px; margin-bottom:3px;">
+                                                <!--                                                <p style="text-align:right;">-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setInsertGoods(23);" style="cursor: pointer;">있음</a>-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setDeleteGoods(23);" style="cursor: pointer;">없음</a>-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setOpenDoor(23);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setCloseDoor(23);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>&ndash;&gt;-->
+                                                <!--                                                </p>-->
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" id="PwValue_23" th:value="${password23}"
+                                                           class="form-control" style="text-align: right;" maxlength="6"
+                                                           readonly>
+                                                    <span class="input-group-append">
+                                                        <button type="button" id="BtnChangePw_23"
+                                                                class="btn btn-warning btn-flat"
+                                                                onclick="ChangePw(23);">비밀번호 변경</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            <div th:id="cabinet18"
+                                                 th:class="${isgoods18}==0 ? 'red_box' : 'blue_box'">
+                                                <p>18번</p>
+                                                <h3 th:text="${cabinet18}==0 ? '문 상태 : 문 닫힘' : '문 상태 : 문 열림'"></h3>
+                                                <h3 th:text="${isgoods18}==0 ? '상품 여부 : 상품 없음' : '상품 여부 : 상품 있음'"
+                                                    style="color:white;"></h3>
+
+                                                <h3>보관상품 종류 :
+                                                    <select id="cabinets18"
+                                                            th:onchange="|javascript:changevalue(${cabientpk18})|">
+                                                        <option>없음</option>
+                                                        <option th:each="List1: ${goodsList}" th:text="${List1.giName}"
+                                                                th:value="${List1.giPk}"
+                                                                th:selected="${List1.giPk} == ${cabinetgoods18}">없음
+                                                        </option>
+                                                    </select>
+                                                </h3>
+                                                <h3 style="text-align:right;">상품보관 수동설정 :
+                                                    <a class="badge badge-primary" onclick="setInsertGoods(18);"
+                                                       style="cursor: pointer;">있음</a>
+                                                    <a class="badge badge-primary" onclick="setDeleteGoods(18);"
+                                                       style="cursor: pointer;">없음</a>
+                                                    <!--                                                    <a onclick="setOpenDoor(18);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>-->
+                                                    <!--                                                    <a onclick="setCloseDoor(18);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>-->
+                                                </h3>
+                                                <hr style="margin-top:3px; margin-bottom:3px;">
+                                                <!--                                                <p style="text-align:right;">-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setInsertGoods(18);" style="cursor: pointer;">있음</a>-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setDeleteGoods(18);" style="cursor: pointer;">없음</a>-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setOpenDoor(18);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setCloseDoor(18);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>&ndash;&gt;-->
+                                                <!--                                                </p>-->
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" id="PwValue_18" th:value="${password18}"
+                                                           class="form-control" style="text-align: right;" maxlength="6"
+                                                           readonly>
+                                                    <span class="input-group-append">
+                                                        <button type="button" id="BtnChangePw_18"
+                                                                class="btn btn-warning btn-flat"
+                                                                onclick="ChangePw(18);">비밀번호 변경</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <div th:id="cabinet24"
+                                                 th:class="${isgoods24}==0 ? 'red_box' : 'blue_box'">
+                                                <p>24번</p>
+                                                <h3 th:text="${cabinet24}==0 ? '문 상태 : 문 닫힘' : '문 상태 : 문 열림'"></h3>
+                                                <h3 th:text="${isgoods24}==0 ? '상품 여부 : 상품 없음' : '상품 여부 : 상품 있음'"
+                                                    style="color:white;"></h3>
+
+                                                <h3>보관상품 종류 :
+                                                    <select id="cabinets24"
+                                                            th:onchange="|javascript:changevalue(${cabientpk24})|">
+                                                        <option>없음</option>
+                                                        <option th:each="List1: ${goodsList}" th:text="${List1.giName}"
+                                                                th:value="${List1.giPk}"
+                                                                th:selected="${List1.giPk} == ${cabinetgoods24}">없음
+                                                        </option>
+                                                    </select>
+                                                </h3>
+                                                <h3 style="text-align:right;">상품보관 수동설정 :
+                                                    <a class="badge badge-primary" onclick="setInsertGoods(24);"
+                                                       style="cursor: pointer;">있음</a>
+                                                    <a class="badge badge-primary" onclick="setDeleteGoods(24);"
+                                                       style="cursor: pointer;">없음</a>
+                                                    <!--                                                    <a onclick="setOpenDoor(24);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>-->
+                                                    <!--                                                    <a onclick="setCloseDoor(24);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>-->
+                                                </h3>
+                                                <hr style="margin-top:3px; margin-bottom:3px;">
+                                                <!--                                                <p style="text-align:right;">-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setInsertGoods(24);" style="cursor: pointer;">있음</a>-->
+                                                <!--                                                    <a class="badge badge-primary" onclick="setDeleteGoods(24);" style="cursor: pointer;">없음</a>-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setOpenDoor(24);" style="cursor: pointer;"><i class="fas fa-door-open"></i></a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                    <a onclick="setCloseDoor(24);" style="cursor: pointer;"><i class="fas fa-door-closed"></i></a>&ndash;&gt;-->
+                                                <!--                                                </p>-->
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" id="PwValue_24" th:value="${password24}"
+                                                           class="form-control" style="text-align: right;" maxlength="6"
+                                                           readonly>
+                                                    <span class="input-group-append">
+                                                        <button type="button" id="BtnChangePw_24"
+                                                                class="btn btn-warning btn-flat"
+                                                                onclick="ChangePw(24);">비밀번호 변경</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <!-- Main Footer -->
+    <div th:insert="common/footer.html"></div>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+<div id="load"><img src="/dist/img/spinner.gif" alt="loading"></div>
+<div class="modal fade" id="modal-narrative" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="title_info">선물함 상태 설명 도움말</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <span style="color:red;">문 상태 : </span>선물함 문의 열림 또는 닫힘 상태를 표시<br>
+                <span style="color:red;">상품여부 : </span>선물함 안에 상품이 있는지 표시<br>
+                <span style="color:red;">보관상품 종류 : </span>해당 선물함 번호에 실제 보관하려는 상품 설정 가능<br>
+                <span style="color:red;">상품보관 수동설정 : </span>상품의 보관 유무를 수동으로 설정 가능<br>
+                <span style="color:red;">비밀번호 변경 : </span>사용자가 비밀번호를 잊어버리거나 문이 닫혔을 경우 해당 선물함 오픈 비밀번호 초기화
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" function="cancel()">확인</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="/plugins/select2/js/select2.full.min.js"></script>
+
+
+<!-- AdminLTE App -->
+<script src="/dist/js/adminlte.min.js"></script>
+
+<script src="/js/cabinet/cabinetInfo.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+    window.onbeforeunload = function () {
+        $('#load').show();
+    }
+    $(window).on('load', function () {
+        $("#load").hide();
+    });
+    window.onpageshow = function(event) {
+        if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+            $('#load').hide();
+        }
+    }
+
+
+
+
+
+
+</script>
+<script>
+    $(function () {
+        $('.select2').select2()
+    });
+
+
+
+
+
+</script>
+
+</body>
+</html>

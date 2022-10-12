@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>왕인박사관리사이트 | 보물찾기 위치정보</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <!--    로딩CSS-->
+    <link rel="stylesheet" href="/dist/css/loadscene.css">
+    <style>
+        #header {
+          position: fixed;
+        }
+
+    </style>
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+    <!-- Navbar -->
+    <div th:insert="common/navbar.html"></div>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <div th:insert="common/mainsidbar.html"></div>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>보물찾기 위치정보</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">대시보드</a></li>
+                            <li class="breadcrumb-item active">보물찾기 위치정보</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title"></h3>
+                                <div class="card-tools">
+                                    <div class="input-group input-group-sm" style="width: 150px;">
+                                        <a data-toggle="modal" data-target="#modal-narrative" class="btn btn-block btn-primary">
+                                            <i class="far fa-plus-square"></i> 장소추가
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-hover text-nowrap" id="real_table">
+                                    <thead>
+                                    <tr>
+                                        <th style="text-align:center;">No</th>
+                                        <th style="text-align:center;">장소명</th>
+                                        <th style="text-align:center;">위도</th>
+                                        <th style="text-align:center;">경도</th>
+                                        <th style="text-align:center;">수정하기</th>
+                                        <th style="text-align:center;">삭제</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="treasurehunt_set_location">
+                                    <tr th:if="${treasurehunt_set_location}!=null"
+                                        th:each="Co, num : ${treasurehunt_set_location}" th:id="'table'+${num.index+1}">
+
+                                        <td style="text-align:center;">
+                                            <span th:if="${Co.tslpk}!= null" th:text="${Co.tslpk}"></span>
+                                            <input th:id="'a'+${num.index+1}" th:value="${Co.tslpk}" type="hidden">
+                                        </td>
+
+                                        <td style="text-align:center;" th:if="${Co.tslname} != null">
+                                            <div class="form-group row" style="margin:auto;">
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" th:id="'n'+${num.index+1}"
+                                                           th:value="${Co.tslname}" readonly="readonly">
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td style="text-align:center;" th:if="${Co.tsllatitude} != null">
+                                            <div class="form-group row" style="margin:auto;">
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" th:id="'b'+${num.index+1}"
+                                                           th:value="${Co.tsllatitude}" readonly="readonly">
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td style="text-align:center;" th:if="${Co.tsllongitude} != null">
+                                            <div class="form-group row" style="margin:auto;">
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" th:id="'c'+${num.index+1}"
+                                                           th:value="${Co.tsllongitude}" readonly="readonly">
+                                                </div>
+                                            </div>
+                                        <td style="text-align:center;">
+                                            <button type="button" class="btn btn-success" data-toggle="modal"
+                                                    data-target="#modal-primary" th:id="'d'+${num.index+1}"
+                                                    th:onclick="|javascript:row_modify_state(${num.index+1})|"
+                                                    value="수정하기">수정하기
+                                            </button>
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <a th:onclick ="|javascript:delete_location(${Co.tslpk})|" class="btn btn-danger">
+                                                <i class="fas fa-trash-alt"></i>삭제
+                                            </a>
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <!-- Main Footer -->
+    <div th:insert="common/footer.html"></div>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+</div>
+<div class="modal fade" id="modal-narrative">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="title_info">장소추가</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="place_name">장소명</label>
+                        <input type="text" class="form-control" id="place_name" placeholder="장소명을 입력하세요">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="b">위도</label>
+                        <input type="text" class="form-control" id="b" placeholder="위도를 입력하세요">
+                    </div>
+                    <div class="form-group">
+                        <label for="c">경도</label>
+                        <input type="text" class="form-control" id="c" placeholder="경도를 입력하세요">
+                    </div>
+                    <input type="text" class="form-control" id="goodsPk" readonly="readonly" hidden="hidden">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="place_name_Regist">장소추가</button>
+                <button type="button" class="btn btn-default" id="write_cancel" data-dismiss="modal">취소</button>
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- ./wrapper -->
+<div id="load"><img src="/dist/img/spinner.gif" alt="loading"></div>
+
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/adminlte.min.js"></script>
+
+<script src="/js/treasurehunt/TrasurehuntModify.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+    window.onbeforeunload = function () {
+        $('#load').show();
+    }
+    $(window).on('load', function () {
+        $("#load").hide();
+    });
+    window.onpageshow = function(event) {
+        if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+            $('#load').hide();
+        }
+    }
+
+</script>
+</body>
+</html>

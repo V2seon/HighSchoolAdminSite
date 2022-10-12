@@ -1,0 +1,2384 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<head><title></title>
+    <meta http_quiv="content-type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="/dist/css/1_style.css">
+    <link rel="stylesheet" href="/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="/css/demo.css" />
+</head>
+<body>
+<div style="width:102px; margin: auto">
+    <button style="color:white" class="btn btn-secondary" id = "create_pdf" onclick="pdfon1()">다운로드</button>
+    <br>
+</div>
+<div align = "center" style="width;100%;">
+    <h5 class="fw-bold6 py-3 mb-5" style="margin:auto">현재 페이지에서는 해상도가 깨질 수 있으나 파일 다운로드시 정상적으로 출력됩니다.</h5>
+</div>
+<div id="hpa" class="hpa" style="width:210mm;height:297mm;">
+    <div class="hcD" style="left:10mm;top:25mm;">
+        <div class="hcI">
+            <div class="hls ps104"
+                 style="line-height:3.43mm;white-space:nowrap;left:0mm;top:-0.21mm;height:4.23mm;width:190.01mm;"></div>
+            <div class="hls ps6"
+                 style="line-height:4.80mm;white-space:nowrap;left:0mm;top:6.49mm;height:5.64mm;width:190.01mm;"><span
+                    class="hrt cs196">2023학년도 광주자동화설비공업고등학교 입학 전형성적 입력 확인서</span></div>
+            <div class="hls ps104"
+                 style="line-height:77.29mm;white-space:nowrap;left:0mm;top:15.80mm;height:77.29mm;width:190.01mm;">
+                <div class="htb"
+                     style="left:0mm;width:189.98mm;top:0mm;height:77.29mm;display:inline-block;position:relative;vertical-align:middle;">
+                    <svg class="hs" viewBox="-2.50 -2.50 194.98 82.29"
+                         style="left:-1.30mm;top:-1.20mm;width:194.98mm;height:82.29mm;">
+                        <defs>
+                            <pattern id="w_170" width="10" height="10" patternUnits="userSpaceOnUse">
+                                <rect width="10" height="10" fill="rgb(242,242,242)"/>
+                            </pattern>
+                        </defs>
+                        <path fill="url(#w_170)" d="M124.84,0L157.41,0L157.41,5.52L124.84,5.52L124.84,0Z "></path>
+                        <path fill="url(#w_170)" d="M157.41,0L189.98,0L189.98,5.52L157.41,5.52L157.41,0Z "></path>
+                        <path fill="url(#w_170)" d="M0,5.52L27.14,5.52L27.14,16.56L0,16.56L0,5.52Z "></path>
+                        <path d="M26.95,5.72 L26.95,11.29"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,5.72 L27.32,10.92"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,10.79 L26.95,16.44"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,11.17 L27.32,16.44"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0.20,16.38 L27.01,16.38"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0.20,16.75 L27.01,16.75"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0,5.52 L27.14,16.56"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.30;"></path>
+                        <path fill="url(#w_170)" d="M27.14,5.52L59.70,5.52L59.70,11.04L27.14,11.04L27.14,5.52Z "></path>
+                        <path d="M26.95,5.72 L26.95,11.04"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,5.72 L27.32,11.04"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path fill="url(#w_170)" d="M59.70,5.52L92.27,5.52L92.27,11.04L59.70,11.04L59.70,5.52Z "></path>
+                        <path fill="url(#w_170)"
+                              d="M92.27,5.52L124.84,5.52L124.84,11.04L92.27,11.04L92.27,5.52Z "></path>
+                        <path fill="url(#w_170)"
+                              d="M124.84,5.52L157.41,5.52L157.41,11.04L124.84,11.04L124.84,5.52Z "></path>
+                        <path fill="url(#w_170)"
+                              d="M157.41,5.52L189.98,5.52L189.98,11.04L157.41,11.04L157.41,5.52Z "></path>
+                        <path fill="url(#w_170)"
+                              d="M27.14,11.04L59.70,11.04L59.70,16.56L27.14,16.56L27.14,11.04Z "></path>
+                        <path d="M26.95,11.04 L26.95,16.44"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,11.04 L27.32,16.44"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.26,16.38 L59.70,16.38"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.26,16.75 L59.70,16.75"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path fill="url(#w_170)"
+                              d="M59.70,11.04L92.27,11.04L92.27,16.56L59.70,16.56L59.70,11.04Z "></path>
+                        <path d="M59.70,16.38 L92.27,16.38"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M59.70,16.75 L92.27,16.75"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path fill="url(#w_170)"
+                              d="M92.27,11.04L124.84,11.04L124.84,16.56L92.27,16.56L92.27,11.04Z "></path>
+                        <path d="M92.27,16.38 L124.84,16.38"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.27,16.75 L124.84,16.75"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path fill="url(#w_170)"
+                              d="M124.84,11.04L157.41,11.04L157.41,16.56L124.84,16.56L124.84,11.04Z "></path>
+                        <path d="M124.84,16.38 L157.41,16.38"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.84,16.75 L157.41,16.75"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path fill="url(#w_170)"
+                              d="M157.41,11.04L189.98,11.04L189.98,16.56L157.41,16.56L157.41,11.04Z "></path>
+                        <path d="M157.41,16.38 L189.78,16.38"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M157.41,16.75 L189.78,16.75"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,16.69 L26.95,22.08"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,16.69 L27.32,22.08"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0.20,16.38 L27.01,16.38"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0.20,16.75 L27.01,16.75"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,16.69 L26.95,22.08"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,16.69 L27.32,22.08"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,22.08 L26.95,27.60"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,22.08 L27.32,27.60"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,27.60 L26.95,33.13"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,27.60 L27.32,33.13"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,33.13 L26.95,38.65"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,33.13 L27.32,38.65"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,38.65 L26.95,44.17"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,38.65 L27.32,44.17"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,44.17 L26.95,49.69"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,44.17 L27.32,49.69"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,49.69 L26.95,55.21"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,49.69 L27.32,55.21"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,55.21 L26.95,60.73"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,55.21 L27.32,60.73"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,60.73 L26.95,66.13"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,60.73 L27.32,66.50"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,66.38 L26.95,71.65"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,66 L27.32,71.65"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.26,16.38 L59.70,16.38"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.26,16.75 L59.70,16.75"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.26,71.59 L59.70,71.59"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.26,71.96 L59.70,71.96"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M59.70,16.56 L27.14,71.77"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.30;"></path>
+                        <path d="M59.70,16.38 L92.27,16.38"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M59.70,16.75 L92.27,16.75"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M59.70,71.59 L92.27,71.59"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M59.70,71.96 L92.27,71.96"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.27,16.56 L59.70,71.77"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.30;"></path>
+                        <path d="M92.37,16.38 L124.84,16.38"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.37,16.75 L124.84,16.75"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.84,16.38 L157.41,16.38"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.84,16.75 L157.41,16.75"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M157.41,16.38 L189.78,16.38"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M157.41,16.75 L189.78,16.75"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,22.08 L26.95,27.60"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,22.08 L27.32,27.60"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,27.60 L26.95,33.13"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,27.60 L27.32,33.13"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,33.13 L26.95,38.65"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,33.13 L27.32,38.65"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,38.65 L26.95,44.17"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,38.65 L27.32,44.17"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,44.17 L26.95,49.69"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,44.17 L27.32,49.69"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,49.69 L26.95,55.21"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,49.69 L27.32,55.21"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,55.21 L26.95,60.73"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,55.21 L27.32,60.73"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,60.73 L26.95,66.25"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,60.73 L27.32,66.25"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,66.25 L26.95,71.65"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,66.25 L27.32,71.65"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0.20,71.59 L27.01,71.59"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0.20,71.96 L27.01,71.96"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.27,71.59 L124.84,71.59"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.27,71.96 L124.84,71.96"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.84,71.59 L157.41,71.59"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.84,71.96 L157.41,71.96"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M157.41,71.59 L189.78,71.59"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M157.41,71.96 L189.78,71.96"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,71.90 L26.95,77.10"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,71.90 L27.32,77.10"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0.20,71.59 L27.01,71.59"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0.20,71.96 L27.01,71.96"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,71.90 L26.95,77.10"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,71.90 L27.32,77.10"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.26,71.59 L59.70,71.59"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.26,71.96 L59.70,71.96"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M59.70,71.59 L92.27,71.59"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M59.70,71.96 L92.27,71.96"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.27,71.59 L124.84,71.59"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.27,71.96 L124.84,71.96"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.84,71.59 L157.41,71.59"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.84,71.96 L157.41,71.96"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M157.41,71.59 L189.78,71.59"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M157.41,71.96 L189.78,71.96"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0,5.52 L0,77.30" style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M59.70,5.52 L59.70,77.30"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.27,5.52 L92.27,77.30"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.20;"></path>
+                        <path d="M124.84,0 L124.84,5.52"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M124.84,5.52 L124.84,77.30"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M157.41,0 L157.41,5.52"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M157.41,5.52 L157.41,77.30"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.20;"></path>
+                        <path d="M189.98,0 L189.98,77.30"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M124.84,0 L189.98,0"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M0,5.52 L189.98,5.52"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M27.14,11.04 L189.98,11.04"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0,22.08 L27.14,22.08"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.27,22.08 L189.98,22.08"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0,27.60 L27.14,27.60"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.27,27.60 L189.98,27.60"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0,33.13 L27.14,33.13"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.27,33.13 L189.98,33.13"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0,38.65 L27.14,38.65"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.27,38.65 L189.98,38.65"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0,44.17 L27.14,44.17"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.27,44.17 L189.98,44.17"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0,49.69 L27.14,49.69"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.27,49.69 L189.98,49.69"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0,55.21 L27.14,55.21"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.27,55.21 L189.98,55.21"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0,60.73 L27.14,60.73"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.27,60.73 L189.98,60.73"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0,66.25 L27.14,66.25"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.27,66.25 L189.98,66.25"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0,77.29 L189.98,77.29"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M189.98,0 L189.98,77.30"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M0,5.52 L0,77.30" style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M0,77.29 L189.98,77.29"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M124.84,0 L189.98,0"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                    </svg>
+                    <div class="hce" style="left:0mm;top:0mm;width:124.84mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps33"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:121.24mm;">
+                                    <span class="hrt cs25">&lt;일반교과&gt;</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:124.84mm;top:0mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25">접수번호</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:157.41mm;top:0mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${seq}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:0mm;top:5.52mm;width:27.14mm;height:11.04mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:1.14mm;">
+                                <div class="hls ps103"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:23.54mm;">
+                                    <span class="hrt cs25">학년</span></div>
+                                <div class="hls ps33"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:4.06mm;height:3.53mm;width:23.54mm;">
+                                    <span class="hrt cs25">과목</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:27.14mm;top:5.52mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25">1학년1학기</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:59.70mm;top:5.52mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25">1학년2학기</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:92.27mm;top:5.52mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25">2학년1학기</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:124.84mm;top:5.52mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25">2학년2학기</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:157.41mm;top:5.52mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25">3학년1학기</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:27.14mm;top:11.04mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25">성취도/평어</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:59.70mm;top:11.04mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25">성취도/평어</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:92.27mm;top:11.04mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25">성취도/평어</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:124.84mm;top:11.04mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25">성취도/평어</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:157.41mm;top:11.04mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25">성취도/평어</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:0mm;top:16.56mm;width:27.14mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:23.54mm;">
+                                    <span class="hrt cs25" th:text="${fgn1}" ></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:27.14mm;top:16.56mm;width:32.57mm;height:55.21mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:25.34mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:59.70mm;top:16.56mm;width:32.57mm;height:55.21mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:25.34mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:92.27mm;top:16.56mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sftd1}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:124.84mm;top:16.56mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sstd1}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:157.41mm;top:16.56mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${tftd1}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:0mm;top:22.08mm;width:27.14mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:23.54mm;">
+                                    <span class="hrt cs25" th:text="${fgn2}"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:92.27mm;top:22.08mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sftd2}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:124.84mm;top:22.08mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sstd2}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:157.41mm;top:22.08mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${tftd2}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:0mm;top:27.60mm;width:27.14mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:23.54mm;">
+                                    <span class="hrt cs25" th:text="${fgn3}" ></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:92.27mm;top:27.60mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sftd3}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:124.84mm;top:27.60mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sstd3}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:157.41mm;top:27.60mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${tftd3}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:0mm;top:33.13mm;width:27.14mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:23.54mm;">
+                                    <span class="hrt cs25" th:text="${fgn4}"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:92.27mm;top:33.13mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sftd4}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:124.84mm;top:33.13mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sstd4}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:157.41mm;top:33.13mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${tftd4}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:0mm;top:38.65mm;width:27.14mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:23.54mm;">
+                                    <span class="hrt cs25" th:text="${fgn5}" ></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:92.27mm;top:38.65mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sftd5}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:124.84mm;top:38.65mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sstd5}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:157.41mm;top:38.65mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${tftd5}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:0mm;top:44.17mm;width:27.14mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:23.54mm;">
+                                    <span class="hrt cs25" th:text="${fgn6}" ></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:92.27mm;top:44.17mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sftd6}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:124.84mm;top:44.17mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sstd6}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:157.41mm;top:44.17mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${tftd6}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:0mm;top:49.69mm;width:27.14mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:23.54mm;">
+                                    <span class="hrt cs25" th:text="${fgn7}" ></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:92.27mm;top:49.69mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sftd7}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:124.84mm;top:49.69mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sstd7}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:157.41mm;top:49.69mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${tftd7}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:0mm;top:55.21mm;width:27.14mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:23.54mm;">
+                                    <span class="hrt cs25" th:text="${fgn8}" ></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:92.27mm;top:55.21mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sftd8}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:124.84mm;top:55.21mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sstd8}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:157.41mm;top:55.21mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${tftd8}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:0mm;top:60.73mm;width:27.14mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:23.54mm;">
+                                    <span class="hrt cs25" th:text="${fgn9}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:92.27mm;top:60.73mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sftd9}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:124.84mm;top:60.73mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sstd9}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:157.41mm;top:60.73mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${tftd9}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:0mm;top:66.25mm;width:27.14mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:23.54mm;">
+                                    <span class="hrt cs25" th:text="${fgn10}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:92.27mm;top:66.25mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sftd10}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:124.84mm;top:66.25mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sstd10}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:157.41mm;top:66.25mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${tftd10}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:0mm;top:71.77mm;width:27.14mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:23.54mm;">
+                                    <span class="hrt cs25">환산점</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:27.14mm;top:71.77mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:59.70mm;top:71.77mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:92.27mm;top:71.77mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sfttotal}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:124.84mm;top:71.77mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${ssttotal}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:157.41mm;top:71.77mm;width:32.57mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${tfttotal}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hls ps104"
+                 style="line-height:37.65mm;white-space:nowrap;left:0mm;top:95.64mm;height:37.65mm;width:190.01mm;">
+                <div class="htb"
+                     style="left:0mm;width:190.01mm;top:0mm;height:37.65mm;display:inline-block;position:relative;vertical-align:middle;">
+                    <svg class="hs" viewBox="-2.50 -2.50 195.01 42.65"
+                         style="left:-1.30mm;top:-1.20mm;width:195.01mm;height:42.65mm;">
+                        <path fill="url(#w_170)" d="M0,4.52L27.14,4.52L27.14,15.56L0,15.56L0,4.52Z "></path>
+                        <path d="M26.95,4.72 L26.95,10.29"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,4.72 L27.32,9.92"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,9.80 L26.95,15.44"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,10.17 L27.32,15.44"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0.20,15.38 L27.01,15.38"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0.20,15.75 L27.01,15.75"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0,4.52 L27.14,15.56"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.30;"></path>
+                        <path fill="url(#w_170)" d="M27.14,4.52L59.71,4.52L59.71,10.04L27.14,10.04L27.14,4.52Z "></path>
+                        <path d="M26.95,4.72 L26.95,10.04"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,4.72 L27.32,10.04"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path fill="url(#w_170)" d="M59.71,4.52L92.29,4.52L92.29,10.04L59.71,10.04L59.71,4.52Z "></path>
+                        <path fill="url(#w_170)"
+                              d="M92.29,4.52L124.86,4.52L124.86,10.04L92.29,10.04L92.29,4.52Z "></path>
+                        <path fill="url(#w_170)"
+                              d="M124.86,4.52L157.44,4.52L157.44,10.04L124.86,10.04L124.86,4.52Z "></path>
+                        <path fill="url(#w_170)"
+                              d="M157.44,4.52L190.01,4.52L190.01,10.04L157.44,10.04L157.44,4.52Z "></path>
+                        <path fill="url(#w_170)"
+                              d="M27.14,10.04L59.71,10.04L59.71,15.56L27.14,15.56L27.14,10.04Z "></path>
+                        <path d="M26.95,10.04 L26.95,15.44"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,10.04 L27.32,15.44"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.26,15.38 L59.71,15.38"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.26,15.75 L59.71,15.75"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path fill="url(#w_170)"
+                              d="M59.71,10.04L92.29,10.04L92.29,15.56L59.71,15.56L59.71,10.04Z "></path>
+                        <path d="M59.71,15.38 L92.29,15.38"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M59.71,15.75 L92.29,15.75"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path fill="url(#w_170)"
+                              d="M92.29,10.04L124.86,10.04L124.86,15.56L92.29,15.56L92.29,10.04Z "></path>
+                        <path d="M92.29,15.38 L124.86,15.38"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.29,15.75 L124.86,15.75"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path fill="url(#w_170)"
+                              d="M124.86,10.04L157.44,10.04L157.44,15.56L124.86,15.56L124.86,10.04Z "></path>
+                        <path d="M124.86,15.38 L157.44,15.38"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.86,15.75 L157.44,15.75"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path fill="url(#w_170)"
+                              d="M157.44,10.04L190.01,10.04L190.01,15.56L157.44,15.56L157.44,10.04Z "></path>
+                        <path d="M157.44,15.38 L189.82,15.38"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M157.44,15.75 L189.82,15.75"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,15.69 L26.95,21.09"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,15.69 L27.32,21.09"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0.20,15.38 L27.01,15.38"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0.20,15.75 L27.01,15.75"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,15.69 L26.95,21.09"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,15.69 L27.32,21.09"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,21.09 L26.95,26.48"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,21.09 L27.32,26.85"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,26.73 L26.95,32"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,26.36 L27.32,32"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.26,15.38 L59.71,15.38"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.26,15.75 L59.71,15.75"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.26,31.94 L59.71,31.94"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.26,32.31 L59.71,32.31"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M59.71,15.56 L27.14,32.13"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.30;"></path>
+                        <path d="M59.71,15.38 L92.29,15.38"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M59.71,15.75 L92.29,15.75"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M59.71,31.94 L92.29,31.94"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M59.71,32.31 L92.29,32.31"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.29,15.56 L59.71,32.13"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.30;"></path>
+                        <path d="M92.35,15.38 L124.86,15.38"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.35,15.75 L124.86,15.75"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.86,15.38 L157.44,15.38"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.86,15.75 L157.44,15.75"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M157.44,15.38 L189.82,15.38"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M157.44,15.75 L189.82,15.75"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,21.09 L26.95,26.61"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,21.09 L27.32,26.61"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,26.61 L26.95,32"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,26.61 L27.32,32"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0.20,31.94 L27.01,31.94"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0.20,32.31 L27.01,32.31"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.29,31.94 L124.86,31.94"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.29,32.31 L124.86,32.31"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.86,31.94 L157.44,31.94"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.86,32.31 L157.44,32.31"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M157.44,31.94 L189.82,31.94"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M157.44,32.31 L189.82,32.31"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,32.25 L26.95,37.45"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,32.25 L27.32,37.45"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0.20,31.94 L27.01,31.94"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0.20,32.31 L27.01,32.31"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M26.95,32.25 L26.95,37.45"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.32,32.25 L27.32,37.45"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.26,31.94 L59.71,31.94"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M27.26,32.31 L59.71,32.31"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M59.71,31.94 L92.29,31.94"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M59.71,32.31 L92.29,32.31"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.29,31.94 L124.86,31.94"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.29,32.31 L124.86,32.31"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.86,31.94 L157.44,31.94"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.86,32.31 L157.44,32.31"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M157.44,31.94 L189.82,31.94"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M157.44,32.31 L189.82,32.31"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0,4.52 L0,37.65" style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M59.71,4.52 L59.71,32.13"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.29,4.52 L92.29,32.13"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.86,4.52 L124.86,32.13"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M157.44,4.52 L157.44,32.13"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M190.01,4.52 L190.01,37.65"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M0,4.52 L190.02,4.52"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M27.14,10.04 L190.02,10.04"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0,21.09 L27.14,21.09"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.29,21.09 L190.02,21.09"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0,26.61 L27.14,26.61"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M92.29,26.61 L190.02,26.61"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0,37.65 L190.02,37.65"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M190.01,4.52 L190.01,37.65"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M0,4.52 L0,37.65" style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M0,37.65 L190.02,37.65"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M0,4.52 L190.02,4.52"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                    </svg>
+                    <div class="hce" style="left:0mm;top:0mm;width:190.01mm;height:4.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI">
+                                <div class="hls ps33"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:186.41mm;">
+                                    <span class="hrt cs25">&lt;체육예술교과&gt;</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:0mm;top:4.52mm;width:27.14mm;height:11.04mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:1.14mm;">
+                                <div class="hls ps103"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:23.54mm;">
+                                    <span class="hrt cs25">학년</span></div>
+                                <div class="hls ps33"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:4.06mm;height:3.53mm;width:23.54mm;">
+                                    <span class="hrt cs25">과목</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:27.14mm;top:4.52mm;width:32.58mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25">1학년1학기</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:59.71mm;top:4.52mm;width:32.58mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25">1학년2학기</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:92.29mm;top:4.52mm;width:32.58mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25">2학년1학기</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:124.86mm;top:4.52mm;width:32.58mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25">2학년2학기</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:157.44mm;top:4.52mm;width:32.58mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25">3학년1학기</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:27.14mm;top:10.04mm;width:32.58mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25">성취도/평어</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:59.71mm;top:10.04mm;width:32.58mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25">성취도/평어</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:92.29mm;top:10.04mm;width:32.58mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25">성취도/평어</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:124.86mm;top:10.04mm;width:32.58mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25">성취도/평어</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:157.44mm;top:10.04mm;width:32.58mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25">성취도/평어</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:0mm;top:15.56mm;width:27.14mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:23.54mm;">
+                                    <span class="hrt cs25">체육</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:27.14mm;top:15.56mm;width:32.58mm;height:16.56mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:6.02mm;">
+                                <div class="hls ps3"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:59.71mm;top:15.56mm;width:32.58mm;height:16.56mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:6.02mm;">
+                                <div class="hls ps3"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:92.29mm;top:15.56mm;width:32.58mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sft9}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:124.86mm;top:15.56mm;width:32.58mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sst9}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:157.44mm;top:15.56mm;width:32.58mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${tft9}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:0mm;top:21.09mm;width:27.14mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:23.54mm;">
+                                    <span class="hrt cs25">미술</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:92.29mm;top:21.09mm;width:32.58mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sft10}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:124.86mm;top:21.09mm;width:32.58mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sst10}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:157.44mm;top:21.09mm;width:32.58mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${tft10}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:0mm;top:26.61mm;width:27.14mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:23.54mm;">
+                                    <span class="hrt cs25">음악</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:92.29mm;top:26.61mm;width:32.58mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sft11}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:124.86mm;top:26.61mm;width:32.58mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${sst11}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:157.44mm;top:26.61mm;width:32.58mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:28.97mm;">
+                                    <span class="hrt cs25" th:text="${tft11}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:0mm;top:32.13mm;width:27.14mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:23.54mm;">
+                                    <span class="hrt cs25">환산점</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:27.14mm;top:32.13mm;width:162.88mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:159.27mm;">
+                                    <span class="hrt cs25" th:text="${pistotal}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hls ps104"
+                 style="line-height:37.36mm;white-space:nowrap;left:0mm;top:135.83mm;height:37.36mm;width:190.01mm;">
+                <div class="htb"
+                     style="left:0mm;width:190.01mm;top:0mm;height:37.36mm;display:inline-block;position:relative;vertical-align:middle;">
+                    <svg class="hs" viewBox="-2.50 -2.50 195.01 42.36"
+                         style="left:-1.30mm;top:-1.20mm;width:195.01mm;height:42.36mm;">
+                        <path fill="url(#w_170)" d="M0,5.52L8.63,5.52L8.63,20.80L0,20.80L0,5.52Z "></path>
+                        <path d="M8.44,5.72 L8.44,11.04"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M8.81,5.72 L8.81,11.04"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M8.44,11.04 L8.44,20.74"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M8.81,11.04 L8.81,20.74"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path fill="url(#w_170)" d="M8.63,5.52L83.38,5.52L83.38,11.04L8.63,11.04L8.63,5.52Z "></path>
+                        <path d="M8.44,5.72 L8.44,11.04"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M8.81,5.72 L8.81,11.04"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M83.19,5.72 L83.19,10.99"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M83.56,5.72 L83.56,10.99"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path fill="url(#w_170)"
+                              d="M83.38,5.52L124.25,5.52L124.25,11.04L83.38,11.04L83.38,5.52Z "></path>
+                        <path d="M83.19,5.72 L83.19,10.99"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M83.56,5.72 L83.56,10.99"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.06,5.72 L124.06,10.99"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.43,5.72 L124.43,10.99"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path fill="url(#w_170)"
+                              d="M124.25,5.52L164.12,5.52L164.12,11.04L124.25,11.04L124.25,5.52Z "></path>
+                        <path d="M124.06,5.72 L124.06,10.99"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.43,5.72 L124.43,10.99"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M163.93,5.72 L163.93,10.99"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M164.30,5.72 L164.30,10.99"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path fill="url(#w_170)"
+                              d="M164.12,5.52L190.01,5.52L190.01,11.04L164.12,11.04L164.12,5.52Z "></path>
+                        <path d="M163.93,5.72 L163.93,10.99"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M164.30,5.72 L164.30,10.99"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path fill="url(#w_170)" d="M8.63,11.04L20.59,11.04L20.59,20.80L8.63,20.80L8.63,11.04Z "></path>
+                        <path d="M8.44,11.04 L8.44,20.74"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M8.81,11.04 L8.81,20.74"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path fill="url(#w_170)"
+                              d="M20.59,11.04L32.55,11.04L32.55,20.80L20.59,20.80L20.59,11.04Z "></path>
+                        <path fill="url(#w_170)"
+                              d="M32.55,11.04L44.51,11.04L44.51,20.80L32.55,20.80L32.55,11.04Z "></path>
+                        <path fill="url(#w_170)"
+                              d="M44.51,11.04L56.47,11.04L56.47,20.80L44.51,20.80L44.51,11.04Z "></path>
+                        <path fill="url(#w_170)"
+                              d="M56.47,11.04L69.42,11.04L69.42,20.80L56.47,20.80L56.47,11.04Z "></path>
+                        <path fill="url(#w_170)"
+                              d="M69.42,11.04L83.38,11.04L83.38,20.80L69.42,20.80L69.42,11.04Z "></path>
+                        <path d="M83.19,11.10 L83.19,20.74"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M83.56,11.10 L83.56,20.74"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path fill="url(#w_170)"
+                              d="M83.38,11.04L97.33,11.04L97.33,20.80L83.38,20.80L83.38,11.04Z "></path>
+                        <path d="M83.19,11.10 L83.19,20.74"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M83.56,11.10 L83.56,20.74"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path fill="url(#w_170)"
+                              d="M97.33,11.04L110.29,11.04L110.29,20.80L97.33,20.80L97.33,11.04Z "></path>
+                        <path fill="url(#w_170)"
+                              d="M110.29,11.04L124.25,11.04L124.25,20.80L110.29,20.80L110.29,11.04Z "></path>
+                        <path d="M124.06,11.10 L124.06,20.74"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.43,11.10 L124.43,20.74"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path fill="url(#w_170)"
+                              d="M124.25,11.04L138.20,11.04L138.20,20.80L124.25,20.80L124.25,11.04Z "></path>
+                        <path d="M124.06,11.10 L124.06,20.74"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.43,11.10 L124.43,20.74"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path fill="url(#w_170)"
+                              d="M138.20,11.04L151.16,11.04L151.16,20.80L138.20,20.80L138.20,11.04Z "></path>
+                        <path fill="url(#w_170)"
+                              d="M151.16,11.04L164.12,11.04L164.12,20.80L151.16,20.80L151.16,11.04Z "></path>
+                        <path d="M163.93,11.10 L163.93,20.74"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M164.30,11.10 L164.30,20.74"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path fill="url(#w_170)"
+                              d="M164.12,11.04L177.08,11.04L177.08,20.80L164.12,20.80L164.12,11.04Z "></path>
+                        <path d="M163.93,11.10 L163.93,20.74"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M164.30,11.10 L164.30,20.74"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path fill="url(#w_170)"
+                              d="M177.08,11.04L190.01,11.04L190.01,20.80L177.08,20.80L177.08,11.04Z "></path>
+                        <path d="M8.44,20.86 L8.44,26.26"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M8.81,20.86 L8.81,26.26"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M8.44,20.86 L8.44,26.26"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M8.81,20.86 L8.81,26.26"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M83.19,20.86 L83.19,26.32"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M83.56,20.86 L83.56,26.32"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M83.19,26.32 L83.19,31.84"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M83.56,26.32 L83.56,31.84"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M83.19,31.84 L83.19,37.16"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M83.56,31.84 L83.56,37.16"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M83.19,20.86 L83.19,26.32"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M83.56,20.86 L83.56,26.32"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.06,20.86 L124.06,26.32"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.43,20.86 L124.43,26.32"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.06,26.32 L124.06,31.84"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.43,26.32 L124.43,31.84"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.06,31.84 L124.06,37.16"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.43,31.84 L124.43,37.16"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.06,20.86 L124.06,26.32"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.43,20.86 L124.43,26.32"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M163.93,20.86 L163.93,26.32"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M164.30,20.86 L164.30,26.32"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M163.93,26.32 L163.93,31.84"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M164.30,26.32 L164.30,31.84"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M163.93,31.84 L163.93,37.16"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M164.30,31.84 L164.30,37.16"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M163.93,20.86 L163.93,26.32"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M164.30,20.86 L164.30,26.32"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M8.44,26.38 L8.44,31.78"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M8.81,26.38 L8.81,31.78"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M8.44,26.38 L8.44,31.78"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M8.81,26.38 L8.81,31.78"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M83.19,26.32 L83.19,31.84"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M83.56,26.32 L83.56,31.84"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.06,26.32 L124.06,31.84"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.43,26.32 L124.43,31.84"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M163.93,26.32 L163.93,31.84"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M164.30,26.32 L164.30,31.84"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M8.44,31.90 L8.44,37.16"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M8.81,31.90 L8.81,37.16"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M8.44,31.90 L8.44,37.16"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M8.81,31.90 L8.81,37.16"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M83.19,31.84 L83.19,37.16"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M83.56,31.84 L83.56,37.16"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.06,31.84 L124.06,37.16"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.43,31.84 L124.43,37.16"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M163.93,31.84 L163.93,37.16"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M164.30,31.84 L164.30,37.16"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0,5.52 L0,37.36" style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M20.59,11.04 L20.59,37.36"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M32.55,11.04 L32.55,37.36"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M44.51,11.04 L44.51,37.36"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M56.47,11.04 L56.47,37.36"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M69.42,11.04 L69.42,37.36"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M97.33,11.04 L97.33,37.36"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M110.29,11.04 L110.29,37.36"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M138.20,11.04 L138.20,37.36"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M151.16,11.04 L151.16,37.36"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M177.08,11.04 L177.08,37.36"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M190.01,5.52 L190.01,37.36"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M0,5.52 L190.02,5.52"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M8.63,11.04 L190.02,11.04"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0,20.80 L190.02,20.80"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0,26.32 L69.43,26.32"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M83.38,26.32 L110.30,26.32"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.25,26.32 L151.17,26.32"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M164.12,26.32 L177.08,26.32"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0,31.84 L69.43,31.84"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M83.38,31.84 L110.30,31.84"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M124.25,31.84 L151.17,31.84"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M164.12,31.84 L177.08,31.84"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0,37.36 L190.02,37.36"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M190.01,5.52 L190.01,37.36"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M0,5.52 L0,37.36" style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M0,37.36 L190.02,37.36"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M0,5.52 L190.02,5.52"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                    </svg>
+                    <div class="hce" style="left:0mm;top:0mm;width:190.01mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps33"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:186.41mm;">
+                                    <span class="hrt cs25">&lt;비교과&gt;</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:0mm;top:5.52mm;width:8.63mm;height:15.28mm;">
+                        <div class="hcD" style="left:1mm;top:0.50mm;">
+                            <div class="hcI" style="top:3.26mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:6.63mm;">
+                                    <span class="hrt cs25">학</span></div>
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:4.06mm;height:3.53mm;width:6.63mm;">
+                                    <span class="hrt cs25">년</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:8.63mm;top:5.52mm;width:74.75mm;height:5.52mm;">
+                        <div class="hcD" style="left:1mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:72.74mm;">
+                                    <span class="hrt cs25">출결상황</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:83.38mm;top:5.52mm;width:40.87mm;height:5.52mm;">
+                        <div class="hcD" style="left:1mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:38.86mm;">
+                                    <span class="hrt cs25">행동발달</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:124.25mm;top:5.52mm;width:39.87mm;height:5.52mm;">
+                        <div class="hcD" style="left:1mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:37.87mm;">
+                                    <span class="hrt cs25">창의적체험활동</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:164.12mm;top:5.52mm;width:25.89mm;height:5.52mm;">
+                        <div class="hcD" style="left:1mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:23.89mm;">
+                                    <span class="hrt cs25">봉사활동</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:8.63mm;top:11.04mm;width:11.96mm;height:9.75mm;">
+                        <div class="hcD" style="left:1mm;top:0.50mm;">
+                            <div class="hcI" style="top:2.61mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:9.96mm;">
+                                    <span class="hrt cs25">결석</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:20.59mm;top:11.04mm;width:11.96mm;height:9.75mm;">
+                        <div class="hcD" style="left:1mm;top:0.50mm;">
+                            <div class="hcI" style="top:2.61mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:9.96mm;">
+                                    <span class="hrt cs25">지각</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:32.55mm;top:11.04mm;width:11.96mm;height:9.75mm;">
+                        <div class="hcD" style="left:1mm;top:0.50mm;">
+                            <div class="hcI" style="top:2.61mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:9.96mm;">
+                                    <span class="hrt cs25">조퇴</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:44.51mm;top:11.04mm;width:11.96mm;height:9.75mm;">
+                        <div class="hcD" style="left:1mm;top:0.50mm;">
+                            <div class="hcI" style="top:2.61mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:9.96mm;">
+                                    <span class="hrt cs25">결과</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:56.47mm;top:11.04mm;width:12.96mm;height:9.75mm;">
+                        <div class="hcD" style="left:1mm;top:0.50mm;">
+                            <div class="hcI" style="top:2.61mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:10.95mm;">
+                                    <span class="hrt cs25">배점</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:69.42mm;top:11.04mm;width:13.96mm;height:9.75mm;">
+                        <div class="hcD" style="left:1mm;top:0.50mm;">
+                            <div class="hcI" style="top:2.61mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:11.95mm;">
+                                    <span class="hrt cs25">환산점</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:83.38mm;top:11.04mm;width:13.96mm;height:9.75mm;">
+                        <div class="hcD" style="left:1mm;top:0.50mm;">
+                            <div class="hcI" style="top:2.61mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:11.95mm;">
+                                    <span class="hrt cs25">기본점</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:97.33mm;top:11.04mm;width:12.96mm;height:9.75mm;">
+                        <div class="hcD" style="left:1mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:10.95mm;">
+                                    <span class="hrt cs25">가산점</span></div>
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:4.06mm;height:3.53mm;width:10.95mm;">
+                                    <span class="hrt cs25">/감점</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:110.29mm;top:11.04mm;width:13.96mm;height:9.75mm;">
+                        <div class="hcD" style="left:1mm;top:0.50mm;">
+                            <div class="hcI" style="top:2.61mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:11.95mm;">
+                                    <span class="hrt cs25">환산점</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:124.25mm;top:11.04mm;width:13.96mm;height:9.75mm;">
+                        <div class="hcD" style="left:1mm;top:0.50mm;">
+                            <div class="hcI" style="top:2.61mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:11.95mm;">
+                                    <span class="hrt cs25">기본점</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:138.20mm;top:11.04mm;width:12.96mm;height:9.75mm;">
+                        <div class="hcD" style="left:1mm;top:0.50mm;">
+                            <div class="hcI" style="top:2.61mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:10.95mm;">
+                                    <span class="hrt cs25">가산점</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:151.16mm;top:11.04mm;width:12.96mm;height:9.75mm;">
+                        <div class="hcD" style="left:1mm;top:0.50mm;">
+                            <div class="hcI" style="top:2.61mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:10.95mm;">
+                                    <span class="hrt cs25">환산점</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:164.12mm;top:11.04mm;width:12.96mm;height:9.75mm;">
+                        <div class="hcD" style="left:1mm;top:0.50mm;">
+                            <div class="hcI" style="top:2.61mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:10.95mm;">
+                                    <span class="hrt cs25">시간</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:177.08mm;top:11.04mm;width:12.94mm;height:9.75mm;">
+                        <div class="hcD" style="left:1mm;top:0.50mm;">
+                            <div class="hcI" style="top:2.61mm;">
+                                <div class="hls ps36"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:10.94mm;">
+                                    <span class="hrt cs25">환산점</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:0mm;top:20.80mm;width:8.63mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:5.08mm;">
+                                    <span class="hrt cs25">1</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:8.63mm;top:20.80mm;width:11.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${fab}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:20.59mm;top:20.80mm;width:11.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${fla}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:32.55mm;top:20.80mm;width:11.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${fle}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:44.51mm;top:20.80mm;width:11.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${fre}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:56.47mm;top:20.80mm;width:12.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${scscore1}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:69.42mm;top:20.80mm;width:13.96mm;height:16.56mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:6.02mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${sctscore}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:83.38mm;top:20.80mm;width:13.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:10.36mm;">
+                                    <span class="hrt cs25">4.5</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:97.33mm;top:20.80mm;width:12.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${fbd}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:110.29mm;top:20.80mm;width:13.96mm;height:16.56mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:6.02mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${movsocre}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:124.25mm;top:20.80mm;width:13.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:10.36mm;">
+                                    <span class="hrt cs25">4.5</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:138.20mm;top:20.80mm;width:12.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${fea}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:151.16mm;top:20.80mm;width:12.96mm;height:16.56mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:6.02mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${cresocre}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:164.12mm;top:20.80mm;width:12.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${fvat}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:177.08mm;top:20.80mm;width:12.94mm;height:16.56mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:6.02mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${vatscore}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:0mm;top:26.32mm;width:8.63mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:5.08mm;">
+                                    <span class="hrt cs25">2</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:8.63mm;top:26.32mm;width:11.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${sab}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:20.59mm;top:26.32mm;width:11.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${sla}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:32.55mm;top:26.32mm;width:11.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${sle}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:44.51mm;top:26.32mm;width:11.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${sre}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:56.47mm;top:26.32mm;width:12.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${scscore2}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:83.38mm;top:26.32mm;width:13.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:10.36mm;">
+                                    <span class="hrt cs25">4.5</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:97.33mm;top:26.32mm;width:12.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${sbd}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:124.25mm;top:26.32mm;width:13.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:10.36mm;">
+                                    <span class="hrt cs25">4.5</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:138.20mm;top:26.32mm;width:12.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${sea}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:164.12mm;top:26.32mm;width:12.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${svat}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:0mm;top:31.84mm;width:8.63mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:5.08mm;">
+                                    <span class="hrt cs25">3</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:8.63mm;top:31.84mm;width:11.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${tab}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:20.59mm;top:31.84mm;width:11.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${tla}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:32.55mm;top:31.84mm;width:11.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${tle}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:44.51mm;top:31.84mm;width:11.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${tre}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:56.47mm;top:31.84mm;width:12.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${scscore3}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:83.38mm;top:31.84mm;width:13.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:10.36mm;">
+                                    <span class="hrt cs25">4.5</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:97.33mm;top:31.84mm;width:12.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${tbd}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:124.25mm;top:31.84mm;width:13.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:10.36mm;">
+                                    <span class="hrt cs25">4.5</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:138.20mm;top:31.84mm;width:12.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${tea}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:164.12mm;top:31.84mm;width:12.96mm;height:5.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:0.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
+                                    <span class="hrt cs25" th:text="${tvat}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hls ps104"
+                 style="line-height:15.04mm;white-space:nowrap;left:0mm;top:175.73mm;height:15.04mm;width:190.01mm;">
+                <div class="htb"
+                     style="left:0mm;width:125.66mm;top:0mm;height:15.04mm;display:inline-block;position:relative;vertical-align:middle;">
+                    <svg class="hs" viewBox="-2.50 -2.50 130.66 20.03"
+                         style="left:-1.30mm;top:-1.20mm;width:130.66mm;height:20.03mm;">
+                        <path fill="url(#w_170)" d="M0,0L125.66,0L125.66,7.52L0,7.52L0,0Z "></path>
+                        <path fill="url(#w_170)" d="M0,7.52L26.47,7.52L26.47,15.04L0,15.04L0,7.52Z "></path>
+                        <path fill="url(#w_170)" d="M62.84,7.52L89.31,7.52L89.31,15.04L62.84,15.04L62.84,7.52Z "></path>
+                        <path d="M0,0 L0,15.04" style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M26.47,7.52 L26.47,15.04"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M62.84,7.52 L62.84,15.04"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M89.31,7.52 L89.31,15.04"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M125.66,0 L125.66,15.04"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M0,0 L125.67,0" style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M0,7.52 L125.67,7.52"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0,15.04 L125.67,15.04"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M125.66,0 L125.66,15.04"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M0,0 L0,15.04" style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M0,15.04 L125.67,15.04"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M0,0 L125.67,0" style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                    </svg>
+                    <div class="hce" style="left:0mm;top:0mm;width:125.66mm;height:7.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:1.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:122.06mm;">
+                                    <span class="hrt cs25">입력자 확인</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:0mm;top:7.52mm;width:26.47mm;height:7.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:1.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:22.86mm;">
+                                    <span class="hrt cs25">담임교사</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:26.47mm;top:7.52mm;width:36.37mm;height:7.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:1.50mm;">
+                                <div class="hls ps26"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:32.77mm;">
+                                    <span class="hrt cs25">(서명)</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:62.84mm;top:7.52mm;width:26.47mm;height:7.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:1.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:22.86mm;">
+                                    <span class="hrt cs25">지원자</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:89.31mm;top:7.52mm;width:36.35mm;height:7.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:1.50mm;">
+                                <div class="hls ps26"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:32.75mm;">
+                                    <span class="hrt cs25">(서명)</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="htb"
+                     style="left:1mm;width:64.34mm;top:0mm;height:15.04mm;display:inline-block;position:relative;vertical-align:middle;">
+                    <svg class="hs" viewBox="-2.50 -2.50 69.33 20.03"
+                         style="left:-2.10mm;top:-1.20mm;width:69.33mm;height:20.03mm;">
+                        <path fill="url(#w_170)" d="M0,0L24.82,0L24.82,15.04L0,15.04L0,0Z "></path>
+                        <path fill="url(#w_170)" d="M24.82,0L36.66,0L36.66,7.52L24.82,7.52L24.82,0Z "></path>
+                        <path fill="url(#w_170)" d="M24.82,7.52L36.66,7.52L36.66,15.04L24.82,15.04L24.82,7.52Z "></path>
+                        <path d="M0,0 L0,15.04" style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M24.82,0 L24.82,15.04"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M36.66,0 L36.66,15.04"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M63.34,0 L63.34,15.04"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M0,0 L63.34,0" style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M24.82,7.52 L63.34,7.52"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.12;"></path>
+                        <path d="M0,15.04 L63.34,15.04"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M63.34,0 L63.34,15.04"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M0,0 L0,15.04" style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M0,15.04 L63.34,15.04"
+                              style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                        <path d="M0,0 L63.34,0" style="stroke:#000000;stroke-linecap:butt;stroke-width:0.40;"></path>
+                    </svg>
+                    <div class="hce" style="left:0mm;top:0mm;width:24.82mm;height:15.04mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:5.26mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:21.22mm;">
+                                    <span class="hrt cs25">접수자 확인</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:24.82mm;top:0mm;width:11.84mm;height:7.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:1.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.24mm;">
+                                    <span class="hrt cs25">1차</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:36.66mm;top:0mm;width:26.67mm;height:7.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:1.50mm;">
+                                <div class="hls ps26"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:23.07mm;">
+                                    <span class="hrt cs25">(인)</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:24.82mm;top:7.52mm;width:11.84mm;height:7.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:1.50mm;">
+                                <div class="hls ps6"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.24mm;">
+                                    <span class="hrt cs25">2차</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hce" style="left:36.66mm;top:7.52mm;width:26.67mm;height:7.52mm;">
+                        <div class="hcD" style="left:1.80mm;top:0.50mm;">
+                            <div class="hcI" style="top:1.50mm;">
+                                <div class="hls ps26"
+                                     style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:23.07mm;">
+                                    <span class="hrt cs25">(인)</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hls ps104"
+                 style="line-height:3.43mm;white-space:nowrap;left:0mm;top:193.09mm;height:4.23mm;width:190.01mm;"></div>
+            <div class="hls ps213"
+                 style="line-height:3.43mm;white-space:nowrap;left:0mm;top:199.86mm;height:4.23mm;width:190.01mm;"><span
+                    class="hrt cs21">위와 같이 입력하고 확인하였음을 증명합니다.</span></div>
+            <div class="hls ps213"
+                 style="line-height:3.43mm;white-space:nowrap;left:0mm;top:206.64mm;height:4.23mm;width:190.01mm;"></div>
+            <div class="hls ps213"
+                 style="line-height:3.43mm;white-space:nowrap;left:0mm;top:213.41mm;height:4.23mm;width:190.01mm;"><span
+                    class="hrt cs21">2022년 10월 &nbsp;&nbsp;&nbsp;일</span></div>
+            <div class="hls ps213"
+                 style="line-height:3.43mm;white-space:nowrap;left:0mm;top:220.18mm;height:4.23mm;width:190.01mm;"></div>
+            <div class="hls ps214"
+                 style="line-height:3.43mm;white-space:nowrap;left:0mm;top:226.96mm;height:4.23mm;width:182.27mm;"><span
+                    class="hrt cs23">중학교장</span><span class="hrt cs21">&nbsp;[직인]</span></div>
+            <div class="hls ps214"
+                 style="line-height:3.43mm;white-space:nowrap;left:0mm;top:233.73mm;height:4.23mm;width:182.27mm;"></div>
+            <div class="hls ps215"
+                 style="line-height:3.43mm;white-space:nowrap;left:0mm;top:240.50mm;height:4.23mm;width:182.27mm;"><span
+                    class="hrt cs23">광주자동화설비공업고등학교장 귀하</span></div>
+        </div>
+    </div>
+</div>
+<script src="/js/pdf.js"></script>
+<script type = "text/javascript" src = "http://code.jquery.com/jquery-latest.min.js"></script>
+<script type = "text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script type = "text/javascript" src = "https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</body>
+</html>

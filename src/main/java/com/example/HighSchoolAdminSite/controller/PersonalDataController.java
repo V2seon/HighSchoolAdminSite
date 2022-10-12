@@ -2,7 +2,16 @@ package com.example.HighSchoolAdminSite.controller;
 
 import com.example.HighSchoolAdminSite.common.Pagination;
 import com.example.HighSchoolAdminSite.common.SessionCheck;
+import com.example.HighSchoolAdminSite.dto.FinalreceptionDto;
+import com.example.HighSchoolAdminSite.dto.PersonalDataDto;
+import com.example.HighSchoolAdminSite.entity.GradeType1DataEntity;
+import com.example.HighSchoolAdminSite.entity.GradeType2DataEntity;
+import com.example.HighSchoolAdminSite.entity.GradeType3DataEntity;
 import com.example.HighSchoolAdminSite.entity.PersonalDataEntity;
+import com.example.HighSchoolAdminSite.repository.GradeType1DataRepository;
+import com.example.HighSchoolAdminSite.repository.GradeType2DataRepository;
+import com.example.HighSchoolAdminSite.repository.GradeType3DataRepository;
+import com.example.HighSchoolAdminSite.repository.PersonalDataRepository;
 import com.example.HighSchoolAdminSite.service.PersonalDataService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -17,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Optional;
 
 @Controller
 @AllArgsConstructor
@@ -24,6 +34,10 @@ import javax.servlet.http.HttpServletRequest;
 public class PersonalDataController {
 
     private PersonalDataService personalDataService;
+    private PersonalDataRepository personalDataRepository;
+    private GradeType1DataRepository gradeType1DataRepository;
+    private GradeType2DataRepository gradeType2DataRepository;
+    private GradeType3DataRepository gradeType3DataRepository;
 
     @GetMapping("/main")
     public String movedata(Model m, HttpServletRequest request){
@@ -52,6 +66,7 @@ public class PersonalDataController {
             return "redirect:/";
         }
     }
+
     @GetMapping("/Personaldata1")
     public String Personaldata1(Model model, Pageable pageable, HttpServletRequest session,
                        @RequestParam(required = false, defaultValue = "0", value = "page") int page){
@@ -74,6 +89,7 @@ public class PersonalDataController {
             return "redirect:/";
         }
     }
+
     @GetMapping("/Personaldata2")
     public String Personaldata2(Model model, Pageable pageable, HttpServletRequest session,
                                 @RequestParam(required = false, defaultValue = "0", value = "page") int page){
@@ -95,6 +111,31 @@ public class PersonalDataController {
         }else{
             return "redirect:/";
         }
+    }
+
+    @GetMapping("/getdata")
+    public String getdata(Model model, Pageable pageable, HttpServletRequest session,
+                                @RequestParam(required = false, defaultValue = "0", value = "percode") long percode){
+        String returnValue = "";
+        if (new SessionCheck().loginSessionCheck(session)){
+            Optional<PersonalDataEntity> sss = personalDataRepository.findById(percode);
+            if(sss.get().getAgraduation_type() == 0){
+                Optional<GradeType1DataEntity> s1 = gradeType1DataRepository.findById(percode);
+                System.out.println("gogo");
+                returnValue = "Persondatalist0 :: Success";
+            }else if(sss.get().getAgraduation_type() == 1){
+                Optional<GradeType2DataEntity> s2 = gradeType2DataRepository.findById(percode);
+                System.out.println("gogo");
+                returnValue = "Persondatalist1 :: Success";
+            }else if(sss.get().getAgraduation_type() == 2){
+                Optional<GradeType3DataEntity> s3 = gradeType3DataRepository.findById(percode);
+                System.out.println("gogo");
+                returnValue = "Persondatalist2 :: Success";
+            }
+        }else{
+            return "redirect:/";
+        }
+        return returnValue;
     }
 
     //2.페이징 기능
