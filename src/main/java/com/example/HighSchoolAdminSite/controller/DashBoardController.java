@@ -46,6 +46,7 @@ public class DashBoardController {
         System.out.println("20 : " + cnt20th);
         System.out.println("total : " + cntTotal);
 
+        m.addAttribute("nowurl0", "/dashboard");
         m.addAttribute("cnt17th", cnt17th);
         m.addAttribute("cnt18th", cnt18th);
         m.addAttribute("cnt19th", cnt19th);

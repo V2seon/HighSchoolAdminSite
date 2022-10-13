@@ -70,19 +70,6 @@ to get the desired effect
                         <input hidden="hidden" th:id="mydays" th:value="${mydays}">
                         <h1 class="m-0" th:id="finaldyaname" th:text="'전체 가입수 : ' + '[' + ${cntTotal} + ']'">
                         </h1>
-                        <!--                        <div class="input-group input-group-sm card-title mr-3" id="reservationdate" data-target-input="nearest" style="width:50%; zoom:130%;">-->
-                        <!--                            <input readonly="readonly" type="text" name="days" class="form-control datetimepicker-input" data-target="#reservationdate" id="type" style="background-color:white;">-->
-                        <!--                            <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">-->
-                        <!--                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>-->
-                        <!--                            </div>-->
-                        <!--                            <div class="input-group input-group-sm card-title mr-3" style="width:30%;">-->
-                        <!--                                <div class="input-group-append">-->
-                        <!--                                    <button type="submit" class="btn btn-sm btn-default" onclick="js_today()">-->
-                        <!--                                        <i class="fa fa-search"></i>-->
-                        <!--                                    </button>-->
-                        <!--                                </div>-->
-                        <!--                            </div>-->
-                        <!--                        </div>-->
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -93,45 +80,18 @@ to get the desired effect
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
-        <!-- /.content-header -->
-        <!--        <div class="content-header" style="padding-bottom:0px;">-->
-        <!--            <div class="content-fluid">-->
-        <!--                <div class="row mb-2">-->
-        <!--                    <div class="col-sm-6"></div>-->
-        <!--                    <div class="col-sm-6">-->
-        <!--                        <div class="input-group input-group-sm card-title mr-3" id="reservationdate" data-target-input="nearest" style="width:40%; zoom:130%; float:right;">-->
-        <!--                            <input type="text" name="days" class="form-control datetimepicker-input" data-target="#reservationdate" id="type" style="background-color:white;">-->
-        <!--                            <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">-->
-        <!--                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>-->
-        <!--                            </div>-->
-        <!--                            <div class="input-group input-group-sm card-title mr-3" style="width:1%;">-->
-        <!--                                <div class="input-group-append">-->
-        <!--                                    <button type="submit" class="btn btn-sm btn-default" onclick="js_today()">-->
-        <!--                                        <i class="fa fa-search"></i>-->
-        <!--                                    </button>-->
-        <!--                                </div>-->
-        <!--                            </div>-->
-        <!--                        </div>-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </div>-->
+
 
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-2 col-6">
+                    <div class="col-lg-3 col-6">
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
                                 <h3 style="text-align:center; font-weight: 700;">17일 가입자</h3>
                                 <h3 style="text-align:center;" th:id="new_users_count_today" th:text="${cnt17th}+명"></h3>
-                                <!--                                <p>1일전 : <span th:id="new_users_count_1" th:text="${new_users_count_1}+명"></span></p>-->
-                                <!--                                <p>2일전 : <span th:id="new_users_count_2" th:text="${new_users_count_2}+명"></span></p>-->
-                                <!--                                <p>3일전 : <span th:id="new_users_count_3" th:text="${new_users_count_3}+명"></span></p>-->
-                                <!--                                <p>4일전 : <span th:id="new_users_count_4" th:text="${new_users_count_4}+명"></span></p>-->
-                                <!--                                <p>5일전 : <span th:id="new_users_count_5" th:text="${new_users_count_5}+명"></span></p>-->
                             </div>
                             <div class="icon">
                                 <i class="ion ion-person-add"></i>
@@ -139,17 +99,12 @@ to get the desired effect
                         </div>
                     </div>
                     <!-- ./col -->
-                    <div class="col-lg-2 col-6">
+                    <div class="col-lg-3 col-6">
                         <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3 style="text-align:center; font-weight: 700;">18일</h3>
+                                <h3 style="text-align:center; font-weight: 700;">18일 가입자</h3>
                                 <h3 style="text-align:center; "th:id="app_run_count_today" th:text="${cnt18th}+회"></h3>
-                                <!--                                <p>1일전 : <span th:id="app_run_count_1" th:text="${app_run_count_1}+회"></span></p>-->
-                                <!--                                <p>2일전 : <span th:id="app_run_count_2" th:text="${app_run_count_2}+회"></span></p>-->
-                                <!--                                <p>3일전 : <span th:id="app_run_count_3" th:text="${app_run_count_3}+회"></span></p>-->
-                                <!--                                <p>4일전 : <span th:id="app_run_count_4" th:text="${app_run_count_4}+회"></span></p>-->
-                                <!--                                <p>5일전 : <span th:id="app_run_count_5" th:text="${app_run_count_5}+회"></span></p>-->
                             </div>
                             <div class="icon">
                                 <i class="fas fa-tablet-alt"></i>
@@ -157,34 +112,24 @@ to get the desired effect
                         </div>
                     </div>
                     <!-- ./col -->
-                    <div class="col-lg-2 col-6">
+                    <div class="col-lg-3 col-6">
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3 style="text-align:center; font-weight: 700;">19일</h3>
+                                <h3 style="text-align:center; font-weight: 700;">19일 가입자</h3>
                                 <h3 style="text-align:center;" th:id="treasurehunt_count_today" th:text="${cnt19th}+회"></h3>
-                                <!--                                <p>1일전 : <span th:id="treasurehunt_count_1" th:text="${treasurehunt_count_1}+회"></span></p>-->
-                                <!--                                <p>2일전 : <span th:id="treasurehunt_count_2" th:text="${treasurehunt_count_2}+회"></span></p>-->
-                                <!--                                <p>3일전 : <span th:id="treasurehunt_count_3" th:text="${treasurehunt_count_3}+회"></span></p>-->
-                                <!--                                <p>4일전 : <span th:id="treasurehunt_count_4" th:text="${treasurehunt_count_4}+회"></span></p>-->
-                                <!--                                <p>5일전 : <span th:id="treasurehunt_count_5" th:text="${treasurehunt_count_5}+회"></span></p>-->
                             </div>
                             <div class="icon">
                                 <i class="fas fa-gifts"></i>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-6">
+                    <div class="col-lg-3 col-6">
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3 style="text-align:center; font-weight: 700;">20일</h3>
+                                <h3 style="text-align:center; font-weight: 700;">20일 가입자</h3>
                                 <h3 style="text-align:center;" th:id="treasurehunt_count_today" th:text="${cnt20th}+회"></h3>
-                                <!--                                <p>1일전 : <span th:id="treasurehunt_count_1" th:text="${treasurehunt_count_1}+회"></span></p>-->
-                                <!--                                <p>2일전 : <span th:id="treasurehunt_count_2" th:text="${treasurehunt_count_2}+회"></span></p>-->
-                                <!--                                <p>3일전 : <span th:id="treasurehunt_count_3" th:text="${treasurehunt_count_3}+회"></span></p>-->
-                                <!--                                <p>4일전 : <span th:id="treasurehunt_count_4" th:text="${treasurehunt_count_4}+회"></span></p>-->
-                                <!--                                <p>5일전 : <span th:id="treasurehunt_count_5" th:text="${treasurehunt_count_5}+회"></span></p>-->
                             </div>
                             <div class="icon">
                                 <i class="fas fa-gifts"></i>
