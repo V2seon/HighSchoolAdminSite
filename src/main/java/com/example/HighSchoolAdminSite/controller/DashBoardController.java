@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping
 public class DashBoardController {
     private StudentService studentService;
+
     @GetMapping("/dashboard")
     public String moveLogin(Model m, HttpServletRequest request){
         int cnt17th = 0;
@@ -29,15 +30,22 @@ public class DashBoardController {
 //            returnValue = "login.html";
 //        }
         // 17일 가입자수 가져오기
-        cnt17th = studentService.get17thUserCount();
+        cnt17th = Math.toIntExact(studentService.get17thUserCount());
         // 18일 가입자수 가져오기
-        cnt18th = studentService.get18thUserCount();
+        cnt18th = Math.toIntExact(studentService.get18thUserCount());
         // 19일 가입자수 가져오기
-        cnt19th = studentService.get19thUserCount();
+        cnt19th = Math.toIntExact(studentService.get19thUserCount());
         // 20일 가입자수 가져오기
-        cnt20th = studentService.get20thUserCount();
+        cnt20th = Math.toIntExact(studentService.get20thUserCount());
         // 전체 가입자수 가져오기
         cntTotal = cnt17th + cnt18th + cnt19th + cnt20th;
+
+        System.out.println("17 : " + cnt17th);
+        System.out.println("18 : " + cnt18th);
+        System.out.println("19 : " + cnt19th);
+        System.out.println("20 : " + cnt20th);
+        System.out.println("total : " + cntTotal);
+
         m.addAttribute("cnt17th", cnt17th);
         m.addAttribute("cnt18th", cnt18th);
         m.addAttribute("cnt19th", cnt19th);

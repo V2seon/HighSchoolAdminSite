@@ -2,23 +2,34 @@ package com.example.HighSchoolAdminSite.service;
 
 
 import com.example.HighSchoolAdminSite.repository.StudentRepository;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
+
+@AllArgsConstructor
+@Service
 public class StudentService {
     private StudentRepository studentRepository;
 
-    public int get17thUserCount(){
+    @Transactional
+    public Long get17thUserCount(){
         return studentRepository.find17thUserCount();
     }
-    public int get18thUserCount(){
+
+    @Transactional
+    public Long get18thUserCount(){
         return studentRepository.find18thUserCount();
     }
-    public int get19thUserCount(){
+
+    @Transactional
+    public Long get19thUserCount(){
         return studentRepository.find19thUserCount();
     }
-    public int get20thUserCount(){
+
+    @Transactional
+    public Long get20thUserCount(){
         return studentRepository.find20thUserCount();
-    }
-    public int getTotalUserCount(){
-        return 0;
     }
 }
