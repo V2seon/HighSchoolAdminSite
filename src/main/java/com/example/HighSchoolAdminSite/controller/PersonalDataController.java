@@ -4,14 +4,9 @@ import com.example.HighSchoolAdminSite.common.Pagination;
 import com.example.HighSchoolAdminSite.common.SessionCheck;
 import com.example.HighSchoolAdminSite.dto.FinalreceptionDto;
 import com.example.HighSchoolAdminSite.dto.PersonalDataDto;
-import com.example.HighSchoolAdminSite.entity.GradeType1DataEntity;
-import com.example.HighSchoolAdminSite.entity.GradeType2DataEntity;
-import com.example.HighSchoolAdminSite.entity.GradeType3DataEntity;
-import com.example.HighSchoolAdminSite.entity.PersonalDataEntity;
-import com.example.HighSchoolAdminSite.repository.GradeType1DataRepository;
-import com.example.HighSchoolAdminSite.repository.GradeType2DataRepository;
-import com.example.HighSchoolAdminSite.repository.GradeType3DataRepository;
-import com.example.HighSchoolAdminSite.repository.PersonalDataRepository;
+import com.example.HighSchoolAdminSite.entity.*;
+import com.example.HighSchoolAdminSite.repository.*;
+import com.example.HighSchoolAdminSite.service.FinalreceptionService;
 import com.example.HighSchoolAdminSite.service.PersonalDataService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -20,12 +15,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.Optional;
 
 @Controller
@@ -38,6 +31,8 @@ public class PersonalDataController {
     private GradeType1DataRepository gradeType1DataRepository;
     private GradeType2DataRepository gradeType2DataRepository;
     private GradeType3DataRepository gradeType3DataRepository;
+    private FinalreceptionRepository finalreceptionRepository;
+    private FinalreceptionService finalreceptionService;
 
     @GetMapping("/main")
     public String movedata(Model m, HttpServletRequest request){
@@ -113,30 +108,92 @@ public class PersonalDataController {
         }
     }
 
-    @GetMapping("/getdata")
-    public String getdata(Model model, Pageable pageable, HttpServletRequest session,
-                                @RequestParam(required = false, defaultValue = "0", value = "percode") long percode){
-        String returnValue = "";
+    @ResponseBody
+    @RequestMapping(method = RequestMethod.POST, value = "/getdata")
+    public Object getdata(Model model, Pageable pageable, HttpServletRequest session,
+                                           @RequestParam(required = false, defaultValue = "0", value = "percode") long percode){
+        HashMap<String, String> msg = new HashMap<String, String>();
         if (new SessionCheck().loginSessionCheck(session)){
             Optional<PersonalDataEntity> sss = personalDataRepository.findById(percode);
             if(sss.get().getAgraduation_type() == 0){
                 Optional<GradeType1DataEntity> s1 = gradeType1DataRepository.findById(percode);
-                System.out.println("gogo");
-                returnValue = "Persondatalist0 :: Success";
+                PersonalDataDto informationDto = new PersonalDataDto(percode,sss.get().getAname(),sss.get().getAbirthday(),sss.get().getAsex(),sss.get().getAphone()
+                        ,sss.get().getApostal_code(),sss.get().getAaddress(),sss.get().getAdetailed_address(),sss.get().getAguardian(),sss.get().getAparental(),
+                        sss.get().getAhome_phone(),sss.get().getAparental_phone(),sss.get().getAapplication_incharge_name(),sss.get().getAapplication_incharge_phone(),sss.get().getAid_picture(),
+                        sss.get().getAmiddle_school(),1,sss.get().getAmiddle_school_phone(),sss.get().getAarea_name(),sss.get().getAarea2_name(),sss.get().getAgraduation_year()
+                        ,sss.get().getAgraduation_month(), sss.get().getAgraduation_type(),sss.get().getAclassification_type());
+                personalDataService.save(informationDto);
+
+                double behavior_development = s1.get().getFirstBehaviorDevelopment() + s1.get().getSecondBehaviorDevelopment() + s1.get().getThirdBehaviorDevelopment();
+                double exp_activities = s1.get().getFirstExpActivities() + s1.get().getSecondExpActivities() + s1.get().getThirdExpActivities();
+
+                FinalreceptionDto finalreceptionDto = new FinalreceptionDto(null, percode,sss.get().getAname(),sss.get().getAsex(),sss.get().getAbirthday(),sss.get().getAaddress(),sss.get().getAmiddle_school(),
+                        "",sss.get().getAgraduation_type(), sss.get().getAclassification_type(),s1.get().getCurriculumGrades(),1,
+                        behavior_development,exp_activities,1,s1.get().getTotalGrades(),1,1,sss.get().getAphone(),sss.get().getAparental_phone());
+
+                finalreceptionService.save1(finalreceptionDto);
+                msg.put("result","0");
             }else if(sss.get().getAgraduation_type() == 1){
                 Optional<GradeType2DataEntity> s2 = gradeType2DataRepository.findById(percode);
+                PersonalDataDto informationDto = new PersonalDataDto(percode,sss.get().getAname(),sss.get().getAbirthday(),sss.get().getAsex(),sss.get().getAphone()
+                        ,sss.get().getApostal_code(),sss.get().getAaddress(),sss.get().getAdetailed_address(),sss.get().getAguardian(),sss.get().getAparental(),
+                        sss.get().getAhome_phone(),sss.get().getAparental_phone(),sss.get().getAapplication_incharge_name(),sss.get().getAapplication_incharge_phone(),sss.get().getAid_picture(),
+                        sss.get().getAmiddle_school(),1,sss.get().getAmiddle_school_phone(),sss.get().getAarea_name(),sss.get().getAarea2_name(),sss.get().getAgraduation_year()
+                        ,sss.get().getAgraduation_month(), sss.get().getAgraduation_type(),sss.get().getAclassification_type());
+                personalDataService.save(informationDto);
+                if(s2.get().getIsCheck() == 0){
+                    double behavior_development = s2.get().getFirstBehaviorDevelopment() + s2.get().getSecondBehaviorDevelopment() + s2.get().getThirdBehaviorDevelopment();
+                    double exp_activities = s2.get().getFirstExpActivities() + s2.get().getSecondExpActivities() + s2.get().getThirdExpActivities();
+
+                    FinalreceptionDto finalreceptionDto = new FinalreceptionDto(null, percode,sss.get().getAname(),sss.get().getAsex(),sss.get().getAbirthday(),sss.get().getAaddress(),sss.get().getAmiddle_school(),
+                            "",sss.get().getAgraduation_type(), sss.get().getAclassification_type(),s2.get().getCurriculumGrades(),1,
+                            behavior_development,exp_activities,1,s2.get().getTotalGrades(),s2.get().getOrderPercentage(),1,sss.get().getAphone(),sss.get().getAparental_phone());
+                    finalreceptionService.save1(finalreceptionDto);
+                }else if(s2.get().getIsCheck() == 1){
+                    FinalreceptionDto finalreceptionDto = new FinalreceptionDto(null, percode,sss.get().getAname(),sss.get().getAsex(),sss.get().getAbirthday(),sss.get().getAaddress(),sss.get().getAmiddle_school(),
+                            "",sss.get().getAgraduation_type(), sss.get().getAclassification_type(),s2.get().getCurriculumGrades(),1,
+                            0,0,1,s2.get().getOrderTotal(),s2.get().getOrderPercentage(),1,sss.get().getAphone(),sss.get().getAparental_phone());
+                    finalreceptionService.save1(finalreceptionDto);
+                }
                 System.out.println("gogo");
-                returnValue = "Persondatalist1 :: Success";
+                msg.put("result","1");
             }else if(sss.get().getAgraduation_type() == 2){
                 Optional<GradeType3DataEntity> s3 = gradeType3DataRepository.findById(percode);
                 System.out.println("gogo");
-                returnValue = "Persondatalist2 :: Success";
+                msg.put("result","2");
             }
         }else{
-            return "redirect:/";
+            msg.put("result","3");
+            return msg;
         }
-        return returnValue;
+        return msg;
     }
+
+    @ResponseBody
+    @RequestMapping(method = RequestMethod.POST, value = "/delete")
+    public Object delete(@RequestParam(required = false, defaultValue = "", value = "percode")Long percode){
+        HashMap<String, String> msg = new HashMap<String, String>();
+        Optional<PersonalDataEntity> sss = personalDataRepository.findById(percode);
+        PersonalDataDto informationDto = new PersonalDataDto(percode,sss.get().getAname(),sss.get().getAbirthday(),sss.get().getAsex(),sss.get().getAphone()
+                ,sss.get().getApostal_code(),sss.get().getAaddress(),sss.get().getAdetailed_address(),sss.get().getAguardian(),sss.get().getAparental(),
+                sss.get().getAhome_phone(),sss.get().getAparental_phone(),sss.get().getAapplication_incharge_name(),sss.get().getAapplication_incharge_phone(),sss.get().getAid_picture(),
+                sss.get().getAmiddle_school(),0,sss.get().getAmiddle_school_phone(),sss.get().getAarea_name(),sss.get().getAarea2_name(),sss.get().getAgraduation_year()
+                ,sss.get().getAgraduation_month(), sss.get().getAgraduation_type(),sss.get().getAclassification_type());
+        personalDataService.save(informationDto);
+
+        Optional<FinalreceptionEntity> s1 = finalreceptionRepository.findByreceptionnum(percode);
+
+        finalreceptionService.delete(s1.get().getSeq());
+        if(sss.get().getAgraduation_type() == 0){
+            msg.put("result","0");
+        }else if(sss.get().getAgraduation_type() == 1){
+            msg.put("result","1");
+        }else if(sss.get().getAgraduation_type() == 2){
+            msg.put("result","2");
+        }
+        return msg;
+    }
+
 
     //2.페이징 기능
     @RequestMapping(value = "/paging", method = RequestMethod.POST) // 비동기 페이지네이션

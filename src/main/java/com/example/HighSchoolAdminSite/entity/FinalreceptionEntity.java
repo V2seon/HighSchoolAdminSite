@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @NoArgsConstructor
 @Getter
@@ -18,11 +15,12 @@ import javax.persistence.Table;
 public class FinalreceptionEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "seq")
     private Long seq;
 
-    @Column(name = "reception_num")
-    private Long reception_num;
+    @Column(name = "receptionnum")
+    private Long receptionnum;
 
     @Column(name = "name")
     private String name;
@@ -81,11 +79,11 @@ public class FinalreceptionEntity {
 
 
     @Builder
-    public FinalreceptionEntity(Long myseq, Long myreception_num, String myname, int mysex, String mybirthday, String myaddress, String mymiddle_school, String myneis, int mygraduation_type,
+    public FinalreceptionEntity(Long myseq, Long myreceptionnum, String myname, int mysex, String mybirthday, String myaddress, String mymiddle_school, String myneis, int mygraduation_type,
                                 int myclassification_type, double mycurriculum_grades, double myfinal_receptioncol, double mybehavior_development, double myexp_activities, double myvolunteer_activity_time,
                                 double mytotal_grades, double myorder_percentage, int myck_reception, String myphone, String myparental_phone) {
         this.seq = myseq;
-        this.reception_num = myreception_num;
+        this.receptionnum = myreceptionnum;
         this.name = myname;
         this.sex = mysex;
         this.birthday = mybirthday;

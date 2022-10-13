@@ -17,6 +17,7 @@ import javax.persistence.*;
 @Setter
 @Table(name = "information")
 public class PersonalDataEntity {
+
     @Id
     @Column(name = "seq")
     private Long aseq;

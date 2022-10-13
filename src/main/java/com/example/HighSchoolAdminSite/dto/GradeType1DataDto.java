@@ -13,6 +13,8 @@ public class GradeType1DataDto implements Serializable {
 
     private Long MySeq;
 
+    private String MyName;
+
     private String MySecondFirstType1;
 
     private String MySecondFirstType2;
@@ -145,6 +147,10 @@ public class GradeType1DataDto implements Serializable {
 
     private int MyThirdVolunteerActivityTime;
 
+    private double MyTotalBehaviorDevelopment;
+
+    private double MyTotalVolunteerActivityTime;
+
     private double MyCurriculumGrades;
 
     private double MyNonCurriculumGrades;
@@ -152,7 +158,7 @@ public class GradeType1DataDto implements Serializable {
     private double MyTotalGrades;
 
     @Builder
-    public GradeType1DataDto(Long mySeq, String mySecondFirstType1, String mySecondFirstType2, String mySecondFirstType3, String mySecondFirstType4, String mySecondFirstType5,
+    public GradeType1DataDto(Long mySeq, String myName , String mySecondFirstType1, String mySecondFirstType2, String mySecondFirstType3, String mySecondFirstType4, String mySecondFirstType5,
                              String mySecondFirstType6, String mySecondFirstType7, String mySecondFirstType8, String mySecondFirstType9, String mySecondFirstType10,
                              String mySecondFirstType11, String myFirstPlusType1, String myFirstPlusType2, String myFirstPlusType3, String myFirstPlusName, String mySecondSecondType1,
                              String mySecondSecondType2, String mySecondSecondType3, String mySecondSecondType4, String mySecondSecondType5, String mySecondSecondType6,
@@ -165,8 +171,9 @@ public class GradeType1DataDto implements Serializable {
                              double myFirstExpActivities, int myFirstVolunteerActivityTime, int mySecondAbsant, int mySecondLate, int mySecondLeave, int mySecondResult,
                              double mySecondBehaviorDevelopment, double mySecondExpActivities, int mySecondVolunteerActivityTime, int myThirdAbsant, int myThirdLate,
                              int myThirdLeave, int myThirdResult, double myThirdBehaviorDevelopment, double myThirdExpActivities, int myThirdVolunteerActivityTime,
-                             double myCurriculumGrades, double myNonCurriculumGrades, double myTotalGrades) {
+                             double myTotalBehaviorDevelopment,double myTotalVolunteerActivityTime,double myCurriculumGrades, double myNonCurriculumGrades, double myTotalGrades) {
         this.MySeq = mySeq;
+        this.MyName = myName;
         this.MySecondFirstType1 = mySecondFirstType1;
         this.MySecondFirstType2 = mySecondFirstType2;
         this.MySecondFirstType3 = mySecondFirstType3;
@@ -233,6 +240,8 @@ public class GradeType1DataDto implements Serializable {
         this.MyThirdBehaviorDevelopment = myThirdBehaviorDevelopment;
         this.MyThirdExpActivities = myThirdExpActivities;
         this.MyThirdVolunteerActivityTime = myThirdVolunteerActivityTime;
+        this.MyTotalBehaviorDevelopment = myTotalBehaviorDevelopment;
+        this.MyTotalVolunteerActivityTime = myTotalVolunteerActivityTime;
         this.MyCurriculumGrades = myCurriculumGrades;
         this.MyNonCurriculumGrades = myNonCurriculumGrades;
         this.MyTotalGrades = myTotalGrades;
@@ -241,6 +250,7 @@ public class GradeType1DataDto implements Serializable {
     public GradeType1DataEntity toEntity(){
         GradeType1DataEntity entity = GradeType1DataEntity.builder()
                 .mySeq(MySeq)
+                .myName(MyName)
                 .mySecondFirstType1(MySecondFirstType1)
                 .mySecondFirstType2(MySecondFirstType2)
                 .mySecondFirstType3(MySecondFirstType3)
@@ -307,6 +317,8 @@ public class GradeType1DataDto implements Serializable {
                 .myThirdBehaviorDevelopment(MyThirdBehaviorDevelopment)
                 .myThirdExpActivities(MyThirdExpActivities)
                 .myThirdVolunteerActivityTime(MyThirdVolunteerActivityTime)
+                .myTotalBehaviorDevelopment(MyTotalBehaviorDevelopment)
+                .myTotalVolunteerActivityTime(MyTotalVolunteerActivityTime)
                 .myCurriculumGrades(MyCurriculumGrades)
                 .myNonCurriculumGrades(MyNonCurriculumGrades)
                 .myTotalGrades(MyTotalGrades)

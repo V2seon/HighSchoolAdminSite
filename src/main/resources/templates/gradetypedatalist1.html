@@ -103,8 +103,8 @@
                                             </span>
                                         </td>
                                         <td style="text-align:center;">
-                                            <span th:if="${Co.Seq}!= null"
-                                                  th:text="${Co.Seq}"
+                                            <span th:if="${Co.Name}!= null"
+                                                  th:text="${Co.Name}"
                                                   id="tiuserid">
                                             </span>
                                         </td>
@@ -115,11 +115,8 @@
                                         </td>
 
                                         <td style="text-align:center;" >
-                                            <span th:if="${Co} == 0"
-                                                  th:text="남"
-                                            ></span>
-                                            <span th:if="${Co} == 1"
-                                            th:text="여">
+                                            <span th:if="${Co.TotalVolunteerActivityTime}!= null"
+                                                  th:text="${Co.TotalVolunteerActivityTime}">
                                             </span>
                                         </td>
 

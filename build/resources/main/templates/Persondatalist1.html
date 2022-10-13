@@ -91,6 +91,7 @@
                                         <th style="text-align:center;">주소</th>
                                         <th style="text-align:center;">상세주소</th>
                                         <th style="text-align:center;">원서다운로드</th>
+                                        <th style="text-align:center;">최종접수</th>
                                     </tr>
                                     </thead>
                                     <tbody id="treasurehunt_list">
@@ -147,6 +148,20 @@
                                         <td style="text-align:center;" >
                                             <a th:if="${Co.aseq}!= null"
                                                class="fas fa-download" th:onclick="|javascript:perdown1(${Co.aseq})|">
+                                            </a>
+                                        </td>
+                                        <td style="text-align:center;" >
+                                            <a th:if="${Co.amiddle_school_unique_number} == 1"
+                                               class="btn btn-block btn-success btn-sm"
+                                               th:id="'firstck'+${Co.aseq}"
+                                               th:onclick="|javascript:reoff(${Co.aseq})|">
+                                                접수취소
+                                            </a>
+                                            <a th:if="${Co.amiddle_school_unique_number} == 0"
+                                               class="btn btn-block btn-secondary btn-sm"
+                                               th:id="'lastck'+${Co.aseq}"
+                                               th:onclick="|javascript:reon(${Co.aseq})|">
+                                                최종접수
                                             </a>
                                         </td>
                                     </tr>
@@ -222,6 +237,7 @@
 <!-- ./wrapper -->
 <div id="load"><img src="/dist/img/spinner.gif" alt="loading"></div>
 <script src="/js/pdf.js"></script>
+<script src="/js/reception.js"></script>
 
 <!-- jQuery -->
 <script src="/plugins/jquery/jquery.min.js"></script>

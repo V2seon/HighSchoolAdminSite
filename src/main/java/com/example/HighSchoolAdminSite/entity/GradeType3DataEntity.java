@@ -22,6 +22,9 @@ public class GradeType3DataEntity {
     @Column(name = "seq")
     private Long Seq;
 
+    @Column(name = "name")
+    private String Nmae;
+
     @Column(name = "grade1")
     private double Grade1;
 
@@ -32,8 +35,9 @@ public class GradeType3DataEntity {
     private double TotalGrades;
 
     @Builder
-    public GradeType3DataEntity(Long mySeq, double myGrade1, double myGrade2, double myTotalGrades) {
+    public GradeType3DataEntity(Long mySeq,String myName ,double myGrade1, double myGrade2, double myTotalGrades) {
         this.Seq = mySeq;
+        this.Nmae = myName;
         this.Grade1 = myGrade1;
         this.Grade2 = myGrade2;
         this.TotalGrades = myTotalGrades;

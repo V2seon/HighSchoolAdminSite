@@ -11,6 +11,8 @@ public class GradeType3DataDto {
 
     private Long MySeq;
 
+    private String MyName;
+
     private double MyGrade1;
 
     private double MyGrade2;
@@ -18,8 +20,9 @@ public class GradeType3DataDto {
     private double MyTotalGrads;
 
     @Builder
-    public GradeType3DataDto(Long mySeq, double myGrade1, double myGrade2, double myTotalGrads) {
+    public GradeType3DataDto(Long mySeq, String myName ,double myGrade1, double myGrade2, double myTotalGrads) {
         this.MySeq = mySeq;
+        this.MyName = myName;
         this.MyGrade1 = myGrade1;
         this.MyGrade2 = myGrade2;
         this.MyTotalGrads = myTotalGrads;
@@ -28,6 +31,7 @@ public class GradeType3DataDto {
     public GradeType3DataEntity toEntity(){
         GradeType3DataEntity entity = GradeType3DataEntity.builder()
                 .mySeq(MySeq)
+                .myName(MyName)
                 .myGrade1(MyGrade1)
                 .myGrade2(MyGrade2)
                 .myTotalGrades(MyTotalGrads)

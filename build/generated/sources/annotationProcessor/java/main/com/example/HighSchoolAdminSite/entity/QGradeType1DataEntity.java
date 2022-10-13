@@ -43,6 +43,8 @@ public class QGradeType1DataEntity extends EntityPathBase<GradeType1DataEntity> 
 
     public final NumberPath<Integer> FirstVolunteerActivityTime = createNumber("FirstVolunteerActivityTime", Integer.class);
 
+    public final StringPath Name = createString("Name");
+
     public final NumberPath<Double> NonCurriculumGrades = createNumber("NonCurriculumGrades", Double.class);
 
     public final NumberPath<Integer> SecondAbsant = createNumber("SecondAbsant", Integer.class);
@@ -157,7 +159,11 @@ public class QGradeType1DataEntity extends EntityPathBase<GradeType1DataEntity> 
 
     public final NumberPath<Integer> ThirdVolunteerActivityTime = createNumber("ThirdVolunteerActivityTime", Integer.class);
 
+    public final NumberPath<Double> TotalBehaviorDevelopment = createNumber("TotalBehaviorDevelopment", Double.class);
+
     public final NumberPath<Double> TotalGrades = createNumber("TotalGrades", Double.class);
+
+    public final NumberPath<Double> TotalVolunteerActivityTime = createNumber("TotalVolunteerActivityTime", Double.class);
 
     public QGradeType1DataEntity(String variable) {
         super(GradeType1DataEntity.class, forVariable(variable));

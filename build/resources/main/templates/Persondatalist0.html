@@ -153,14 +153,13 @@
                                         </td>
 
                                         <td style="text-align:center;" >
-                                            <a
+                                            <a th:if="${Co.amiddle_school_unique_number} == 1"
                                                class="btn btn-block btn-success btn-sm"
                                                th:id="'firstck'+${Co.aseq}"
-                                               th:onclick="|javascript:reon(${Co.aseq})|"
-                                               style="display:none;">
-                                                최종접수
+                                               th:onclick="|javascript:reoff(${Co.aseq})|">
+                                                접수취소
                                             </a>
-                                            <a
+                                            <a th:if="${Co.amiddle_school_unique_number} == 0"
                                                class="btn btn-block btn-secondary btn-sm"
                                                th:id="'lastck'+${Co.aseq}"
                                                th:onclick="|javascript:reon(${Co.aseq})|">

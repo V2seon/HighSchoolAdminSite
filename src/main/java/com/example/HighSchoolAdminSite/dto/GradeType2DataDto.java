@@ -12,6 +12,8 @@ public class GradeType2DataDto {
 
     private Long MySeq;
 
+    private String MyName;
+
     private int MyIsCheck;
 
     private double MyOrderPercentage;
@@ -126,6 +128,10 @@ public class GradeType2DataDto {
 
     private int MyThirdVolunteerActivityTime;
 
+    private double MyTotalBehaviorDevelopment;
+
+    private double MyTotalVolunteerActivityTime;
+
     private double MyCurriculumGrades;
 
     private double MyNonCurriculumGrades;
@@ -134,7 +140,7 @@ public class GradeType2DataDto {
 
     @Builder
 
-    public GradeType2DataDto(Long mySeq, int myIsCheck, double myOrderPercentage, double myOrderTotal, String mySecondFirstType1, String mySecondFirstType2, String mySecondFirstType3, String mySecondFirstType4, String mySecondFirstType5,
+    public GradeType2DataDto(Long mySeq, String myName, int myIsCheck, double myOrderPercentage, double myOrderTotal, String mySecondFirstType1, String mySecondFirstType2, String mySecondFirstType3, String mySecondFirstType4, String mySecondFirstType5,
                              String mySecondFirstType6, String mySecondFirstType7, String mySecondFirstType8, String mySecondFirstType9, String mySecondFirstType10,
                              String mySecondFirstType11, String mySecondSecondType1, String mySecondSecondType2, String mySecondSecondType3, String mySecondSecondType4,
                              String mySecondSecondType5, String mySecondSecondType6, String mySecondSecondType7, String mySecondSecondType8, String mySecondSecondType9,
@@ -144,8 +150,9 @@ public class GradeType2DataDto {
                              int myFirstResult, double myFirstBehaviorDevelopment, double myFirstExpActivities, int myFirstVolunteerActivityTime, int mySecondAbsant,
                              int mySecondLate, int mySecondLeave, int mySecondResult, double mySecondBehaviorDevelopment, double mySecondExpActivities,
                              int mySecondVolunteerActivityTime, int myThirdAbsant, int myThirdLate, int myThirdLeave, int myThirdResult, double myThirdBehaviorDevelopment,
-                             double myThirdExpActivities, int myThirdVolunteerActivityTime, double myCurriculumGrades, double myNonCurriculumGrades, double myTotalGrades) {
+                             double myThirdExpActivities, int myThirdVolunteerActivityTime,double myTotalBehaviorDevelopment,double myTotalVolunteerActivityTime, double myCurriculumGrades, double myNonCurriculumGrades, double myTotalGrades) {
         this.MySeq = mySeq;
+        this.MyName = myName;
         this.MyIsCheck = myIsCheck;
         this.MyOrderPercentage = myOrderPercentage;
         this.MyOrderTotal = myOrderTotal;
@@ -203,6 +210,8 @@ public class GradeType2DataDto {
         this.MyThirdBehaviorDevelopment = myThirdBehaviorDevelopment;
         this.MyThirdExpActivities = myThirdExpActivities;
         this.MyThirdVolunteerActivityTime = myThirdVolunteerActivityTime;
+        this.MyTotalBehaviorDevelopment = myTotalBehaviorDevelopment;
+        this.MyTotalVolunteerActivityTime = myTotalVolunteerActivityTime;
         this.MyCurriculumGrades = myCurriculumGrades;
         this.MyNonCurriculumGrades = myNonCurriculumGrades;
         this.MyTotalGrades = myTotalGrades;
@@ -211,6 +220,7 @@ public class GradeType2DataDto {
     public GradeType2DataEntity toEntity(){
         GradeType2DataEntity entity = GradeType2DataEntity.builder()
                 .mySeq(MySeq)
+                .myName(MyName)
                 .myIsCheck(MyIsCheck)
                 .myOrderPercentage(MyOrderPercentage)
                 .myOrderTotal(MyOrderTotal)
@@ -268,6 +278,8 @@ public class GradeType2DataDto {
                 .myThirdBehaviorDevelopment(MyThirdBehaviorDevelopment)
                 .myThirdExpActivities(MyThirdExpActivities)
                 .myThirdVolunteerActivityTime(MyThirdVolunteerActivityTime)
+                .myTotalBehaviorDevelopment(MyTotalBehaviorDevelopment)
+                .myTotalVolunteerActivityTime(MyTotalVolunteerActivityTime)
                 .myCurriculumGrades(MyCurriculumGrades)
                 .myNonCurriculumGrades(MyNonCurriculumGrades)
                 .myTotalGrades(MyTotalGrades)
