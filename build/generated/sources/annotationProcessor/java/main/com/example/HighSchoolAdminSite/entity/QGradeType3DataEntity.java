@@ -27,6 +27,8 @@ public class QGradeType3DataEntity extends EntityPathBase<GradeType3DataEntity> 
 
     public final NumberPath<Long> Seq = createNumber("Seq", Long.class);
 
+    public final NumberPath<Integer> Studentfakeseq = createNumber("Studentfakeseq", Integer.class);
+
     public final NumberPath<Double> TotalGrades = createNumber("TotalGrades", Double.class);
 
     public QGradeType3DataEntity(String variable) {

@@ -97,8 +97,8 @@
                                     <tr th:if="${userlist}!=null" th:each="Co : ${userlist}" style="text-align:center;">
 
                                         <td style="text-align:center;">
-                                            <span th:if="${Co.aseq}!= null"
-                                                  th:text="${Co.aseq}">
+                                            <span th:if="${Co.astudentfakeseq}!= null"
+                                                  th:text="${Co.astudentfakeseq}">
                                             </span>
                                         </td>
                                         <td style="text-align:center;">
@@ -236,6 +236,7 @@
 <!-- ./wrapper -->
 <div id="load"><img src="/dist/img/spinner.gif" alt="loading"></div>
 <script src="/js/pdf.js"></script>
+<script src="/js/reception.js"></script>
 
 <!-- jQuery -->
 <script src="/plugins/jquery/jquery.min.js"></script>

@@ -22,6 +22,9 @@ public class PersonalDataEntity {
     @Column(name = "seq")
     private Long aseq;
 
+    @Column(name = "studentfakeseq")
+    private int astudentfakeseq;
+
     @Column(name = "name")
     private String aname;
 
@@ -92,12 +95,13 @@ public class PersonalDataEntity {
     private int aclassification_type;
 
     @Builder
-    public PersonalDataEntity(Long a_seq, String a_name, String a_birthday, int a_sex, String a_phone, int a_postal_code, String a_address,
+    public PersonalDataEntity(Long a_seq,int a_studentfakeseq, String a_name, String a_birthday, int a_sex, String a_phone, int a_postal_code, String a_address,
                               String a_detailed_address, String a_guardian, String a_parental, String a_home_phone, String a_parental_phone,
                               String a_application_incharge_name, String a_application_incharge_phone, String a_id_picture, String a_middle_school,
                               int a_middle_school_unique_number, String a_middle_school_phone, String a_area_name, String a_area2_name,
                               int a_graduation_year, int a_graduation_month, int a_graduation_type, int a_classification_type) {
         this.aseq = a_seq;
+        this.astudentfakeseq = a_studentfakeseq;
         this.aname = a_name;
         this.abirthday = a_birthday;
         this.aphone = a_phone;

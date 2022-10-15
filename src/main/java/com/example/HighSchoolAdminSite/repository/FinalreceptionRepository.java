@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public interface FinalreceptionRepository extends JpaRepository<FinalreceptionEntity, Long>, QuerydslPredicateExecutor<FinalreceptionEntity> {
 
-    Optional<FinalreceptionEntity> findByreceptionnum(Long _reception_num);
+    Optional<FinalreceptionEntity> findByreceptionnum(int reception_num);
 
     @Query(value = "SELECT * FROM final_reception" , nativeQuery = true)
     Page<FinalreceptionEntity> findAll( Pageable pageable);

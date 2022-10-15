@@ -12,6 +12,8 @@ public class GradeType2DataDto {
 
     private Long MySeq;
 
+    private int MyStudentfakeseq;
+
     private String MyName;
 
     private int MyIsCheck;
@@ -140,7 +142,7 @@ public class GradeType2DataDto {
 
     @Builder
 
-    public GradeType2DataDto(Long mySeq, String myName, int myIsCheck, double myOrderPercentage, double myOrderTotal, String mySecondFirstType1, String mySecondFirstType2, String mySecondFirstType3, String mySecondFirstType4, String mySecondFirstType5,
+    public GradeType2DataDto(Long mySeq,int myStudentfakeseq, String myName, int myIsCheck, double myOrderPercentage, double myOrderTotal, String mySecondFirstType1, String mySecondFirstType2, String mySecondFirstType3, String mySecondFirstType4, String mySecondFirstType5,
                              String mySecondFirstType6, String mySecondFirstType7, String mySecondFirstType8, String mySecondFirstType9, String mySecondFirstType10,
                              String mySecondFirstType11, String mySecondSecondType1, String mySecondSecondType2, String mySecondSecondType3, String mySecondSecondType4,
                              String mySecondSecondType5, String mySecondSecondType6, String mySecondSecondType7, String mySecondSecondType8, String mySecondSecondType9,
@@ -152,6 +154,7 @@ public class GradeType2DataDto {
                              int mySecondVolunteerActivityTime, int myThirdAbsant, int myThirdLate, int myThirdLeave, int myThirdResult, double myThirdBehaviorDevelopment,
                              double myThirdExpActivities, int myThirdVolunteerActivityTime,double myTotalBehaviorDevelopment,double myTotalVolunteerActivityTime, double myCurriculumGrades, double myNonCurriculumGrades, double myTotalGrades) {
         this.MySeq = mySeq;
+        this.MyStudentfakeseq = myStudentfakeseq;
         this.MyName = myName;
         this.MyIsCheck = myIsCheck;
         this.MyOrderPercentage = myOrderPercentage;
@@ -220,6 +223,7 @@ public class GradeType2DataDto {
     public GradeType2DataEntity toEntity(){
         GradeType2DataEntity entity = GradeType2DataEntity.builder()
                 .mySeq(MySeq)
+                .myStudentfakeseq(MyStudentfakeseq)
                 .myName(MyName)
                 .myIsCheck(MyIsCheck)
                 .myOrderPercentage(MyOrderPercentage)

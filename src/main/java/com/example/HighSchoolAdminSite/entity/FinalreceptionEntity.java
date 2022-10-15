@@ -20,7 +20,7 @@ public class FinalreceptionEntity {
     private Long seq;
 
     @Column(name = "receptionnum")
-    private Long receptionnum;
+    private int receptionnum;
 
     @Column(name = "name")
     private String name;
@@ -79,7 +79,7 @@ public class FinalreceptionEntity {
 
 
     @Builder
-    public FinalreceptionEntity(Long myseq, Long myreceptionnum, String myname, int mysex, String mybirthday, String myaddress, String mymiddle_school, String myneis, int mygraduation_type,
+    public FinalreceptionEntity(Long myseq, int myreceptionnum, String myname, int mysex, String mybirthday, String myaddress, String mymiddle_school, String myneis, int mygraduation_type,
                                 int myclassification_type, double mycurriculum_grades, double myfinal_receptioncol, double mybehavior_development, double myexp_activities, double myvolunteer_activity_time,
                                 double mytotal_grades, double myorder_percentage, int myck_reception, String myphone, String myparental_phone) {
         this.seq = myseq;

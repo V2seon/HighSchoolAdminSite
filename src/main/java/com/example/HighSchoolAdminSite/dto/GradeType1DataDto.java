@@ -13,6 +13,8 @@ public class GradeType1DataDto implements Serializable {
 
     private Long MySeq;
 
+    private int MyStudentfakeseq;
+
     private String MyName;
 
     private String MySecondFirstType1;
@@ -158,7 +160,7 @@ public class GradeType1DataDto implements Serializable {
     private double MyTotalGrades;
 
     @Builder
-    public GradeType1DataDto(Long mySeq, String myName , String mySecondFirstType1, String mySecondFirstType2, String mySecondFirstType3, String mySecondFirstType4, String mySecondFirstType5,
+    public GradeType1DataDto(Long mySeq,int myStudentfakeseq, String myName , String mySecondFirstType1, String mySecondFirstType2, String mySecondFirstType3, String mySecondFirstType4, String mySecondFirstType5,
                              String mySecondFirstType6, String mySecondFirstType7, String mySecondFirstType8, String mySecondFirstType9, String mySecondFirstType10,
                              String mySecondFirstType11, String myFirstPlusType1, String myFirstPlusType2, String myFirstPlusType3, String myFirstPlusName, String mySecondSecondType1,
                              String mySecondSecondType2, String mySecondSecondType3, String mySecondSecondType4, String mySecondSecondType5, String mySecondSecondType6,
@@ -173,6 +175,7 @@ public class GradeType1DataDto implements Serializable {
                              int myThirdLeave, int myThirdResult, double myThirdBehaviorDevelopment, double myThirdExpActivities, int myThirdVolunteerActivityTime,
                              double myTotalBehaviorDevelopment,double myTotalVolunteerActivityTime,double myCurriculumGrades, double myNonCurriculumGrades, double myTotalGrades) {
         this.MySeq = mySeq;
+        this.MyStudentfakeseq = myStudentfakeseq;
         this.MyName = myName;
         this.MySecondFirstType1 = mySecondFirstType1;
         this.MySecondFirstType2 = mySecondFirstType2;
@@ -250,6 +253,7 @@ public class GradeType1DataDto implements Serializable {
     public GradeType1DataEntity toEntity(){
         GradeType1DataEntity entity = GradeType1DataEntity.builder()
                 .mySeq(MySeq)
+                .myStudentfakeseq(MyStudentfakeseq)
                 .myName(MyName)
                 .mySecondFirstType1(MySecondFirstType1)
                 .mySecondFirstType2(MySecondFirstType2)

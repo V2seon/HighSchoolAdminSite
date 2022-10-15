@@ -33,6 +33,7 @@ public class PersonalDataController {
     private GradeType3DataRepository gradeType3DataRepository;
     private FinalreceptionRepository finalreceptionRepository;
     private FinalreceptionService finalreceptionService;
+    private StudentfakeseqRepository studentfakeseqRepository;
 
     @GetMapping("/main")
     public String movedata(Model m, HttpServletRequest request){
@@ -206,9 +207,10 @@ public class PersonalDataController {
         HashMap<String, String> msg = new HashMap<String, String>();
         if (new SessionCheck().loginSessionCheck(session)){
             Optional<PersonalDataEntity> sss = personalDataRepository.findById(percode);
+            Optional<StudentfakeseqEntity> sss00 = studentfakeseqRepository.findBySseq(percode);
             if(sss.get().getAgraduation_type() == 0){
                 Optional<GradeType1DataEntity> s1 = gradeType1DataRepository.findById(percode);
-                PersonalDataDto informationDto = new PersonalDataDto(percode,sss.get().getAname(),sss.get().getAbirthday(),sss.get().getAsex(),sss.get().getAphone()
+                PersonalDataDto informationDto = new PersonalDataDto(percode,sss00.get().getStudentfakeseq(),sss.get().getAname(),sss.get().getAbirthday(),sss.get().getAsex(),sss.get().getAphone()
                         ,sss.get().getApostal_code(),sss.get().getAaddress(),sss.get().getAdetailed_address(),sss.get().getAguardian(),sss.get().getAparental(),
                         sss.get().getAhome_phone(),sss.get().getAparental_phone(),sss.get().getAapplication_incharge_name(),sss.get().getAapplication_incharge_phone(),sss.get().getAid_picture(),
                         sss.get().getAmiddle_school(),1,sss.get().getAmiddle_school_phone(),sss.get().getAarea_name(),sss.get().getAarea2_name(),sss.get().getAgraduation_year()
@@ -218,7 +220,7 @@ public class PersonalDataController {
                 double behavior_development = s1.get().getFirstBehaviorDevelopment() + s1.get().getSecondBehaviorDevelopment() + s1.get().getThirdBehaviorDevelopment();
                 double exp_activities = s1.get().getFirstExpActivities() + s1.get().getSecondExpActivities() + s1.get().getThirdExpActivities();
 
-                FinalreceptionDto finalreceptionDto = new FinalreceptionDto(null, percode,sss.get().getAname(),sss.get().getAsex(),sss.get().getAbirthday(),sss.get().getAaddress(),sss.get().getAmiddle_school(),
+                FinalreceptionDto finalreceptionDto = new FinalreceptionDto(null, sss00.get().getStudentfakeseq(),sss.get().getAname(),sss.get().getAsex(),sss.get().getAbirthday(),sss.get().getAaddress(),sss.get().getAmiddle_school(),
                         "",sss.get().getAgraduation_type(), sss.get().getAclassification_type(),s1.get().getCurriculumGrades(),1,
                         behavior_development,exp_activities,1,s1.get().getTotalGrades(),1,1,sss.get().getAphone(),sss.get().getAparental_phone());
 
@@ -226,7 +228,7 @@ public class PersonalDataController {
                 msg.put("result","0");
             }else if(sss.get().getAgraduation_type() == 1){
                 Optional<GradeType2DataEntity> s2 = gradeType2DataRepository.findById(percode);
-                PersonalDataDto informationDto = new PersonalDataDto(percode,sss.get().getAname(),sss.get().getAbirthday(),sss.get().getAsex(),sss.get().getAphone()
+                PersonalDataDto informationDto = new PersonalDataDto(percode,sss00.get().getStudentfakeseq(),sss.get().getAname(),sss.get().getAbirthday(),sss.get().getAsex(),sss.get().getAphone()
                         ,sss.get().getApostal_code(),sss.get().getAaddress(),sss.get().getAdetailed_address(),sss.get().getAguardian(),sss.get().getAparental(),
                         sss.get().getAhome_phone(),sss.get().getAparental_phone(),sss.get().getAapplication_incharge_name(),sss.get().getAapplication_incharge_phone(),sss.get().getAid_picture(),
                         sss.get().getAmiddle_school(),1,sss.get().getAmiddle_school_phone(),sss.get().getAarea_name(),sss.get().getAarea2_name(),sss.get().getAgraduation_year()
@@ -236,12 +238,12 @@ public class PersonalDataController {
                     double behavior_development = s2.get().getFirstBehaviorDevelopment() + s2.get().getSecondBehaviorDevelopment() + s2.get().getThirdBehaviorDevelopment();
                     double exp_activities = s2.get().getFirstExpActivities() + s2.get().getSecondExpActivities() + s2.get().getThirdExpActivities();
 
-                    FinalreceptionDto finalreceptionDto = new FinalreceptionDto(null, percode,sss.get().getAname(),sss.get().getAsex(),sss.get().getAbirthday(),sss.get().getAaddress(),sss.get().getAmiddle_school(),
+                    FinalreceptionDto finalreceptionDto = new FinalreceptionDto(null,sss00.get().getStudentfakeseq(),sss.get().getAname(),sss.get().getAsex(),sss.get().getAbirthday(),sss.get().getAaddress(),sss.get().getAmiddle_school(),
                             "",sss.get().getAgraduation_type(), sss.get().getAclassification_type(),s2.get().getCurriculumGrades(),1,
                             behavior_development,exp_activities,1,s2.get().getTotalGrades(),s2.get().getOrderPercentage(),1,sss.get().getAphone(),sss.get().getAparental_phone());
                     finalreceptionService.save1(finalreceptionDto);
                 }else if(s2.get().getIsCheck() == 1){
-                    FinalreceptionDto finalreceptionDto = new FinalreceptionDto(null, percode,sss.get().getAname(),sss.get().getAsex(),sss.get().getAbirthday(),sss.get().getAaddress(),sss.get().getAmiddle_school(),
+                    FinalreceptionDto finalreceptionDto = new FinalreceptionDto(null,sss00.get().getStudentfakeseq(),sss.get().getAname(),sss.get().getAsex(),sss.get().getAbirthday(),sss.get().getAaddress(),sss.get().getAmiddle_school(),
                             "",sss.get().getAgraduation_type(), sss.get().getAclassification_type(),s2.get().getCurriculumGrades(),1,
                             0,0,1,s2.get().getOrderTotal(),s2.get().getOrderPercentage(),1,sss.get().getAphone(),sss.get().getAparental_phone());
                     finalreceptionService.save1(finalreceptionDto);
@@ -250,6 +252,16 @@ public class PersonalDataController {
                 msg.put("result","1");
             }else if(sss.get().getAgraduation_type() == 2){
                 Optional<GradeType3DataEntity> s3 = gradeType3DataRepository.findById(percode);
+                PersonalDataDto informationDto = new PersonalDataDto(percode,sss00.get().getStudentfakeseq(),sss.get().getAname(),sss.get().getAbirthday(),sss.get().getAsex(),sss.get().getAphone()
+                        ,sss.get().getApostal_code(),sss.get().getAaddress(),sss.get().getAdetailed_address(),sss.get().getAguardian(),sss.get().getAparental(),
+                        sss.get().getAhome_phone(),sss.get().getAparental_phone(),sss.get().getAapplication_incharge_name(),sss.get().getAapplication_incharge_phone(),sss.get().getAid_picture(),
+                        sss.get().getAmiddle_school(),1,sss.get().getAmiddle_school_phone(),sss.get().getAarea_name(),sss.get().getAarea2_name(),sss.get().getAgraduation_year()
+                        ,sss.get().getAgraduation_month(), sss.get().getAgraduation_type(),sss.get().getAclassification_type());
+                personalDataService.save(informationDto);
+                FinalreceptionDto finalreceptionDto = new FinalreceptionDto(null,sss00.get().getStudentfakeseq(),sss.get().getAname(),sss.get().getAsex(),sss.get().getAbirthday(),sss.get().getAaddress(),sss.get().getAmiddle_school(),
+                        "",sss.get().getAgraduation_type(), sss.get().getAclassification_type(),s3.get().getGrade1(),1,
+                        0,0,1,s3.get().getTotalGrades(),0,1,sss.get().getAphone(),sss.get().getAparental_phone());
+                finalreceptionService.save1(finalreceptionDto);
                 System.out.println("gogo");
                 msg.put("result","2");
             }
@@ -265,14 +277,15 @@ public class PersonalDataController {
     public Object delete(@RequestParam(required = false, defaultValue = "", value = "percode")Long percode){
         HashMap<String, String> msg = new HashMap<String, String>();
         Optional<PersonalDataEntity> sss = personalDataRepository.findById(percode);
-        PersonalDataDto informationDto = new PersonalDataDto(percode,sss.get().getAname(),sss.get().getAbirthday(),sss.get().getAsex(),sss.get().getAphone()
+        Optional<StudentfakeseqEntity> sss00 = studentfakeseqRepository.findBySseq(percode);
+        PersonalDataDto informationDto = new PersonalDataDto(percode,sss00.get().getStudentfakeseq(),sss.get().getAname(),sss.get().getAbirthday(),sss.get().getAsex(),sss.get().getAphone()
                 ,sss.get().getApostal_code(),sss.get().getAaddress(),sss.get().getAdetailed_address(),sss.get().getAguardian(),sss.get().getAparental(),
                 sss.get().getAhome_phone(),sss.get().getAparental_phone(),sss.get().getAapplication_incharge_name(),sss.get().getAapplication_incharge_phone(),sss.get().getAid_picture(),
                 sss.get().getAmiddle_school(),0,sss.get().getAmiddle_school_phone(),sss.get().getAarea_name(),sss.get().getAarea2_name(),sss.get().getAgraduation_year()
                 ,sss.get().getAgraduation_month(), sss.get().getAgraduation_type(),sss.get().getAclassification_type());
         personalDataService.save(informationDto);
 
-        Optional<FinalreceptionEntity> s1 = finalreceptionRepository.findByreceptionnum(percode);
+        Optional<FinalreceptionEntity> s1 = finalreceptionRepository.findByreceptionnum(sss00.get().getStudentfakeseq());
 
         finalreceptionService.delete(s1.get().getSeq());
         if(sss.get().getAgraduation_type() == 0){

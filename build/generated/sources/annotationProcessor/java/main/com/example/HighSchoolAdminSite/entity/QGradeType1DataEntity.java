@@ -115,6 +115,8 @@ public class QGradeType1DataEntity extends EntityPathBase<GradeType1DataEntity> 
 
     public final NumberPath<Long> Seq = createNumber("Seq", Long.class);
 
+    public final NumberPath<Integer> Studentfakeseq = createNumber("Studentfakeseq", Integer.class);
+
     public final NumberPath<Integer> ThirdAbsant = createNumber("ThirdAbsant", Integer.class);
 
     public final NumberPath<Double> ThirdBehaviorDevelopment = createNumber("ThirdBehaviorDevelopment", Double.class);

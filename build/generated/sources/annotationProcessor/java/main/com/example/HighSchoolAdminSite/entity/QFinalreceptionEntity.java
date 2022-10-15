@@ -49,7 +49,7 @@ public class QFinalreceptionEntity extends EntityPathBase<FinalreceptionEntity> 
 
     public final StringPath phone = createString("phone");
 
-    public final NumberPath<Long> receptionnum = createNumber("receptionnum", Long.class);
+    public final NumberPath<Integer> receptionnum = createNumber("receptionnum", Integer.class);
 
     public final NumberPath<Long> seq = createNumber("seq", Long.class);
 

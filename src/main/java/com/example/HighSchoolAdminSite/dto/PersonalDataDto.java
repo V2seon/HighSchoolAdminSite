@@ -9,6 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 public class PersonalDataDto {
     private Long A_SEQ;
+    private int A_STUDENTFAKESEQ;
     private String A_NAME;
     private String A_BIRTHDAY;
     private String A_PHONE;
@@ -34,12 +35,13 @@ public class PersonalDataDto {
     private int A_CLASSIFICATION_TYPE;
 
     @Builder
-    public PersonalDataDto(Long a_SEQ, String a_NAME, String a_BIRTHDAY, int a_SEX, String a_PHONE, int a_POSTAL_CODE
+    public PersonalDataDto(Long a_SEQ,int a_STUDENTFAKESEQ, String a_NAME, String a_BIRTHDAY, int a_SEX, String a_PHONE, int a_POSTAL_CODE
             , String a_ADDRESS, String a_DETAILED_ADDRESS, String a_GUARDIAN, String a_PARENTAL, String a_HOME_PHONE, String a_PARENTAL_PHONE
             , String a_APPLICATION_INCHARGE_NAME, String a_APPLICATION_INCHARGE_PHONE, String a_ID_PICTURE, String a_MIDDLE_SCHOOL
             , int a_MIDDLE_SCHOOL_UNIQUE_NUMBER, String a_MIDDLE_SCHOOL_PHONE, String a_AREA_NAME, String a_AREA2_NAME
             , int a_GRADUATION_YEAR, int a_GRADUATION_MONTH, int a_GRADUATION_TYPE, int a_CLASSIFICATION_TYPE) {
         A_SEQ = a_SEQ;
+        A_STUDENTFAKESEQ = a_STUDENTFAKESEQ;
         A_NAME = a_NAME;
         A_BIRTHDAY = a_BIRTHDAY;
         A_PHONE = a_PHONE;
@@ -67,6 +69,7 @@ public class PersonalDataDto {
     public PersonalDataEntity toEntity(){
         PersonalDataEntity entity = PersonalDataEntity.builder()
                 .a_seq(A_SEQ)
+                .a_studentfakeseq(A_STUDENTFAKESEQ)
                 .a_name(A_NAME)
                 .a_birthday(A_BIRTHDAY)
                 .a_phone(A_PHONE)
@@ -94,11 +97,12 @@ public class PersonalDataDto {
         return entity;
     }
     @Builder
-    public PersonalDataDto(String A_NAME, String A_BIRTHDAY, int A_SEX, String A_PHONE, int A_POSTAL_CODE, String A_ADDRESS
+    public PersonalDataDto(int A_STUDENTFAKESEQ,String A_NAME, String A_BIRTHDAY, int A_SEX, String A_PHONE, int A_POSTAL_CODE, String A_ADDRESS
             , String A_DETAILED_ADDRESS, String A_GUARDIAN, String A_PARENTAL, String A_HOME_PHONE, String A_PARENTAL_PHONE
             , String A_APPLICATION_INCHARGE_NAME, String A_APPLICATION_INCHARGE_PHONE, String A_ID_PICTURE, String A_MIDDLE_SCHOOL
             , int A_MIDDLE_SCHOOL_UNIQUE_NUMBER, String A_MIDDLE_SCHOOL_PHONE, String A_AREA_NAME, String A_AREA2_NAME
             , int A_GRADUATION_YEAR, int A_GRADUATION_MONTH, int A_GRADUATION_TYPE, int A_CLASSIFICATION_TYPE) {
+        this.A_STUDENTFAKESEQ = A_STUDENTFAKESEQ;
         this.A_NAME = A_NAME;
         this.A_BIRTHDAY = A_BIRTHDAY;
         this.A_PHONE = A_PHONE;

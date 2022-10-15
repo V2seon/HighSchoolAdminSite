@@ -67,6 +67,8 @@ public class QPersonalDataEntity extends EntityPathBase<PersonalDataEntity> {
 
     public final NumberPath<Integer> asex = createNumber("asex", Integer.class);
 
+    public final NumberPath<Integer> astudentfakeseq = createNumber("astudentfakeseq", Integer.class);
+
     public QPersonalDataEntity(String variable) {
         super(PersonalDataEntity.class, forVariable(variable));
     }

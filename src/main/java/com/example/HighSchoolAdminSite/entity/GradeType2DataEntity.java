@@ -22,6 +22,9 @@ public class GradeType2DataEntity {
     @Column(name = "seq")
     private Long Seq;
 
+    @Column(name = "studentfakeseq")
+    private int Studentfakeseq;
+
     @Column(name = "name")
     private String Name;
 
@@ -212,7 +215,7 @@ public class GradeType2DataEntity {
     private double TotalGrades;
 
     @Builder
-    public GradeType2DataEntity(Long mySeq, String myName,int myIsCheck, double myOrderPercentage, double myOrderTotal, String mySecondFirstType1, String mySecondFirstType2,
+    public GradeType2DataEntity(Long mySeq,int myStudentfakeseq, String myName,int myIsCheck, double myOrderPercentage, double myOrderTotal, String mySecondFirstType1, String mySecondFirstType2,
                                 String mySecondFirstType3, String mySecondFirstType4,
                                 String mySecondFirstType5, String mySecondFirstType6, String mySecondFirstType7, String mySecondFirstType8, String mySecondFirstType9,
                                 String mySecondFirstType10, String mySecondFirstType11, String mySecondSecondType1, String mySecondSecondType2, String mySecondSecondType3,
@@ -225,6 +228,7 @@ public class GradeType2DataEntity {
                                 int mySecondVolunteerActivityTime, int myThirdAbsant, int myThirdLate, int myThirdLeave, int myThirdResult, double myThirdBehaviorDevelopment,
                                 double myThirdExpActivities, int myThirdVolunteerActivityTime,double myTotalBehaviorDevelopment,double myTotalVolunteerActivityTime, double myCurriculumGrades, double myNonCurriculumGrades, double myTotalGrades) {
         this.Seq = mySeq;
+        this.Studentfakeseq = myStudentfakeseq;
         this.Name =myName;
         this.IsCheck = myIsCheck;
         this.OrderPercentage = myOrderPercentage;

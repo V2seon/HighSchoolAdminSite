@@ -13,7 +13,7 @@ public class FinalreceptionDto implements Serializable {
 
     private Long Myseq;
 
-    private Long Myreceptionnum;
+    private int Myreceptionnum;
 
     private String Myname;
 
@@ -52,7 +52,7 @@ public class FinalreceptionDto implements Serializable {
     private String Myparental_phone;
 
     @Builder
-    public FinalreceptionDto(Long myseq, Long myreceptionnum, String myname, int mysex, String mybirthday, String myaddress, String mymiddle_school, String myneis, int mygraduation_type,
+    public FinalreceptionDto(Long myseq, int myreceptionnum, String myname, int mysex, String mybirthday, String myaddress, String mymiddle_school, String myneis, int mygraduation_type,
                                  int myclassification_type, double mycurriculum_grades, double myfinal_receptioncol, double mybehavior_development, double myexp_activities,double myvolunteer_activity_time,
                              double mytotal_grades, double myorder_percentage, int myck_reception, String myphone, String myparental_phone) {
         this.Myseq = myseq;
