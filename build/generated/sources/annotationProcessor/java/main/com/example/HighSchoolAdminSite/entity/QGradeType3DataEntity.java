@@ -23,7 +23,7 @@ public class QGradeType3DataEntity extends EntityPathBase<GradeType3DataEntity> 
 
     public final NumberPath<Double> Grade2 = createNumber("Grade2", Double.class);
 
-    public final StringPath Nmae = createString("Nmae");
+    public final StringPath Name = createString("Name");
 
     public final NumberPath<Long> Seq = createNumber("Seq", Long.class);
 

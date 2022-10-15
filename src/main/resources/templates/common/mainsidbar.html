@@ -1,7 +1,7 @@
 <aside id="header" class="main-sidebar sidebar-dark-primary elevation-4" xmlns:th="http://www.w3.org/1999/xhtml">
     <!-- Brand Logo -->
-    <a href="/main" class="brand-link">
-<!--        <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">-->
+    <a href="/dashboard" class="brand-link">
+        <!--        <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">-->
         <span class="brand-text font-weight-light">원서정보 관리 사이트</span>
     </a>
 
@@ -13,35 +13,35 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
 
-<!--                <li th:class="${nowurl0 == '/asd' ? 'nav-item menu-is-opening menu-open' : 'nav-item'}">-->
+                <!--                <li th:class="${nowurl0 == '/asd' ? 'nav-item menu-is-opening menu-open' : 'nav-item'}">-->
                 <li class="nav-item">
                     <a href="/dashboard" th:class="${nowurl0 == '/dashboard' ? 'nav-link active' : 'nav-link'}">
-<!--                        <i class="nav-icon fas fa-chart-line"></i>-->
+                        <!--                        <i class="nav-icon fas fa-chart-line"></i>-->
                         <i class="nav-icon fas fa-chart-line"></i>
                         <p>
                             일별 가입자 수
                         </p>
                     </a>
-<!--                    <ul class="nav nav-treeview">-->
-<!--                        <li class="nav-item" >-->
-<!--                            <a href="/main_day" th:class="${nowurl1 == '/main_day' ? 'nav-link active' : 'nav-link'}">-->
-<!--                                <i class="far fa-circle nav-icon" style="margin-left:10%;"></i>-->
-<!--                                <p>일별</p>-->
-<!--                            </a>-->
-<!--                        </li>-->
-<!--                        <li class="nav-item" >-->
-<!--                            <a href="/main_week" th:class="${nowurl1 == '/main_week' ? 'nav-link active' : 'nav-link'}">-->
-<!--                                <i class="far fa-circle nav-icon" style="margin-left:10%;"></i>-->
-<!--                                <p>주별</p>-->
-<!--                            </a>-->
-<!--                        </li>-->
-<!--                        <li class="nav-item" >-->
-<!--                            <a href="/main_month" th:class="${nowurl1 == '/main_month' ? 'nav-link active' : 'nav-link'}">-->
-<!--                                <i class="far fa-circle nav-icon" style="margin-left:10%;"></i>-->
-<!--                                <p>월별</p>-->
-<!--                            </a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
+                    <!--                    <ul class="nav nav-treeview">-->
+                    <!--                        <li class="nav-item" >-->
+                    <!--                            <a href="/main_day" th:class="${nowurl1 == '/main_day' ? 'nav-link active' : 'nav-link'}">-->
+                    <!--                                <i class="far fa-circle nav-icon" style="margin-left:10%;"></i>-->
+                    <!--                                <p>일별</p>-->
+                    <!--                            </a>-->
+                    <!--                        </li>-->
+                    <!--                        <li class="nav-item" >-->
+                    <!--                            <a href="/main_week" th:class="${nowurl1 == '/main_week' ? 'nav-link active' : 'nav-link'}">-->
+                    <!--                                <i class="far fa-circle nav-icon" style="margin-left:10%;"></i>-->
+                    <!--                                <p>주별</p>-->
+                    <!--                            </a>-->
+                    <!--                        </li>-->
+                    <!--                        <li class="nav-item" >-->
+                    <!--                            <a href="/main_month" th:class="${nowurl1 == '/main_month' ? 'nav-link active' : 'nav-link'}">-->
+                    <!--                                <i class="far fa-circle nav-icon" style="margin-left:10%;"></i>-->
+                    <!--                                <p>월별</p>-->
+                    <!--                            </a>-->
+                    <!--                        </li>-->
+                    <!--                    </ul>-->
                 </li>
 
                 <li th:class="${nowurl0 == '/log' ? 'nav-item menu-is-opening menu-open' : 'nav-item'}">

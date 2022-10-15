@@ -23,7 +23,7 @@ public class MainController {
     public String moveLogin(Model m, HttpServletRequest request){
         String returnValue = "";
         if(new SessionCheck().loginSessionCheck(request)){
-            returnValue = "dashboard";
+            return  "/dashboard";
         }else{
             returnValue = "login.html";
         }

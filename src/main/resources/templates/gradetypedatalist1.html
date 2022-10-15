@@ -60,12 +60,9 @@
                                     <select class="form-control form-control-sm"
                                             name="selectKey" id="selectKey">
                                         <option selected="selected">전체</option>
-                                        <option value="사용자 아이디">사용자 이름</option>
-                                        <option value="OS">OS</option>
-                                        <option value="진행여부">진행여부</option>
-                                        <option value="시작일시">시작일시</option>
-                                        <option value="종료일시">종료일시</option>
-                                        <option value="획득상품">획득상품</option>
+                                        <option value="접수번호">접수번호</option>
+                                        <option value="이름">이름</option>
+                                        <option value="생년월일">생년월일</option>
                                     </select>
                                 </div>
                                 <div class="input-group input-group-sm card-title" style="width: 20%;">
@@ -90,6 +87,7 @@
                                         <th style="text-align:center;">출결점수</th>
                                         <th style="text-align:center;">행동발달</th>
                                         <th style="text-align:center;">창체</th>
+                                        <th style="text-align:center;">봉사점수</th>
                                         <th style="text-align:center;">점수합계</th>
                                         <th style="text-align:center;">석차백분율</th>
                                     </tr>
@@ -109,8 +107,26 @@
                                             </span>
                                         </td>
                                         <td style="text-align:center;">
-                                            <span th:if="${Co.CurriculumGrades}!= null"
-                                                  th:text="${Co.CurriculumGrades}">
+                                            <span th:if="${Co.SecondBehaviorDevelopment}!= null"
+                                                  th:text="${Co.SecondBehaviorDevelopment}">
+                                            </span>
+                                        </td>
+
+                                        <td style="text-align:center;" >
+                                            <span th:if="${Co.TotalBehaviorDevelopment}!= null"
+                                                  th:text="${Co.TotalBehaviorDevelopment}">
+                                            </span>
+                                        </td>
+
+                                        <td style="text-align:center;" >
+                                            <span th:if="${Co.ThirdBehaviorDevelopment}!= null"
+                                                  th:text="${Co.ThirdBehaviorDevelopment}">
+                                            </span>
+                                        </td>
+
+                                        <td style="text-align:center;" >
+                                            <span th:if="${Co.ThirdExpActivities}!= null"
+                                                  th:text="${Co.ThirdExpActivities}">
                                             </span>
                                         </td>
 
@@ -119,24 +135,8 @@
                                                   th:text="${Co.TotalVolunteerActivityTime}">
                                             </span>
                                         </td>
-
                                         <td style="text-align:center;" >
-                                            <span th:if="${Co.FirstBehaviorDevelopment}!= null"
-                                                  th:text="${Co.FirstBehaviorDevelopment + Co.SecondBehaviorDevelopment + Co.ThirdBehaviorDevelopment}">
-                                            </span>
-                                        </td>
-
-                                        <td style="text-align:center;" >
-                                            <span th:if="${Co}!= null"
-                                                  th:text="${Co.FirstExpActivities + Co.SecondExpActivities + Co.ThirdExpActivities}">
-                                            </span>
-                                        </td>
-
-                                        <td style="text-align:center;" >
-                                            <span th:if="${Co.IsCheck} == 1"
-                                                  th:text="${Co.OrderTotal}">
-                                            </span>
-                                            <span th:if="${Co.IsCheck} == 0"
+                                            <span th:if="${Co.TotalGrades}!= null"
                                                   th:text="${Co.TotalGrades}">
                                             </span>
                                         </td>

@@ -52,7 +52,7 @@ function handlerLogin() {
             success : function(result) {
                 $('#load').hide();
                 if(result.loginResult == "1"){
-                    location.href = "/main";
+                    location.href = "/dashboard";
                 }else if(result.loginResult == "0"){
                     swal({
                         text: "계정 정보가 일치하지 않습니다.",

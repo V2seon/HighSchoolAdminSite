@@ -41,11 +41,13 @@ public class PersonalDataController {
 
     @GetMapping("/Personaldata0")
     public String Personaldata0(Model model, Pageable pageable, HttpServletRequest session,
-                       @RequestParam(required = false, defaultValue = "0", value = "page") int page){
+                                @RequestParam(required = false, defaultValue = "0", value = "page") int page,
+                                @RequestParam(required = false ,defaultValue = "" , value="selectKey") String selectKey,
+                                @RequestParam(required = false ,defaultValue = "" , value="titleText") String titleText){
         if (new SessionCheck().loginSessionCheck(session)){
-            pageable = PageRequest.of(page, 15, Sort.by("seq").descending());
+            pageable = PageRequest.of(page, 10, Sort.by("seq").descending());
             int aname=0;
-            Page<PersonalDataEntity> memberEntities = personalDataService.selectALLTable0(aname,pageable);
+            Page<PersonalDataEntity> memberEntities = personalDataService.selectALLTable0(selectKey, titleText, aname, pageable);
             Pagination pagination = new Pagination(memberEntities.getTotalPages(), page);
             model.addAttribute("nowurl0", "/log");
             model.addAttribute("nowurl1", "/Personaldata0");
@@ -62,13 +64,43 @@ public class PersonalDataController {
         }
     }
 
+    @RequestMapping(value = "/Personaldata0_search", method = RequestMethod.POST)
+    public String Personaldata0_search(Model model,
+                                       @RequestParam(required = false ,defaultValue = "0" , value="page") int page,
+                                       @RequestParam(required = false ,defaultValue = "" , value="selectKey") String selectKey,
+                                       @RequestParam(required = false ,defaultValue = "" , value="titleText") String titleText){
+        System.out.println("Personaldata0 ok");
+        int aname=0;
+        Pageable pageable = PageRequest.of(page, 10, Sort.by("aseq").descending());
+        int totalPages = personalDataService.selectALLTable(selectKey, titleText, aname, pageable).getTotalPages();
+        Pagination pagination = new Pagination(totalPages, page);
+
+        model.addAttribute("thisPage", pagination.getPage()); //현재 몇 페이지에 있는지 확인하기 위함
+        model.addAttribute("isNextSection", pagination.isNextSection()); //다음버튼 유무 확인하기 위함
+        model.addAttribute("isPrevSection", pagination.isPrevSection()); //이전버튼 유무 확인하기 위함
+        model.addAttribute("firstBtnIndex", pagination.getFirstBtnIndex()); //버튼 페이징 - 첫시작 인덱스
+        model.addAttribute("lastBtnIndex", pagination.getLastBtnIndex()); //섹션 변경 위함
+        model.addAttribute("totalPage", pagination.getTotalPages()); //끝 버튼 위함
+
+
+        //서비스 엔티티 추가후 주석 풀고 사용
+        Page<PersonalDataEntity> pageList = personalDataService.selectALLTable(selectKey, titleText, aname, pageable);
+
+        model.addAttribute("userlist", pageList); //페이지 객체 리스트
+
+        return "Persondatalist0 :: #example3";
+    }
+
+
     @GetMapping("/Personaldata1")
     public String Personaldata1(Model model, Pageable pageable, HttpServletRequest session,
-                       @RequestParam(required = false, defaultValue = "0", value = "page") int page){
+                                @RequestParam(required = false, defaultValue = "0", value = "page") int page,
+                                @RequestParam(required = false ,defaultValue = "" , value="selectKey") String selectKey,
+                                @RequestParam(required = false ,defaultValue = "" , value="titleText") String titleText){
         if (new SessionCheck().loginSessionCheck(session)){
             pageable = PageRequest.of(page, 15, Sort.by("seq").descending());
             int aname=1;
-            Page<PersonalDataEntity> memberEntities = personalDataService.selectALLTable0(aname,pageable);
+            Page<PersonalDataEntity> memberEntities = personalDataService.selectALLTable0(selectKey,titleText,aname,pageable);
             Pagination pagination = new Pagination(memberEntities.getTotalPages(), page);
             model.addAttribute("nowurl0", "/log");
             model.addAttribute("nowurl1", "/Personaldata1");
@@ -85,13 +117,44 @@ public class PersonalDataController {
         }
     }
 
+    @RequestMapping(value = "/Personaldata1_search", method = RequestMethod.POST)
+    public String Personaldata1_search(Model model,
+                                       @RequestParam(required = false ,defaultValue = "0" , value="page") int page,
+                                       @RequestParam(required = false ,defaultValue = "" , value="selectKey") String selectKey,
+                                       @RequestParam(required = false ,defaultValue = "" , value="titleText") String titleText){
+        System.out.println("Personaldata1 ok");
+        int aname=1;
+        Pageable pageable = PageRequest.of(page, 10, Sort.by("aseq").descending());
+        int totalPages = personalDataService.selectALLTable(selectKey, titleText, aname, pageable).getTotalPages();
+        Pagination pagination = new Pagination(totalPages, page);
+
+        model.addAttribute("thisPage", pagination.getPage()); //현재 몇 페이지에 있는지 확인하기 위함
+        model.addAttribute("isNextSection", pagination.isNextSection()); //다음버튼 유무 확인하기 위함
+        model.addAttribute("isPrevSection", pagination.isPrevSection()); //이전버튼 유무 확인하기 위함
+        model.addAttribute("firstBtnIndex", pagination.getFirstBtnIndex()); //버튼 페이징 - 첫시작 인덱스
+        model.addAttribute("lastBtnIndex", pagination.getLastBtnIndex()); //섹션 변경 위함
+        model.addAttribute("totalPage", pagination.getTotalPages()); //끝 버튼 위함
+
+
+        //서비스 엔티티 추가후 주석 풀고 사용
+        Page<PersonalDataEntity> pageList = personalDataService.selectALLTable(selectKey, titleText, aname, pageable);
+
+        model.addAttribute("userlist", pageList); //페이지 객체 리스트
+
+        return "Persondatalist1 :: #example3";
+    }
+
+
     @GetMapping("/Personaldata2")
     public String Personaldata2(Model model, Pageable pageable, HttpServletRequest session,
-                                @RequestParam(required = false, defaultValue = "0", value = "page") int page){
+                                @RequestParam(required = false, defaultValue = "0", value = "page") int page,
+                                @RequestParam(required = false ,defaultValue = "" , value="selectKey") String selectKey,
+                                @RequestParam(required = false ,defaultValue = "" , value="titleText") String titleText){
         if (new SessionCheck().loginSessionCheck(session)){
+            System.out.println("Personaldata2 ok");
             pageable = PageRequest.of(page, 15, Sort.by("seq").descending());
             int aname=2;
-            Page<PersonalDataEntity> memberEntities = personalDataService.selectALLTable0(aname,pageable);
+            Page<PersonalDataEntity> memberEntities = personalDataService.selectALLTable0(selectKey,titleText,aname,pageable);
             Pagination pagination = new Pagination(memberEntities.getTotalPages(), page);
             model.addAttribute("nowurl0", "/log");
             model.addAttribute("nowurl1", "/Personaldata2");
@@ -107,6 +170,34 @@ public class PersonalDataController {
             return "redirect:/";
         }
     }
+
+    @RequestMapping(value = "/Personaldata2_search", method = RequestMethod.POST)
+    public String Personaldata2_search(Model model,
+                                       @RequestParam(required = false ,defaultValue = "0" , value="page") int page,
+                                       @RequestParam(required = false ,defaultValue = "" , value="selectKey") String selectKey,
+                                       @RequestParam(required = false ,defaultValue = "" , value="titleText") String titleText){
+        System.out.println("들어옴");
+        int aname=2;
+        Pageable pageable = PageRequest.of(page, 10, Sort.by("aseq").descending());
+        int totalPages = personalDataService.selectALLTable(selectKey, titleText, aname, pageable).getTotalPages();
+        Pagination pagination = new Pagination(totalPages, page);
+
+        model.addAttribute("thisPage", pagination.getPage()); //현재 몇 페이지에 있는지 확인하기 위함
+        model.addAttribute("isNextSection", pagination.isNextSection()); //다음버튼 유무 확인하기 위함
+        model.addAttribute("isPrevSection", pagination.isPrevSection()); //이전버튼 유무 확인하기 위함
+        model.addAttribute("firstBtnIndex", pagination.getFirstBtnIndex()); //버튼 페이징 - 첫시작 인덱스
+        model.addAttribute("lastBtnIndex", pagination.getLastBtnIndex()); //섹션 변경 위함
+        model.addAttribute("totalPage", pagination.getTotalPages()); //끝 버튼 위함
+
+
+        //서비스 엔티티 추가후 주석 풀고 사용
+        Page<PersonalDataEntity> pageList = personalDataService.selectALLTable(selectKey, titleText, aname, pageable);
+
+        model.addAttribute("userlist", pageList); //페이지 객체 리스트
+
+        return "Persondatalist2 :: #example3";
+    }
+
 
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST, value = "/getdata")
@@ -195,27 +286,4 @@ public class PersonalDataController {
     }
 
 
-    //2.페이징 기능
-    @RequestMapping(value = "/paging", method = RequestMethod.POST) // 비동기 페이지네이션
-    public String pagingButton(Model model,
-                               @RequestParam(required = false, defaultValue = "0", value = "page") int page,
-                               @RequestParam(required = false, defaultValue = "", value = "selectKey") String selectKey,
-                               @RequestParam(required = false, defaultValue = "", value = "titleText") String titleText,
-                               Pageable pageable) {
-
-        System.out.println("이 함수에 들어옴2");
-        pageable = PageRequest.of(page, 10, Sort.by("tipk").descending());
-        int totalPages = personalDataService.treasurehunt_list(selectKey, titleText, pageable).getTotalPages();
-
-        Pagination pagination = new Pagination(totalPages, page);
-
-        model.addAttribute("thisPage", pagination.getPage()); //현재 몇 페이지에 있는지 확인하기 위함
-        model.addAttribute("isNextSection", pagination.isNextSection()); //다음버튼 유무 확인하기 위함
-        model.addAttribute("isPrevSection", pagination.isPrevSection()); //이전버튼 유무 확인하기 위함
-        model.addAttribute("firstBtnIndex", pagination.getFirstBtnIndex()); //버튼 페이징 - 첫시작 인덱스
-        model.addAttribute("lastBtnIndex", pagination.getLastBtnIndex()); //섹션 변경 위함
-        model.addAttribute("totalPage", pagination.getTotalPages()); //끝 버튼 위함
-
-        return "Persondatalist0 :: #pageList";
-    }
 }

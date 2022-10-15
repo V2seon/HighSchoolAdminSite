@@ -49,7 +49,7 @@
         </section>
 
         <!-- Main content -->
-        <section class="content">
+        <section class="content" id="example3">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
@@ -82,7 +82,7 @@
                                     <tr>
                                         <th style="text-align:center;">접수번호</th>
                                         <th style="text-align:center;">이름</th>
-<!--                                        <th style="text-align:center;">상태</th>-->
+                                        <!--                                        <th style="text-align:center;">상태</th>-->
                                         <th style="text-align:center;">생년월일</th>
                                         <th style="text-align:center;">성별</th>
                                         <th style="text-align:center;">휴대전화</th>
@@ -93,7 +93,7 @@
                                         <th style="text-align:center;">최종접수</th>
                                     </tr>
                                     </thead>
-                                    <tbody id="treasurehunt_list">
+                                    <tbody id="Persondatalist2_list">
                                     <tr th:if="${userlist}!=null" th:each="Co : ${userlist}" style="text-align:center;">
 
                                         <td style="text-align:center;">
@@ -118,7 +118,7 @@
                                                   th:text="남"
                                             ></span>
                                             <span th:if="${Co.asex} == 1"
-                                            th:text="여">
+                                                  th:text="여">
                                             </span>
                                         </td>
 
@@ -244,7 +244,7 @@
 <!-- AdminLTE App -->
 <script src="/dist/js/adminlte.min.js"></script>
 
-<script src="/js/Treasurehunt/TreasurehuntInfo.js"></script>
+<script src="/js/Personaldata/Personaldata2.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
     window.onbeforeunload = function () {

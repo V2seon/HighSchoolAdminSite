@@ -21,19 +21,19 @@ public class PersonalDataService {
     private FinalreceptionRepository finalreceptionRepository;
 
     @Transactional
-    public Page <PersonalDataEntity> selectALLTable(String mname,String titleText, Pageable pageable){
-        return personalDataRepository.findAll(PersonalDataPredicate.search(mname, titleText),pageable);
+    public Page <PersonalDataEntity> selectALLTable(String selectKey,String titleText, int agraduation_type, Pageable pageable){
+        return personalDataRepository.findAll(PersonalDataPredicate.search(selectKey, titleText, agraduation_type),pageable);
     }
 
     @Transactional
-    public Page <PersonalDataEntity> selectALLTable0(int agraduation_type, Pageable pageable){
+    public Page <PersonalDataEntity> selectALLTable0(String selectKey,String titleText, int agraduation_type, Pageable pageable){
         return personalDataRepository.findAgraduation_typeBy(agraduation_type,pageable);
     }
 
-    @Transactional
-    public Page<PersonalDataEntity> treasurehunt_list(String selectKey, String titleText, Pageable pageable) {
-        return personalDataRepository.findAll(PersonalDataPredicate.search(selectKey, titleText),pageable);
-    }
+//    @Transactional
+//    public Page<PersonalDataEntity> treasurehunt_list(String selectKey, String titleText, Pageable pageable) {
+//        return personalDataRepository.findAll(PersonalDataPredicate.search(selectKey, titleText),pageable);
+//    }
 
     @Transactional
     public Long save(PersonalDataDto personalDataDto){
