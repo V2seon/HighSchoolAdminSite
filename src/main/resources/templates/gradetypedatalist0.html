@@ -49,7 +49,7 @@
         </section>
 
         <!-- Main content -->
-        <section class="content">
+        <section class="content" id="example3">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
@@ -62,7 +62,6 @@
                                         <option selected="selected">전체</option>
                                         <option value="접수번호">접수번호</option>
                                         <option value="이름">이름</option>
-                                        <option value="생년월일">생년월일</option>
                                     </select>
                                 </div>
                                 <div class="input-group input-group-sm card-title" style="width: 20%;">
@@ -89,7 +88,7 @@
                                         <th style="text-align:center;">창체</th>
                                         <th style="text-align:center;">봉사점수</th>
                                         <th style="text-align:center;">점수합계</th>
-                                        <th style="text-align:center;">석차백분율</th>
+                                        <th style="text-align:center;">수정</th>
                                         <th style="text-align:center;">성적확인서 다운로드</th>
                                     </tr>
                                     </thead>
@@ -140,13 +139,16 @@
                                                   th:text="${Co.TotalGrades}">
                                             </span>
                                         </td>
-                                        <td style="text-align:center;" >
-                                            <span>
-                                            </span>
+                                        <td style="text-align:center;"  >
+                                            <a class="far fa-edit" th:onclick="|javascript:modifygrade(${Co.aSeq})|">
+                                            </a>
                                         </td>
                                         <td style="text-align:center;" >
-                                            <a th:if="${Co.Seq}!= null"
-                                               class="fas fa-download" th:onclick="|javascript:perdown3(${Co.Seq})|">
+                                            <a th:if="${Co.TotalGrades}!= 0.0"
+                                               class="fas fa-download" th:onclick="|javascript:perdown3(${Co.aSeq})|">
+                                            </a>
+                                            <a th:if="${Co.TotalGrades}== 0.0"
+                                                  th:text="성적미입력">
                                             </a>
                                         </td>
 
@@ -231,7 +233,8 @@
 <!-- AdminLTE App -->
 <script src="/dist/js/adminlte.min.js"></script>
 
-<script src="/js/Treasurehunt/TreasurehuntInfo.js"></script>
+<script src="/js/Modify/modify.js?Version=1"></script>
+<script src="/js/Gradetypedata/gradetypedatalist0.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
     window.onbeforeunload = function () {

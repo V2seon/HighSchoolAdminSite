@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>검정고시 | 성적정보</title>
+    <title>졸업예정자 | 성적정보</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -49,7 +49,7 @@
         </section>
 
         <!-- Main content -->
-        <section class="content">
+        <section class="content" id="example3">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
@@ -62,7 +62,6 @@
                                         <option selected="selected">전체</option>
                                         <option value="접수번호">접수번호</option>
                                         <option value="이름">이름</option>
-                                        <option value="생년월일">생년월일</option>
                                     </select>
                                 </div>
                                 <div class="input-group input-group-sm card-title" style="width: 20%;">
@@ -82,9 +81,11 @@
                                     <tr>
                                         <th style="text-align:center;">접수번호</th>
                                         <th style="text-align:center;">이름</th>
-                                        <th style="text-align:center;">전과목득점합계</th>
-                                        <th style="text-align:center;">전과목만점합계</th>
+<!--                                        <th style="text-align:center;">상태</th>-->
+                                        <th style="text-align:center;">전과목 득점 합계</th>
+                                        <th style="text-align:center;">전과목 만점 합계</th>
                                         <th style="text-align:center;">환산총점</th>
+                                        <th style="text-align:center;">수정</th>
                                     </tr>
                                     </thead>
                                     <tbody id="treasurehunt_list">
@@ -117,6 +118,10 @@
                                             <span th:if="${Co.TotalGrades}!= null"
                                                   th:text="${Co.TotalGrades}">
                                             </span>
+                                        </td>
+                                        <td style="text-align:center;"  >
+                                            <a class="far fa-edit" th:onclick="|javascript:modifygrade(${Co.aSeq})|">
+                                            </a>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -197,8 +202,8 @@
 <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/dist/js/adminlte.min.js"></script>
-
-<script src="/js/Treasurehunt/TreasurehuntInfo.js"></script>
+<script src="/js/Modify/modify.js?Version=1"></script>
+<script src="/js/Gradetypedata/gradetypedatalist2.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
     window.onbeforeunload = function () {

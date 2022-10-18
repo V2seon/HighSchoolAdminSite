@@ -6,6 +6,7 @@ import com.example.HighSchoolAdminSite.dto.FinalreceptionDto;
 import com.example.HighSchoolAdminSite.dto.PersonalDataDto;
 import com.example.HighSchoolAdminSite.entity.*;
 import com.example.HighSchoolAdminSite.repository.*;
+import com.example.HighSchoolAdminSite.service.FileService;
 import com.example.HighSchoolAdminSite.service.FinalreceptionService;
 import com.example.HighSchoolAdminSite.service.PersonalDataService;
 import lombok.AllArgsConstructor;
@@ -16,8 +17,11 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Optional;
 
@@ -27,6 +31,7 @@ import java.util.Optional;
 public class PersonalDataController {
 
     private PersonalDataService personalDataService;
+    private FileService fileService;
     private PersonalDataRepository personalDataRepository;
     private GradeType1DataRepository gradeType1DataRepository;
     private GradeType2DataRepository gradeType2DataRepository;
@@ -35,9 +40,40 @@ public class PersonalDataController {
     private FinalreceptionService finalreceptionService;
     private StudentfakeseqRepository studentfakeseqRepository;
 
+    private final String DIR = "/home/DevHighSchoolAddmission/www/uploadfiles/";
+
     @GetMapping("/main")
     public String movedata(Model m, HttpServletRequest request){
         return "dashboard";
+    }
+
+    @PostMapping("/upload")
+    public String uploadfile(@RequestPart("files") MultipartFile file, Model model) throws IOException{
+        fileService.uploadFile(file);
+        System.out.println("성공");
+        return "/Modify/MOdify1 :: Success";
+    }
+
+    @GetMapping("/file")
+    public StreamingResponseBody img(@RequestParam("fileName")String fileName) throws Exception {
+        File file = new File(DIR+fileName);
+        final InputStream is = new FileInputStream(file);
+        return os -> {
+            readAndWrite(is,os);
+        };
+    }
+
+    private void readAndWrite(final InputStream is, OutputStream os) throws IOException {
+        try {
+            byte[] data = new byte[2048];
+            int read = 0;
+            while ((read = is.read(data)) > 0) {
+                os.write(data, 0, read);
+            }
+            os.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @GetMapping("/Personaldata0")
@@ -46,9 +82,9 @@ public class PersonalDataController {
                                 @RequestParam(required = false ,defaultValue = "" , value="selectKey") String selectKey,
                                 @RequestParam(required = false ,defaultValue = "" , value="titleText") String titleText){
         if (new SessionCheck().loginSessionCheck(session)){
-            pageable = PageRequest.of(page, 10, Sort.by("seq").descending());
+            pageable = PageRequest.of(page, 15,Sort.by("studentfakeseq").descending());
             int aname=0;
-            Page<PersonalDataEntity> memberEntities = personalDataService.selectALLTable0(selectKey, titleText, aname, pageable);
+            Page<PersonalDataEntity> memberEntities = personalDataService.selectALLTable0(aname, pageable);
             Pagination pagination = new Pagination(memberEntities.getTotalPages(), page);
             model.addAttribute("nowurl0", "/log");
             model.addAttribute("nowurl1", "/Personaldata0");
@@ -72,7 +108,7 @@ public class PersonalDataController {
                                        @RequestParam(required = false ,defaultValue = "" , value="titleText") String titleText){
         System.out.println("Personaldata0 ok");
         int aname=0;
-        Pageable pageable = PageRequest.of(page, 10, Sort.by("aseq").descending());
+        Pageable pageable = PageRequest.of(page, 15,Sort.by("aseq").descending());
         int totalPages = personalDataService.selectALLTable(selectKey, titleText, aname, pageable).getTotalPages();
         Pagination pagination = new Pagination(totalPages, page);
 
@@ -99,9 +135,9 @@ public class PersonalDataController {
                                 @RequestParam(required = false ,defaultValue = "" , value="selectKey") String selectKey,
                                 @RequestParam(required = false ,defaultValue = "" , value="titleText") String titleText){
         if (new SessionCheck().loginSessionCheck(session)){
-            pageable = PageRequest.of(page, 15, Sort.by("seq").descending());
+            pageable = PageRequest.of(page, 15,Sort.by("seq").descending());
             int aname=1;
-            Page<PersonalDataEntity> memberEntities = personalDataService.selectALLTable0(selectKey,titleText,aname,pageable);
+            Page<PersonalDataEntity> memberEntities = personalDataService.selectALLTable0(aname,pageable);
             Pagination pagination = new Pagination(memberEntities.getTotalPages(), page);
             model.addAttribute("nowurl0", "/log");
             model.addAttribute("nowurl1", "/Personaldata1");
@@ -125,7 +161,7 @@ public class PersonalDataController {
                                        @RequestParam(required = false ,defaultValue = "" , value="titleText") String titleText){
         System.out.println("Personaldata1 ok");
         int aname=1;
-        Pageable pageable = PageRequest.of(page, 10, Sort.by("aseq").descending());
+        Pageable pageable = PageRequest.of(page, 15,Sort.by("aseq").descending());
         int totalPages = personalDataService.selectALLTable(selectKey, titleText, aname, pageable).getTotalPages();
         Pagination pagination = new Pagination(totalPages, page);
 
@@ -153,9 +189,9 @@ public class PersonalDataController {
                                 @RequestParam(required = false ,defaultValue = "" , value="titleText") String titleText){
         if (new SessionCheck().loginSessionCheck(session)){
             System.out.println("Personaldata2 ok");
-            pageable = PageRequest.of(page, 15, Sort.by("seq").descending());
+            pageable = PageRequest.of(page, 15,Sort.by("seq").descending());
             int aname=2;
-            Page<PersonalDataEntity> memberEntities = personalDataService.selectALLTable0(selectKey,titleText,aname,pageable);
+            Page<PersonalDataEntity> memberEntities = personalDataService.selectALLTable0(aname,pageable);
             Pagination pagination = new Pagination(memberEntities.getTotalPages(), page);
             model.addAttribute("nowurl0", "/log");
             model.addAttribute("nowurl1", "/Personaldata2");
@@ -179,7 +215,7 @@ public class PersonalDataController {
                                        @RequestParam(required = false ,defaultValue = "" , value="titleText") String titleText){
         System.out.println("들어옴");
         int aname=2;
-        Pageable pageable = PageRequest.of(page, 10, Sort.by("aseq").descending());
+        Pageable pageable = PageRequest.of(page, 15,Sort.by("aseq").descending());
         int totalPages = personalDataService.selectALLTable(selectKey, titleText, aname, pageable).getTotalPages();
         Pagination pagination = new Pagination(totalPages, page);
 

@@ -14,7 +14,7 @@ public class PersonalDataDto {
     private String A_BIRTHDAY;
     private String A_PHONE;
     private int A_SEX;
-    private int A_POSTAL_CODE;
+    private String A_POSTAL_CODE;
     private String A_ADDRESS;
     private String A_DETAILED_ADDRESS;
     private String A_GUARDIAN;
@@ -35,7 +35,7 @@ public class PersonalDataDto {
     private int A_CLASSIFICATION_TYPE;
 
     @Builder
-    public PersonalDataDto(Long a_SEQ,int a_STUDENTFAKESEQ, String a_NAME, String a_BIRTHDAY, int a_SEX, String a_PHONE, int a_POSTAL_CODE
+    public PersonalDataDto(Long a_SEQ,int a_STUDENTFAKESEQ, String a_NAME, String a_BIRTHDAY, int a_SEX, String a_PHONE, String a_POSTAL_CODE
             , String a_ADDRESS, String a_DETAILED_ADDRESS, String a_GUARDIAN, String a_PARENTAL, String a_HOME_PHONE, String a_PARENTAL_PHONE
             , String a_APPLICATION_INCHARGE_NAME, String a_APPLICATION_INCHARGE_PHONE, String a_ID_PICTURE, String a_MIDDLE_SCHOOL
             , int a_MIDDLE_SCHOOL_UNIQUE_NUMBER, String a_MIDDLE_SCHOOL_PHONE, String a_AREA_NAME, String a_AREA2_NAME
@@ -97,7 +97,7 @@ public class PersonalDataDto {
         return entity;
     }
     @Builder
-    public PersonalDataDto(int A_STUDENTFAKESEQ,String A_NAME, String A_BIRTHDAY, int A_SEX, String A_PHONE, int A_POSTAL_CODE, String A_ADDRESS
+    public PersonalDataDto(int A_STUDENTFAKESEQ,String A_NAME, String A_BIRTHDAY, int A_SEX, String A_PHONE, String A_POSTAL_CODE, String A_ADDRESS
             , String A_DETAILED_ADDRESS, String A_GUARDIAN, String A_PARENTAL, String A_HOME_PHONE, String A_PARENTAL_PHONE
             , String A_APPLICATION_INCHARGE_NAME, String A_APPLICATION_INCHARGE_PHONE, String A_ID_PICTURE, String A_MIDDLE_SCHOOL
             , int A_MIDDLE_SCHOOL_UNIQUE_NUMBER, String A_MIDDLE_SCHOOL_PHONE, String A_AREA_NAME, String A_AREA2_NAME

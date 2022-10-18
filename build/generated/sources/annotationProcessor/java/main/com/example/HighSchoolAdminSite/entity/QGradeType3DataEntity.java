@@ -19,13 +19,13 @@ public class QGradeType3DataEntity extends EntityPathBase<GradeType3DataEntity> 
 
     public static final QGradeType3DataEntity gradeType3DataEntity = new QGradeType3DataEntity("gradeType3DataEntity");
 
+    public final NumberPath<Long> aSeq = createNumber("aSeq", Long.class);
+
     public final NumberPath<Double> Grade1 = createNumber("Grade1", Double.class);
 
     public final NumberPath<Double> Grade2 = createNumber("Grade2", Double.class);
 
     public final StringPath Name = createString("Name");
-
-    public final NumberPath<Long> Seq = createNumber("Seq", Long.class);
 
     public final NumberPath<Integer> Studentfakeseq = createNumber("Studentfakeseq", Integer.class);
 

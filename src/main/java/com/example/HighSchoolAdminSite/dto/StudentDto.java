@@ -24,6 +24,7 @@ public class StudentDto {
         this.student_signupdatetime = student_signupdatetime;
     }
 
+
     public StudentEntity toEntity(){
         StudentEntity entity = StudentEntity.builder()
                 .student_seq(student_seq)
@@ -33,4 +34,6 @@ public class StudentDto {
                 .build();
         return entity;
     }
+
+
 }

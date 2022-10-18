@@ -20,7 +20,7 @@ public class GradeType1DataEntity {
 
     @Id
     @Column(name = "seq")
-    private Long Seq;
+    private Long aSeq;
 
     @Column(name = "studentfakeseq")
     private int Studentfakeseq;
@@ -256,8 +256,7 @@ public class GradeType1DataEntity {
                                 int mySecondAbsant, int mySecondLate, int mySecondLeave, int mySecondResult, double mySecondBehaviorDevelopment, double mySecondExpActivities,
                                 int mySecondVolunteerActivityTime, int myThirdAbsant, int myThirdLate, int myThirdLeave, int myThirdResult, double myThirdBehaviorDevelopment,
                                 double myThirdExpActivities, int myThirdVolunteerActivityTime,double myTotalBehaviorDevelopment,double myTotalVolunteerActivityTime, double myCurriculumGrades, double myNonCurriculumGrades, double myTotalGrades) {
-        this.Seq = mySeq;
-        this.Studentfakeseq = myStudentfakeseq;
+        this.aSeq = mySeq;        this.Studentfakeseq = myStudentfakeseq;
         this.Name = myName;
         this.SecondFirstType1 = mySecondFirstType1;
         this.SecondFirstType2 = mySecondFirstType2;

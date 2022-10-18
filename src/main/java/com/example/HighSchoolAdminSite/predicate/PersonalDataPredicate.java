@@ -15,23 +15,37 @@ public class PersonalDataPredicate {
 
         if(!selectKey.equals("전체")){
             if(selectKey.equals("접수번호")){
-                builder.and(qPersonalDataEntity.aseq.eq(Long.valueOf(titleText)).and
-                        (qPersonalDataEntity.agraduation_type.eq(Math.toIntExact(agraduation_type))));
+                try{
+                    builder.and(qPersonalDataEntity.astudentfakeseq.eq(Integer.valueOf(titleText))).and
+                            (qPersonalDataEntity.agraduation_type.eq(agraduation_type));
+                }
+                catch (Exception e){
+                    builder.and(qPersonalDataEntity.aname.contains(titleText)).and
+                            (qPersonalDataEntity.agraduation_type.eq(Math.toIntExact(agraduation_type)));
+                    System.out.println("접수번호로 조회할 경우 String 타입으로 검색하셔야 합니다.");
+                }
             }
             else if(selectKey.equals("이름")){
                 builder.and(qPersonalDataEntity.aname.contains(titleText)).and
-                        (qPersonalDataEntity.agraduation_type.eq(Math.toIntExact(agraduation_type)));
+                        (qPersonalDataEntity.agraduation_type.eq(agraduation_type));
             }
             else if(selectKey.equals("생년월일")){
                 builder.and(qPersonalDataEntity.abirthday.contains(titleText)).and
-                        (qPersonalDataEntity.agraduation_type.eq(Math.toIntExact(agraduation_type)));
+                        (qPersonalDataEntity.agraduation_type.eq(agraduation_type));
             }
         }
         else if(selectKey.equals("전체")){
-            builder.and((qPersonalDataEntity.aseq.eq(Long.valueOf(titleText)).or
-                    (qPersonalDataEntity.aname.contains(titleText)).or
-                    (qPersonalDataEntity.abirthday.contains(titleText))).and
-                    (qPersonalDataEntity.agraduation_type.eq(Math.toIntExact(agraduation_type))));
+            try{
+                builder.and(qPersonalDataEntity.astudentfakeseq.eq(Integer.valueOf(titleText))).and
+                        (qPersonalDataEntity.agraduation_type.eq(agraduation_type));
+            }
+            catch (Exception e){
+                builder.and(
+                        (qPersonalDataEntity.aname.contains(titleText)).or
+                                (qPersonalDataEntity.abirthday.contains(titleText))).and
+                        (qPersonalDataEntity.agraduation_type.eq(agraduation_type));
+            }
+
         }
 
 //        builder.and(qPersonalDataEntity.aname.eq(titleText));

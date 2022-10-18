@@ -433,7 +433,8 @@
                             <div class="hcI">
                                 <div class="hls ps202"
                                      style="line-height:2.79mm;white-space:nowrap;height:3.53mm;width:17.65mm;">
-                                    <img class="hrt cs 185" type="file" th:src="'/pd/file?fileName='+${idpicture}" width="113px" height="148px">
+                                    <img class="hrt cs 185" type="file" th:src="'/file?fileName='+${idpicture}" width="113px" height="148px"
+                                         onerror="this.onerror=null; this.src='/file?fileName=12.PNG';">
                                 </div>
                             </div>
                         </div>
@@ -1104,15 +1105,15 @@
                                     <span class="hrt cs105">수요맞춤형(마이스터)고등학교에 이중지원하지 않을 것을 서약합니다.</span></div>
                                 <div class="hls ps86"
                                      style="line-height:3.10mm;white-space:nowrap;left:2.34mm;top:12.22mm;height:3.88mm;width:174.67mm;">
-                                    <span class="hrt cs105">2022년 &nbsp;&nbsp;&nbsp;&nbsp;월 &nbsp;&nbsp;&nbsp;일</span>
+                                    <span class="hrt cs105" th:text="'2022년 &nbsp; 10월 &nbsp; '+${day} + '일'"></span>
                                 </div>
                                 <div class="hls ps206"
                                      style="line-height:3.10mm;white-space:nowrap;left:2.34mm;top:18.43mm;height:3.88mm;width:174.67mm;">
-                                    <span class="hrt cs105">지원자 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(서명)</span>
+                                    <span class="hrt cs105" th:text="'지원자 :  &nbsp;  '+${name} + ' &nbsp; (서명)'"></span>
                                 </div>
                                 <div class="hls ps206"
                                      style="line-height:3.10mm;white-space:nowrap;left:2.34mm;top:24.64mm;height:3.88mm;width:174.67mm;">
-                                    <span class="hrt cs105">보호자 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(서명)</span>
+                                    <span class="hrt cs105" th:text="'보호자 :   &nbsp; '+${guardian} + ' &nbsp; (서명)'"></span>
                                 </div>
                                 <div class="hls ps205"
                                      style="line-height:3.76mm;white-space:nowrap;left:2.34mm;top:30.82mm;height:4.59mm;width:174.67mm;">
@@ -1132,12 +1133,12 @@
                                      style="line-height:3.10mm;white-space:nowrap;left:2.34mm;top:6.01mm;height:3.88mm;width:174.67mm;">
                                     <span class="hrt cs105">수 있다고 생각되어 이에 추천합니다.</span></div>
                                 <div class="hls ps86"
-                                     style="line-height:3.10mm;white-space:nowrap;left:2.34mm;top:12.22mm;height:3.88mm;width:174.67mm;">
-                                    <span class="hrt cs105">2022년 &nbsp;&nbsp;&nbsp;&nbsp;월 &nbsp;&nbsp;&nbsp;일</span>
-                                </div>
+                                     style="line-height:3.10mm;white-space:nowrap;left:2.34mm;top:11.22mm;height:3.88mm;width:174.67mm;">
+                                    <span class="hrt cs185" th:text="'2022년 &nbsp; 10월 &nbsp; '+${day} + '일'"></span></div>
+                            </div>
                                 <div class="hls ps207"
-                                     style="line-height:3.76mm;white-space:nowrap;left:2.34mm;top:18.40mm;height:4.59mm;width:132.33mm;">
-                                    <span class="hrt cs187">중학교장</span><span class="hrt cs105">[직인]</span></div>
+                                     style="line-height:3.76mm;white-space:nowrap;left:2.34mm;top:16.40mm;height:4.59mm;width:174.67mm;">
+                                    <span class="hrt cs185" th:text="${middleschool} + '장 &nbsp;&nbsp;&nbsp;'"></span><span class="hrt cs105">[직인]</span></div>
                             </div>
                         </div>
                     </div>
@@ -1220,12 +1221,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="hce" style="left:90.01mm;top:167.52mm;width:30mm;height:40.11mm;">
+                    <div class="hce" style="left:90.01mm;top:168.52mm;width:30mm;height:40.11mm;">
                         <div class="hcD" style="left:0.30mm;top:0.30mm;">
                             <div class="hcI">
                                 <div class="hls ps202"
                                      style="line-height:2.79mm;white-space:nowrap;height:3.53mm;width:17.65mm;">
-                                    <img class="hrt cs 185" type="file" th:src="'/pd/file?fileName='+${idpicture}" width="113px" height="148px">
+                                    <img class="hrt cs 185" type="file" th:src="'/file?fileName='+${idpicture}" width="113px" height="148px"
+                                         onerror="this.onerror=null; this.src='/file?fileName=12.PNG';">
                                 </div>
                             </div>
                         </div>
@@ -1353,7 +1355,7 @@
                                     <span class="hrt cs185">전형 지원자임을 확인함.</span></div>
                                 <div class="hls ps102"
                                      style="line-height:2.79mm;white-space:nowrap;left:0.71mm;top:13.93mm;height:3.53mm;width:71.43mm;">
-                                    <span class="hrt cs185">2022년 &nbsp;&nbsp;월 &nbsp;&nbsp;일</span></div>
+                                    <span class="hrt cs185" th:text="'2022년 &nbsp; 10월 &nbsp; '+${day} + '일'"></span></div>
                                 <div class="hls ps210"
                                      style="line-height:2.79mm;white-space:nowrap;left:0.71mm;top:19.58mm;height:3.53mm;width:71.43mm;">
                                     <span class="hrt cs185">광주자동화설비공업고등학교장 [직인생략]</span></div>

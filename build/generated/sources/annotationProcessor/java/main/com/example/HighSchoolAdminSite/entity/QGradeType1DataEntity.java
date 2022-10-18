@@ -19,6 +19,8 @@ public class QGradeType1DataEntity extends EntityPathBase<GradeType1DataEntity> 
 
     public static final QGradeType1DataEntity gradeType1DataEntity = new QGradeType1DataEntity("gradeType1DataEntity");
 
+    public final NumberPath<Long> aSeq = createNumber("aSeq", Long.class);
+
     public final NumberPath<Double> CurriculumGrades = createNumber("CurriculumGrades", Double.class);
 
     public final NumberPath<Integer> FirstAbsant = createNumber("FirstAbsant", Integer.class);
@@ -112,8 +114,6 @@ public class QGradeType1DataEntity extends EntityPathBase<GradeType1DataEntity> 
     public final StringPath SecondSecondType9 = createString("SecondSecondType9");
 
     public final NumberPath<Integer> SecondVolunteerActivityTime = createNumber("SecondVolunteerActivityTime", Integer.class);
-
-    public final NumberPath<Long> Seq = createNumber("Seq", Long.class);
 
     public final NumberPath<Integer> Studentfakeseq = createNumber("Studentfakeseq", Integer.class);
 

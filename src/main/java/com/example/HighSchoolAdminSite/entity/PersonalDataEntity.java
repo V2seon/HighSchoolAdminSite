@@ -38,7 +38,7 @@ public class PersonalDataEntity {
     private int asex;
 
     @Column(name = "postal_code")
-    private int apostal_code;
+    private String apostal_code;
 
     @Column(name = "address")
     private String aaddress;
@@ -95,7 +95,7 @@ public class PersonalDataEntity {
     private int aclassification_type;
 
     @Builder
-    public PersonalDataEntity(Long a_seq,int a_studentfakeseq, String a_name, String a_birthday, int a_sex, String a_phone, int a_postal_code, String a_address,
+    public PersonalDataEntity(Long a_seq,int a_studentfakeseq, String a_name, String a_birthday, int a_sex, String a_phone, String a_postal_code, String a_address,
                               String a_detailed_address, String a_guardian, String a_parental, String a_home_phone, String a_parental_phone,
                               String a_application_incharge_name, String a_application_incharge_phone, String a_id_picture, String a_middle_school,
                               int a_middle_school_unique_number, String a_middle_school_phone, String a_area_name, String a_area2_name,

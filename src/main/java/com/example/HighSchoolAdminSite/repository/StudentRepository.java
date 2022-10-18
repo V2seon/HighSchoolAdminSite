@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 
-public interface StudentRepository extends JpaRepository<PersonalDataEntity, Long>, QuerydslPredicateExecutor<StudentEntity> {
+public interface StudentRepository extends JpaRepository<StudentEntity, Long>, QuerydslPredicateExecutor<StudentEntity> {
     @Query(value = "SELECT COUNT(*) FROM student WHERE signupdatetime >= '2022-10-17 00:00:00' AND signupdatetime < '2022-10-18 00:00:00'" , nativeQuery = true)
     Long find17thUserCount();
 

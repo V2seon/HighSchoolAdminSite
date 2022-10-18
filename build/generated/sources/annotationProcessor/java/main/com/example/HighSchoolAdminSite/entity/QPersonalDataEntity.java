@@ -61,7 +61,7 @@ public class QPersonalDataEntity extends EntityPathBase<PersonalDataEntity> {
 
     public final StringPath aphone = createString("aphone");
 
-    public final NumberPath<Integer> apostal_code = createNumber("apostal_code", Integer.class);
+    public final StringPath apostal_code = createString("apostal_code");
 
     public final NumberPath<Long> aseq = createNumber("aseq", Long.class);
 

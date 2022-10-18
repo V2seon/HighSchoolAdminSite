@@ -1934,7 +1934,7 @@
                             <div class="hcI" style="top:6.02mm;">
                                 <div class="hls ps6"
                                      style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
-                                    <span class="hrt cs25" th:text="${movsocre}"></span>
+                                    <span class="hrt cs25" th:text="${cresocre}"></span>
                                 </div>
                             </div>
                         </div>
@@ -1963,7 +1963,7 @@
                             <div class="hcI" style="top:6.02mm;">
                                 <div class="hls ps6"
                                      style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:8.35mm;">
-                                    <span class="hrt cs25" th:text="${cresocre}"></span>
+                                    <span class="hrt cs25" th:text="${movsocre}"></span>
                                 </div>
                             </div>
                         </div>
@@ -2362,12 +2362,12 @@
                  style="line-height:3.43mm;white-space:nowrap;left:0mm;top:206.64mm;height:4.23mm;width:190.01mm;"></div>
             <div class="hls ps213"
                  style="line-height:3.43mm;white-space:nowrap;left:0mm;top:213.41mm;height:4.23mm;width:190.01mm;"><span
-                    class="hrt cs21">2022년 10월 &nbsp;&nbsp;&nbsp;일</span></div>
+                    class="hrt cs21" th:text="'2022년 &nbsp; 10월 &nbsp; '+${day} + '일'"></span></div>
             <div class="hls ps213"
                  style="line-height:3.43mm;white-space:nowrap;left:0mm;top:220.18mm;height:4.23mm;width:190.01mm;"></div>
             <div class="hls ps214"
                  style="line-height:3.43mm;white-space:nowrap;left:0mm;top:226.96mm;height:4.23mm;width:182.27mm;"><span
-                    class="hrt cs23">중학교장</span><span class="hrt cs21">&nbsp;[직인]</span></div>
+                    class="hrt cs23" th:text="${middleschool}+'장&nbsp;&nbsp;&nbsp;'"></span><span class="hrt cs21">&nbsp;[직인]</span></div>
             <div class="hls ps214"
                  style="line-height:3.43mm;white-space:nowrap;left:0mm;top:233.73mm;height:4.23mm;width:182.27mm;"></div>
             <div class="hls ps215"

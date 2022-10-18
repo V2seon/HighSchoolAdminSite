@@ -29,6 +29,7 @@ public class StudentEntity {
     @Column(name = "signupdatetime")
     private String student_signupdatetime;
 
+
     @Builder
     public StudentEntity(Long student_seq, String student_phone, String student_password, String student_signupdatetime) {
         this.student_seq = student_seq;

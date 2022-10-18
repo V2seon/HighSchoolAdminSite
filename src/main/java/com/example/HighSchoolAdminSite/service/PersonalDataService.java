@@ -26,7 +26,7 @@ public class PersonalDataService {
     }
 
     @Transactional
-    public Page <PersonalDataEntity> selectALLTable0(String selectKey,String titleText, int agraduation_type, Pageable pageable){
+    public Page <PersonalDataEntity> selectALLTable0(int agraduation_type, Pageable pageable){
         return personalDataRepository.findAgraduation_typeBy(agraduation_type,pageable);
     }
 

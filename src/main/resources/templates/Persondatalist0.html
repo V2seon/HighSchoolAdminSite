@@ -89,12 +89,14 @@
                                         <th style="text-align:center;">우편번호</th>
                                         <th style="text-align:center;">주소</th>
                                         <th style="text-align:center;">상세주소</th>
+                                        <th style="text-align:center;">수정</th>
                                         <th style="text-align:center;">원서다운로드</th>
                                         <th style="text-align:center;">최종접수</th>
                                     </tr>
                                     </thead>
                                     <tbody id="Persondatalist0_list">
-                                    <tr th:if="${userlist}!=null" th:each="Co : ${userlist}" style="text-align:center;">
+                                    <tr th:if="${userlist}!=null and ${Co.agraduation_type}==0" th:each="Co : ${userlist}" style="text-align:center;"
+                                    >
 
                                         <td style="text-align:center;">
                                             <span id="percode"
@@ -145,6 +147,10 @@
                                             <span th:if="${Co.adetailed_address}!= null"
                                                   th:text="${Co.adetailed_address}">
                                             </span>
+                                        </td>
+                                        <td style="text-align:center;"  >
+                                            <a class="far fa-edit" th:onclick="|javascript:modifyper(${Co.aseq})|">
+                                            </a>
                                         </td>
                                         <td style="text-align:center;" >
                                             <a th:if="${Co.aseq}!= null"
@@ -247,6 +253,7 @@
 <script src="/dist/js/adminlte.min.js"></script>
 <script src="/js/pdf.js"></script>
 <script src="/js/reception.js"></script>
+<script src="/js/Modify/modify.js?Version=1"></script>
 <script src="/js/Personaldata/Personaldata0.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">

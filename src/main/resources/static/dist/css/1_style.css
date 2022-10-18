@@ -3,7 +3,7 @@
 .hme {margin:0;padding:0;position:absolute;}
 .hhe {margin:0;padding:0;position:relative;}
 .hhi {display:inline-block;margin:0;padding:0;position:relative;background-size:contain;}
-.hls {margin:0;padding:0;position:absolute;}
+.hls {margin-bottom:5px;margin:0;padding:0;position:absolute;}
 .hfS {margin:0;padding:0;position:absolute;}
 .hcD {margin:0;padding:0;position:absolute;}
 .hcI {margin:0;padding:0;position:absolute;}
@@ -475,7 +475,7 @@
 .ps204 {text-align:right;}
 .ps205 {text-align:justify;}
 .ps206 {text-align:right;}
-.ps207 {text-align:right;}
+.ps207 {text-align:center;}
 .ps208 {text-align:center;}
 .ps209 {text-align:justify;}
 .ps210 {text-align:center;}

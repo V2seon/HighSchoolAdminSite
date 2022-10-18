@@ -23,6 +23,7 @@ public class DownloadAdmissionApplicationController {
     private GradeType2DataRepository gradeType2dataRepository;
     private GradeType3DataRepository gradeType3dataRepository;
     private StudentfakeseqRepository studentfakeseqRepository;
+    private StudentRepository studentRepository;
 
     @GetMapping("/getid0")
     public String getid0(Model model, HttpSession session, HttpServletRequest request,
@@ -84,6 +85,13 @@ public class DownloadAdmissionApplicationController {
         model.addAttribute("agraduationmonth",PersonalDataEntityes.get().getAgraduation_month());
         model.addAttribute("seq",s1.get().getStudentfakeseq());
         Long seq = (Long) session.getAttribute("percode");
+
+        Optional<StudentEntity> main = studentRepository.findById(seq);
+        String day = main.get().getStudent_signupdatetime();
+        String[] day1 = day.split("-");
+        String[] day2 = day1[2].split(" ");
+        model.addAttribute("day", day2[0]);
+
         if(PersonalDataEntityes.get().getAgraduation_type() == 0){
             Optional<GradeType1DataEntity> sss = gradeType1dataRepository.findById(seq);
 
@@ -745,18 +753,13 @@ public class DownloadAdmissionApplicationController {
                 totalle = totalle + "0";
             }
 
-            LocalDate now = LocalDate.now();
-            int dayOfMonth = now.getDayOfMonth();
-            System.out.println(dayOfMonth);
-
-            model.addAttribute("day", dayOfMonth);
-            model.addAttribute("t1", t1);
-            model.addAttribute("t2", t2);
-            model.addAttribute("t3", t3);
-            model.addAttribute("t4", t4);
+            model.addAttribute("t1", Math.round(t1 * 1000) / 1000.0);
+            model.addAttribute("t2", Math.round(t2 * 1000) / 1000.0);
+            model.addAttribute("t3", Math.round(t3 * 1000) / 1000.0);
+            model.addAttribute("t4", Math.round(t4 * 1000) / 1000.0);
             model.addAttribute("t5", t5le.substring(0,7));
-            model.addAttribute("t6", t6);
-            model.addAttribute("t7", t7);
+            model.addAttribute("t6", Math.round(t6 * 1000) / 1000.0);
+            model.addAttribute("t7", Math.round(t7 * 1000) / 1000.0);
             model.addAttribute("total",  totalle.substring(0,7));
             model.addAttribute("movsocre", movsocre);
             model.addAttribute("cresocre", cresocre);
@@ -769,11 +772,6 @@ public class DownloadAdmissionApplicationController {
                 Optional<StudentfakeseqEntity> s3 = studentfakeseqRepository.findBySseq((Long) session.getAttribute("percode"));
                 model.addAttribute("seq",s3.get().getStudentfakeseq());
 
-                LocalDate now = LocalDate.now();
-                int dayOfMonth = now.getDayOfMonth();
-                System.out.println(dayOfMonth);
-
-                model.addAttribute("day", dayOfMonth);
                 String t7le = Double.toString(sss1.get().getNonCurriculumGrades());
                 String t6le = Double.toString(sss1.get().getTotalBehaviorDevelopment());
                 String movle = Double.toString(sss1.get().getThirdBehaviorDevelopment());
@@ -817,7 +815,7 @@ public class DownloadAdmissionApplicationController {
             model.addAttribute("total", sss.get().getTotalGrades());
             Optional<StudentfakeseqEntity> s2 = studentfakeseqRepository.findBySseq((Long) session.getAttribute("percode"));
             model.addAttribute("seq",s2.get().getStudentfakeseq());
-            System.out.println(sss.get().getSeq());
+            System.out.println(sss.get().getASeq());
         }
         return "1.html";
     }
@@ -826,17 +824,18 @@ public class DownloadAdmissionApplicationController {
     public String grade(Model model, HttpSession session, HttpServletRequest request){
         Optional<PersonalDataEntity> PersonalDataEntityes = personalDataRepository.findById((Long) session.getAttribute("percode"));
         Long seq = (Long) session.getAttribute("percode");
+        Optional<StudentEntity> main = studentRepository.findById(seq);
+        String day = main.get().getStudent_signupdatetime();
+        String[] day1 = day.split("-");
+        String[] day2 = day1[2].split(" ");
+        model.addAttribute("day", day2[0]);
         Optional<GradeType1DataEntity> sss = gradeType1dataRepository.findById(seq);
         if(!sss.isPresent()){
             return "DownloadGradeData.html";
         }
         Optional<StudentfakeseqEntity> s1 = studentfakeseqRepository.findBySseq((Long) session.getAttribute("percode"));
         model.addAttribute("seq",s1.get().getStudentfakeseq());
-        LocalDate now = LocalDate.now();
-        int dayOfMonth = now.getDayOfMonth();
-        System.out.println(dayOfMonth);
 
-        model.addAttribute("day", dayOfMonth);
         String sf1 = sss.get().getSecondFirstType1();
         String sf2 = sss.get().getSecondFirstType2();
         String sf3 = sss.get().getSecondFirstType3();
@@ -1562,6 +1561,8 @@ public class DownloadAdmissionApplicationController {
         model.addAttribute("sst11", sss.get().getSecondSecondType11());
         model.addAttribute("tft11", sss.get().getThirdFirstType11());
 
+        Optional<PersonalDataEntity> sda = personalDataRepository.findById((Long) session.getAttribute("percode"));
+        model.addAttribute("middleschool",sda.get().getAmiddle_school());
         return "DownloadGradeData.html";
     }
 }
