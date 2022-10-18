@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+
+<!-- =========================================================
+* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+==============================================================
+
+* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
+* Created by: ThemeSelection
+* License: You must have a valid license purchased in order to legally use the theme for your project.
+* Copyright ThemeSelection (https://themeselection.com)
+
+=========================================================
+ -->
+<!-- beautify ignore:start -->
+<html
+        lang="en"
+        class="light-style layout-menu-fixed"
+        dir="ltr"
+        data-theme="theme-default"
+        data-assets-path="../assets/"
+        data-template="vertical-menu-template-free"
+        xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+
+    <title>입학원서 확인</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+            rel="stylesheet"
+    />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="/vendor/fonts/boxicons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script src="/vendor/js/helpers.js"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="/js/config.js"></script>
+</head>
+<body>
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+        <!-- Menu -->
+            <div class="content-wrapper">
+                <!-- Content -->
+
+                <div class="container-xxl flex-grow-1 container-p-y">
+                    <h4 class="fw-bold py-3 mb-5"><span class="text-muted fw-light">인적사항입력 /</span> 2023학년 신입생 입학원서 작성</h4>
+                    <div>
+                        <!-- Basic -->
+                        <div class="card">
+                            <div>
+                                <div class="row">
+                                    <div class="mb-3 col-md-6">
+                                        <h5 class="card-header">지원자</h5>
+                                        <div class="card-body demo-vertical-spacing demo-only-element">
+                                            <div class="input-group">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">성명</label>
+                                                    <input
+                                                            id="username"
+                                                            type="text"
+                                                            class="form-control"
+                                                            placeholder="이름입력"
+                                                            aria-label="Username"
+                                                            aria-describedby="basic-addon11"
+                                                            th:value="${name}"
+                                                    />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">생년월일</label>
+                                                    <input
+                                                            id="userbirthday"
+                                                            type="text"
+                                                            class="form-control"
+                                                            placeholder="년도입력 ex)021225"
+                                                            aria-label="Userdate"
+                                                            aria-describedby="basic-addon12"
+                                                            th:value="${birthday}"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="input-group">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">성별</label>
+                                                    <div id="usersex" class="form-control">
+                                                        <input
+                                                                class="form-check-input"
+                                                                type="radio"
+                                                                name="sexradio"
+                                                                id="inlineRadio1"
+                                                                value="0"
+                                                                th:checked = "${sex == 0}"
+                                                        />
+                                                        <label class="form-check-label" for="inlineRadio1">남자 &nbsp;</label>
+                                                        <input
+                                                                class="form-check-input"
+                                                                type="radio"
+                                                                name="sexradio"
+                                                                id="inlineRadio2"
+                                                                value="1"
+                                                                th:checked = "${sex == 1}"
+                                                        />
+                                                        <label class="form-check-label" for="inlineRadio2">여자</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">전화번호</label>
+                                                    <input
+                                                            id="userphone"
+                                                            type="text"
+                                                            class="form-control"
+                                                            placeholder="- 없이 입력해주세요"
+                                                            aria-label="Userdate"
+                                                            aria-describedby="basic-addon14"
+                                                            th:value="${phone}"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="input-group">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">우편번호</label>
+                                                    <input
+                                                            id="zonecode"
+                                                            type="none"
+                                                            class="form-control"
+                                                            aria-label="Userdate"
+                                                            aria-describedby="basic-addon15"
+                                                            readonly
+                                                            th:value="${postal}"
+                                                    />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">검색</label><br>
+                                                    <input type="button" class="btn btn-primary" name="postcode" value="우편번호 찾기" onclick="openDaumPostcodePopup()" >
+                                                </div>
+                                            </div>
+                                            <div class="input-group">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">주소</label>
+                                                    <input
+                                                            id="address"
+                                                            type="text"
+                                                            class="form-control"
+                                                            aria-label="Username"
+                                                            aria-describedby="basic-addon11"
+                                                            readonly
+                                                            th:value="${address}"
+                                                    />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">상세주소</label>
+                                                    <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            aria-label="Userdate"
+                                                            aria-describedby="basic-addon12"
+                                                            id="detail_address"
+                                                            th:value="${detaliedaddress}"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h5 class="card-header">보호자</h5>
+                                        <div class="card-body demo-vertical-spacing demo-only-element">
+                                            <div class="input-group">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">보호자 성명</label>
+                                                    <input
+                                                            id="guardian"
+                                                            type="text"
+                                                            class="form-control"
+                                                            placeholder="이름입력"
+                                                            aria-label="Username"
+                                                            aria-describedby="basic-addon11"
+                                                            th:value="${guardian}"
+                                                    />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">집전화</label>
+                                                    <input
+                                                            id="homephone"
+                                                            type="text"
+                                                            class="form-control"
+                                                            placeholder="-없이 입력해주세요"
+                                                            aria-label="Userdate"
+                                                            aria-describedby="basic-addon12"
+                                                            th:value="${homephone}"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="input-group">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">관계</label>
+                                                    <input
+                                                            id="parental"
+                                                            type="text"
+                                                            class="form-control"
+                                                            aria-label="Username"
+                                                            aria-describedby="basic-addon11"
+                                                            th:value="${parental}"
+                                                    />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">휴대폰</label>
+                                                    <input
+                                                            id="parentalphone"
+                                                            type="text"
+                                                            class="form-control"
+                                                            placeholder="-없이 입력해주세요"
+                                                            aria-label="Userdate"
+                                                            aria-describedby="basic-addon12"
+                                                            th:value="${parentalphone}"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h5 class="card-header">원서담당자(담임)</h5>
+                                        <div class="card-body demo-vertical-spacing demo-only-element">
+                                            <div class="input-group">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">성명</label>
+                                                    <input
+                                                            id="adminparental"
+                                                            type="text"
+                                                            class="form-control"
+                                                            aria-label="Username"
+                                                            aria-describedby="basic-addon11"
+                                                            th:value="${inchargename}"
+                                                    />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">연락처</label>
+                                                    <input
+                                                            id="adminphone"
+                                                            type="text"
+                                                            class="form-control"
+                                                            placeholder="-없이 입력해주세요"
+                                                            aria-label="Userdate"
+                                                            aria-describedby="basic-addon12"
+                                                            th:value="${inchargephone}"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4 col-md-6">
+                                        <div style="text-align:center" class="card-body demo-vertical-spacing ">
+                                            <div>
+                                                <br><br>
+                                            <img
+                                                    multiple
+                                                    type="file"
+                                                    th:src="'/file?fileName='+${idpicture}"
+                                                    onerror="this.onerror=null; this.src='/file?fileName=12.PNG';"
+                                                    class="rounded"
+                                                    align="center"
+                                                    height="400"
+                                                    width="300"
+                                                    id="uploadedAvatar"
+                                            />
+                                            </div>
+                                            <p class="text-muted mb-0">※ 최근 3개월 이내 사진 (3X4)</p>
+                                            <label for="upload" class="btn btn-primary" tabindex="0">
+                                                <span class="d-none d-sm-block">사진등록</span>
+                                                <i class="bx bx-upload d-block d-sm-none"></i>
+                                                <input
+                                                        multiple
+                                                        type="file"
+                                                        id="upload"
+                                                        class="account-file-input"
+                                                        hidden
+                                                        accept="image/png, image/jpeg"
+                                                />
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top:20px"></div>
+                        <div class="card">
+                            <h5 class="card-header">출신중학교</h5>
+                            <div class="card-body demo-vertical-spacing demo-only-element">
+                                <div class="input-group">
+                                    <div class="col-md-6">
+                                        <label class="form-label">중학교명</label>
+                                        <input
+                                                id="scName"
+                                                type="none"
+                                                class="form-control"
+                                                aria-label="Userdate"
+                                                aria-describedby="basic-addon15"
+                                                readonly
+                                                th:value="${middleschool}"
+                                        />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">검색</label><br>
+                                        <input type="button" class="btn btn-primary modalid" name="postcode" value="중학교 검색" >
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <div class="col-md-6">
+                                        <label class="form-label">중학교연락처</label>
+                                        <input
+                                                id="scphone"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="-없이 입력해주세요 ex)06212345678"
+                                                aria-label="Userdate"
+                                                aria-describedby="basic-addon12"
+                                                th:value="${middleschoolphone}"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <div class="col-md-6">
+                                        <label class="form-label">지역명 (시도)</label>
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                aria-label="Username"
+                                                aria-describedby="basic-addon27"
+                                                id="sido"
+                                                readonly
+                                                th:value="${areaname}"
+                                        />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">검색</label><br>
+                                        <input type="button" class="btn btn-primary" name="postcode" value="지역검색" onclick="openDaumPostcodePopup1()" >
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <div class="col-md-6">
+                                        <label class="form-label">시•군•구</label>
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                aria-label="Username"
+                                                aria-describedby="basic-addon27"
+                                                id="sigungu"
+                                                readonly
+                                                th:value="${area2name}"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <div class="col-md-6">
+                                        <label class="form-label">졸업년월</label>
+                                        <div class="form-control">
+                                            <select id="year" setDisplayCount="5">
+                                                <option value="2010" th:selected="${agraduationyear == 2010}">2010</option>
+                                                <option value="2011" th:selected="${agraduationyear == 2011}">2011</option>
+                                                <option value="2012" th:selected="${agraduationyear == 2012}">2012</option>
+                                                <option value="2013" th:selected="${agraduationyear == 2013}">2013</option>
+                                                <option value="2014" th:selected="${agraduationyear == 2014}">2014</option>
+                                                <option value="2015" th:selected="${agraduationyear == 2015}">2015</option>
+                                                <option value="2016" th:selected="${agraduationyear == 2016}">2016</option>
+                                                <option value="2017" th:selected="${agraduationyear == 2017}">2017</option>
+                                                <option value="2018" th:selected="${agraduationyear == 2018}">2018</option>
+                                                <option value="2019" th:selected="${agraduationyear == 2019}">2019</option>
+                                                <option value="2020" th:selected="${agraduationyear == 2020}">2020</option>
+                                                <option value="2021" th:selected="${agraduationyear == 2021}">2021</option>
+                                                <option value="2022" th:selected="${agraduationyear == 2022}">2022</option>
+                                                <option value="2023" th:selected="${agraduationyear == 2023}">2023</option>
+                                                <option value="2024" th:selected="${agraduationyear == 2024}">2024</option>
+                                                <option value="2025" th:selected="${agraduationyear == 2025}">2025</option>
+                                                <option value="2026" th:selected="${agraduationyear == 2026}">2026</option>
+                                                <option value="2027" th:selected="${agraduationyear == 2027}">2027</option>
+                                                <option value="2028" th:selected="${agraduationyear == 2028}">2028</option>
+                                                <option value="2029" th:selected="${agraduationyear == 2029}">2029</option>
+                                                <option value="2030" th:selected="${agraduationyear == 2030}">2030</option>
+                                            </select>&nbsp; 년&nbsp;
+                                            <select id="month" setDisplayCount="5">
+                                                <option value="1" th:selected="${agraduationmonth == 1}">1</option>
+                                                <option value="2" th:selected="${agraduationmonth == 2}">2</option>
+                                                <option value="3" th:selected="${agraduationmonth == 3}">3</option>
+                                                <option value="4" th:selected="${agraduationmonth == 4}">4</option>
+                                                <option value="5" th:selected="${agraduationmonth == 5}">5</option>
+                                                <option value="6" th:selected="${agraduationmonth == 6}">6</option>
+                                                <option value="7" th:selected="${agraduationmonth == 7}">7</option>
+                                                <option value="8" th:selected="${agraduationmonth == 8}">8</option>
+                                                <option value="9" th:selected="${agraduationmonth == 9}">9</option>
+                                                <option value="10" th:selected="${agraduationmonth == 10}">10</option>
+                                                <option value="11" th:selected="${agraduationmonth == 11}">11</option>
+                                                <option value="12" th:selected="${agraduationmonth == 12}">12</option>
+                                            </select>&nbsp;월
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">졸업구분</label>
+                                        <div class="form-control">
+                                            <input
+                                                    class="form-check-input"
+                                                    type="radio"
+                                                    name="graduation"
+                                                    id="inlineRadio3"
+                                                    value="0"
+                                                    th:checked="${agraduationtype == 0}"
+                                            />
+                                            <label class="form-check-label" for="inlineRadio1">졸업예정자 &nbsp;</label>
+                                            <input
+                                                    class="form-check-input"
+                                                    type="radio"
+                                                    name="graduation"
+                                                    id="inlineRadio4"
+                                                    value="1"
+                                                    th:checked="${agraduationtype == 1}"
+                                            />
+                                            <label class="form-check-label" for="inlineRadio2">졸업자 &nbsp;</label>
+                                            <input
+                                                    class="form-check-input"
+                                                    type="radio"
+                                                    name="graduation"
+                                                    id="inlineRadio5"
+                                                    value="2"
+                                                    th:checked="${agraduationtype == 2}"
+                                            />
+                                            <label class="form-check-label" for="inlineRadio2">검정고시</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top:20px"></div>
+                        <div class="card">
+                            <h5 class="card-header">전형구분</h5>
+                            <div class="card-body demo-vertical-spacing demo-only-element">
+                                <div class="table-responsive text-nowrap">
+                                    <div class="col-md-table">
+                                        <table class="table table-bordered" >
+                                            <tr>
+                                                <td align = "center" rowspan="3">일반전형</td>
+                                                <td colspan="3">
+                                                    <input
+                                                            class="form-check-input"
+                                                            type="radio"
+                                                            name="classifcation"
+                                                            id="inlineRadio6"
+                                                            value="0"
+                                                            th:checked="${classification == 0}"
+                                                    />
+                                                    <label class="form-check-label" for="inlineRadio6">졸업예정자</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">
+                                                    <input
+                                                            class="form-check-input"
+                                                            type="radio"
+                                                            name="classifcation"
+                                                            id="inlineRadio7"
+                                                            value="1"
+                                                            th:checked="${classification == 1}"
+                                                    />
+                                                    <label class="form-check-label" for="inlineRadio6">졸업자</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">
+                                                    <input
+                                                            class="form-check-input"
+                                                            type="radio"
+                                                            name="classifcation"
+                                                            id="inlineRadio8"
+                                                            value="2"
+                                                            th:checked="${classification == 2}"
+                                                    />
+                                                    <label class="form-check-label" for="inlineRadio6">검정고시</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td rowspan="10" align="center">사회통합전형</td>
+                                                <td rowspan="7" align="center">기회균등전형</td>
+                                                <td colspan="2">
+                                                    <input
+                                                            class="form-check-input"
+                                                            type="radio"
+                                                            name="classifcation"
+                                                            id="inlineRadio9"
+                                                            value="3"
+                                                            th:checked="${classification == 3}"
+                                                    />
+                                                    <label class="form-check-label" for="inlineRadio7">기초생활수급자</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td rowspan="2">차상위계층</td>
+                                                <td>
+                                                    <input
+                                                            class="form-check-input"
+                                                            type="radio"
+                                                            name="classifcation"
+                                                            id="inlineRadio10"
+                                                            value="4"
+                                                            th:checked="${classification == 4}"
+                                                    />
+                                                    <label class="form-check-label" for="inlineRadio8">법정</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input
+                                                            class="form-check-input"
+                                                            type="radio"
+                                                            name="classifcation"
+                                                            id="inlineRadio11"
+                                                            value="5"
+                                                            th:checked="${classification == 5}"
+                                                    />
+                                                    <label class="form-check-label" for="inlineRadio9">비법정</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <input
+                                                            class="form-check-input"
+                                                            type="radio"
+                                                            name="classifcation"
+                                                            id="inlineRadio12"
+                                                            value="6"
+                                                            th:checked="${classification == 6}"
+                                                    />
+                                                    <label class="form-check-label" for="inlineRadio10">차차상위계층</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <input
+                                                            class="form-check-input"
+                                                            type="radio"
+                                                            name="classifcation"
+                                                            id="inlineRadio13"
+                                                            value="7"
+                                                            th:checked="${classification == 7}"
+                                                    />
+                                                    <label class="form-check-label" for="inlineRadio11">저소득 한부모가족 보호대상자</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <input
+                                                            class="form-check-input"
+                                                            type="radio"
+                                                            name="classifcation"
+                                                            id="inlineRadio14"
+                                                            value="8"
+                                                            th:checked="${classification == 8}"
+                                                    />
+                                                    <label class="form-check-label" for="inlineRadio12">교육지원대상자(국가보훈처지정)</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <input
+                                                            class="form-check-input"
+                                                            type="radio"
+                                                            name="classifcation"
+                                                            id="inlineRadio15"
+                                                            value="9"
+                                                            th:checked="${classification == 9}"
+                                                    />
+                                                    <label class="form-check-label" for="inlineRadio13">보호대상아동</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td rowspan="3" align = "center">사회다양성 전형</td>
+                                                <td colspan="2">
+                                                    <input
+                                                            class="form-check-input"
+                                                            type="radio"
+                                                            name="classifcation"
+                                                            id="inlineRadio16"
+                                                            value="10"
+                                                            th:checked="${classification == 10}"
+                                                    />
+                                                    <label class="form-check-label" for="inlineRadio14">다문화 가정 자녀</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <input
+                                                            class="form-check-input"
+                                                            type="radio"
+                                                            name="classifcation"
+                                                            id="inlineRadio17"
+                                                            value="11"
+                                                            th:checked="${classification == 11}"
+                                                    />
+                                                    <label class="form-check-label" for="inlineRadio15">북한이탈주민 또는 그 자녀</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <input
+                                                            class="form-check-input"
+                                                            type="radio"
+                                                            name="classifcation"
+                                                            id="inlineRadio18"
+                                                            value="12"
+                                                            th:checked="${classification == 12}"
+                                                    />
+                                                    <label class="form-check-label" for="inlineRadio16">소년소녀가장</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td rowspan="3" align="center">특별전형 (정원 외)</td>
+                                                <td colspan="3">
+                                                    <input
+                                                            class="form-check-input"
+                                                            type="radio"
+                                                            name="classifcation"
+                                                            id="inlineRadio19"
+                                                            value="13"
+                                                            th:checked="${classification == 13}"
+                                                    />
+                                                    <label class="form-check-label" for="inlineRadio17">교육지원대상자</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">
+                                                    <input
+                                                            class="form-check-input"
+                                                            type="radio"
+                                                            name="classifcation"
+                                                            id="inlineRadio20"
+                                                            value="14"
+                                                            th:checked="${classification == 14}"
+                                                    />
+                                                    <label class="form-check-label" for="inlineRadio18">북한이탈주민 또는 그 자녀</label>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div style="width: 100% margin-top:20px" id="insertbtn">
+                            <br>
+                            <div style="width: 150px;margin: auto">
+                                <a onclick="handlerLogin1()" style="color:white" type="button" class="btn btn-warning">수정</a>
+                            </div>
+                        </div>
+                    <!-- Custom file input -->
+                </div>
+            </div>
+            <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+
+    <!-- Overlay -->
+</div>
+</div>
+<!-- / Layout wrapper -->
+<div id="modal" class="modal">
+    <div class="modal_content1">
+        <div class="card-body demo-vertical-spacing demo-only-element">
+            <div class="input-group">
+                <select class="form-select" id="jiyeok">
+                    <option value="100260">서울특별시</option>
+                    <option value="100267">부산광역시</option>
+                    <option value="100272">대구광역시</option>
+                    <option value="100269">인천광역시</option>
+                    <option value="100275">광주광역시</option>
+                    <option value="100271">대전광역시</option>
+                    <option value="100273">울산광역시</option>
+                    <option value="100704">세종특별자치시</option>
+                    <option value="100276">경기도</option>
+                    <option value="100278">강원도</option>
+                    <option value="100280">충청북도</option>
+                    <option value="100281">충청남도</option>
+                    <option value="100282">전라북도</option>
+                    <option value="100283">전라남도</option>
+                    <option value="100285">경상북도</option>
+                    <option value="100291">경상남도</option>
+                    <option value="100292">제주특별자치도</option>
+                </select>
+                <select class="form-select" id="level">
+                    <option value="elem_list">초등학교</option>
+                    <option value="midd_list">중학교</option>
+                    <option value="high_list">고등학교</option>
+                    <option value="seet_list">특수학교</option>
+                </select>
+                <input class="form-control" id="name" type="text" placeholder="학교이름" onkeyup="enterkey()">
+                <input type="button" class="btn btn-primary" id="searching" value="검색" onclick="search()">
+            </div>
+            <div id="schoolList"></div>
+            <button id="close" class="btn btn-primary" onclick="close()">닫기</button>
+        </div>
+    </div>
+</div>
+<!-- Core JS -->
+<!-- build:js assets/vendor/js/core.js -->
+<script src="/vendor/libs/jquery/jquery.js"></script>
+<script src="/vendor/libs/popper/popper.js"></script>
+<script src="/vendor/js/bootstrap.js"></script>
+<script src="/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="/vendor/js/menu.js"></script>
+<!-- endbuild -->
+<!-- Vendors JS -->
+
+<!-- Main JS -->
+<script src="/js/main.js"></script>
+<script src="/js/school.js"></script>
+<script src="/js/Modify.js"></script>
+
+<!--주소 API-->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<!-- Page JS -->
+    <script src="/js/pages-account-settings-account.js"></script>
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>
+</html>

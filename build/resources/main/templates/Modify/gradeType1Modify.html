@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+
+<html
+        lang="en"
+        class="light-style layout-menu-fixed"
+        dir="ltr"
+        data-theme="theme-default"
+        data-assets-path="../assets/"
+        data-template="vertical-menu-template-free"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+  <meta charset="utf-8" />
+  <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+  />
+
+  <title>성적입력</title>
+
+  <meta name="description" content="" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet"
+  />
+
+  <!-- Icons. Uncomment required icon fonts -->
+  <link rel="stylesheet" href="/vendor/fonts/boxicons.css" />
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="/vendor/css/core.css" class="template-customizer-core-css" />
+  <link rel="stylesheet" href="/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+  <link rel="stylesheet" href="/css/demo.css" />
+
+  <!-- Vendors CSS -->
+  <link rel="stylesheet" href="/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+  <!-- Page CSS -->
+
+  <!-- Helpers -->
+  <script src="/vendor/js/helpers.js"></script>
+
+  <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+  <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+  <script src="/js/config.js"></script>
+  <style>
+    .result-table{
+      border: 1px solid #444444;
+      border-collapse: collapse;
+    }
+    th, td {
+      text-align: center;
+    }
+    .card-header{
+      text-align: center;
+    }
+    .card{
+      margin-bottom: 20px;
+    }
+    .p1btns{
+      width: 160px;
+    }
+  </style>
+</head>
+
+<body>
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar">
+  <div class="layout-container">
+
+    <!-- Layout container -->
+
+    <!-- Content wrapper -->
+    <div class="content-wrapper">
+      <!-- Content -->
+
+      <div class="container-xxl flex-grow-1 container-p-y">
+        <div style="float: right">2023 - 학년 신입생 입학원서 작성</div>
+        <input id="scck" type="hidden" value="0">
+        <h4 class="fw-bold py-3 mb-4"
+            th:if="${s1class == 0 || s1class == 1 || s1class == 2}"
+            th:id="s1class"
+            th:text="|성적입력 (졸업자)-일반전형|"
+            th:value="${s1class}"></h4>
+        <h4 class="fw-bold py-3 mb-4"
+            th:if="${s1class==3 || s1class==4 ||s1class==5 ||s1class==6 ||
+              s1class==7 ||s1class==8 ||s1class==9 ||s1class==10 ||s1class==11 ||s1class==12}"
+            th:id="s1class"
+            th:text="|성적입력 (졸업자)-사회통합전형|"
+            th:value="${s1class}"></h4>
+
+        <div class="row">
+
+          <!-- Bordered Table -->
+          <div class="card">
+            <h5 class="card-header" style="font-weight: bold">성적 환산 표</h5>
+            <div class="card-body">
+              <div class="table-responsive text-nowrap">
+                <table class="table table-bordered">
+                  <colgroup>
+                    <col width="25%" />
+                    <col width="25%" />
+                    <col width="25%" />
+                    <col width="25%" />
+                  </colgroup>
+                  <thead>
+                  <tr>
+                    <th colspan="2">일반교과</th>
+                    <th colspan="2">예체능교과</th>
+                  </tr>
+                  </thead>
+                  <tbody id="grade-result-table">
+                  <tr>
+                    <td>평어</td>
+                    <td>성취도</td>
+                    <td>평어</td>
+                    <td>성취도</td>
+                  </tr>
+                  <tr>
+                    <td>수</td>
+                    <td>A</td>
+                    <td>우수</td>
+                    <td>A</td>
+                  </tr>
+                  <tr>
+                    <td>우</td>
+                    <td>B</td>
+                    <td>보통</td>
+                    <td>B</td>
+                  </tr>
+                  <tr>
+                    <td>미</td>
+                    <td>C</td>
+                    <td>미흡</td>
+                    <td>C</td>
+                  </tr>
+                  <tr>
+                    <td>양</td>
+                    <td>D</td>
+                    <!--                      <td th:text="${sss.get().getSecondFirstType1()}"></td>-->
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>가</td>
+                    <td>E</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="card" id="grade_type1">
+            <h5 class="card-header" style="font-weight: bold">교과성적입력</h5>
+            <div class="card-body">
+              <div class="table-responsive text-nowrap">
+                <table class="table table-bordered">
+                  <tbody>
+                  <colgroup>
+                    <col width="20%" />
+                    <col width="20%" />
+                    <col width="20%" />
+                    <col width="20%" />
+                    <col width="20%" />
+                  </colgroup>
+                  <tr>
+                    <td colspan="2"></td>
+                    <td colspan="3">학년</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2" colspan="2">과목</td>
+                    <td colspan="2">2학년</td>
+                    <td>3학년</td>
+                  </tr>
+                  <tr>
+                    <td>1학기</td>
+                    <td>2학기</td>
+                    <td>1학기</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="11">일반교과</td>
+                    <td>국어</td>
+                    <td>
+                      <select class="form-select form-select-sm" id="sf1" onchange="cksf1()">
+                        <option th:selected="${sss.get().getSecondFirstType1() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondFirstType1() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondFirstType1() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondFirstType1() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getSecondFirstType1() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getSecondFirstType1() == 'E'}">E</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="ss1" onchange="ckss1()">
+                        <option th:selected="${sss.get().getSecondSecondType1() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondSecondType1() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondSecondType1() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondSecondType1() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getSecondSecondType1() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getSecondSecondType1() == 'E'}">E</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="tf1" onchange="cktf1()">
+                        <option th:selected="${sss.get().getThirdFirstType1() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getThirdFirstType1() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getThirdFirstType1() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getThirdFirstType1() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getThirdFirstType1() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getThirdFirstType1() == 'E'}">E</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>도덕</td>
+                    <td>
+                      <select class="form-select form-select-sm" id="sf2" onchange="cksf2()">
+                        <option th:selected="${sss.get().getSecondFirstType2() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondFirstType2() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondFirstType2() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondFirstType2() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getSecondFirstType2() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getSecondFirstType2() == 'E'}">E</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="ss2" onchange="ckss2()">
+                        <option th:selected="${sss.get().getSecondSecondType2() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondSecondType2() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondSecondType2() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondSecondType2() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getSecondSecondType2() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getSecondSecondType2() == 'E'}">E</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="tf2" onchange="cktf2()">
+                        <option th:selected="${sss.get().getThirdFirstType2() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getThirdFirstType2() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getThirdFirstType2() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getThirdFirstType2() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getThirdFirstType2() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getThirdFirstType2() == 'E'}">E</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>사회</td>
+                    <td>
+                      <select class="form-select form-select-sm" id="sf3" onchange="cksf3()">
+                        <option th:selected="${sss.get().getSecondFirstType3() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondFirstType3() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondFirstType3() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondFirstType3() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getSecondFirstType3() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getSecondFirstType3() == 'E'}">E</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="ss3" onchange="ckss3()">
+                        <option th:selected="${sss.get().getSecondSecondType3() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondSecondType3() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondSecondType3() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondSecondType3() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getSecondSecondType3() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getSecondSecondType3() == 'E'}">E</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="tf3" onchange="cktf3()">
+                        <option th:selected="${sss.get().getThirdFirstType3() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getThirdFirstType3() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getThirdFirstType3() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getThirdFirstType3() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getThirdFirstType3() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getThirdFirstType3() == 'E'}">E</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>역사</td>
+                    <td>
+                      <select class="form-select form-select-sm" id="sf4" onchange="cksf4()">
+                        <option th:selected="${sss.get().getSecondFirstType4() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondFirstType4() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondFirstType4() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondFirstType4() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getSecondFirstType4() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getSecondFirstType4() == 'E'}">E</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="ss4" onchange="ckss4()">
+                        <option th:selected="${sss.get().getSecondSecondType4() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondSecondType4() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondSecondType4() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondSecondType4() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getSecondSecondType4() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getSecondSecondType4() == 'E'}">E</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="tf4" onchange="cktf4()">
+                        <option th:selected="${sss.get().getThirdFirstType4() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getThirdFirstType4() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getThirdFirstType4() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getThirdFirstType4() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getThirdFirstType4() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getThirdFirstType4() == 'E'}">E</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>수학</td>
+                    <td>
+                      <select class="form-select form-select-sm" id="sf5" onchange="cksf5()">
+                        <option th:selected="${sss.get().getSecondFirstType5() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondFirstType5() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondFirstType5() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondFirstType5() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getSecondFirstType5() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getSecondFirstType5() == 'E'}">E</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="ss5" onchange="ckss5()">
+                        <option th:selected="${sss.get().getSecondSecondType5() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondSecondType5() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondSecondType5() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondSecondType5() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getSecondSecondType5() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getSecondSecondType5() == 'E'}">E</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="tf5" onchange="cktf5()">
+                        <option th:selected="${sss.get().getThirdFirstType5() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getThirdFirstType5() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getThirdFirstType5() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getThirdFirstType5() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getThirdFirstType5() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getThirdFirstType5() == 'E'}">E</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>과학</td>
+                    <td>
+                      <select class="form-select form-select-sm" id="sf6" onchange="cksf6()">
+                        <option th:selected="${sss.get().getSecondFirstType6() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondFirstType6() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondFirstType6() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondFirstType6() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getSecondFirstType6() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getSecondFirstType6() == 'E'}">E</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="ss6" onchange="ckss6()">
+                        <option th:selected="${sss.get().getSecondSecondType6() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondSecondType6() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondSecondType6() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondSecondType6() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getSecondSecondType6() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getSecondSecondType6() == 'E'}">E</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="tf6" onchange="cktf6()">
+                        <option th:selected="${sss.get().getThirdFirstType6() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getThirdFirstType6() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getThirdFirstType6() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getThirdFirstType6() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getThirdFirstType6() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getThirdFirstType6() == 'E'}">E</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>기술가정</td>
+                    <td>
+                      <select class="form-select form-select-sm" id="sf7" onchange="cksf7()">
+                        <option th:selected="${sss.get().getSecondFirstType7() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondFirstType7() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondFirstType7() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondFirstType7() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getSecondFirstType7() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getSecondFirstType7() == 'E'}">E</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="ss7" onchange="ckss7()">
+                        <option th:selected="${sss.get().getSecondSecondType7() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondSecondType7() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondSecondType7() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondSecondType7() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getSecondSecondType7() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getSecondSecondType7() == 'E'}">E</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="tf7" onchange="cktf7()">
+                        <option th:selected="${sss.get().getThirdFirstType7() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getThirdFirstType7() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getThirdFirstType7() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getThirdFirstType7() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getThirdFirstType7() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getThirdFirstType7() == 'E'}">E</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>영어</td>
+                    <td>
+                      <select class="form-select form-select-sm" id="sf8" onchange="cksf8()">
+                        <option th:selected="${sss.get().getSecondFirstType8() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondFirstType8() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondFirstType8() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondFirstType8() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getSecondFirstType8() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getSecondFirstType8() == 'E'}">E</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="ss8" onchange="ckss8()">
+                        <option th:selected="${sss.get().getSecondSecondType8() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondSecondType8() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondSecondType8() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondSecondType8() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getSecondSecondType8() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getSecondSecondType8() == 'E'}">E</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="tf8" onchange="cktf8()">
+                        <option th:selected="${sss.get().getThirdFirstType8() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getThirdFirstType8() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getThirdFirstType8() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getThirdFirstType8() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getThirdFirstType8() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getThirdFirstType8() == 'E'}">E</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input th:value="${sss.get().getFirstPlusName()}" id="infpl1" style="margin:auto; text-align:center;" class="form-control" type="text" placeholder="과목추가" ></td>
+                    <td>
+                      <select class="form-select form-select-sm" id="fpl1" onchange="ckfpl1()">
+                        <option th:selected="${sss.get().getFirstPlusType1() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getFirstPlusType1() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getFirstPlusType1() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getFirstPlusType1() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getFirstPlusType1() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getFirstPlusType1() == 'E'}">E</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="spl1" onchange="ckspl1()">
+                        <option th:selected="${sss.get().getSecondPlusType1() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondPlusType1() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondPlusType1() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondPlusType1() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getSecondPlusType1() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getSecondPlusType1() == 'E'}">E</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="tpl1" onchange="cktpl1()">
+                        <option th:selected="${sss.get().getThirdPlusType1() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getThirdPlusType1() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getThirdPlusType1() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getThirdPlusType1() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getThirdPlusType1() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getThirdPlusType1() == 'E'}">E</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input th:value="${sss.get().getSecondPlusName()}" id="infpl2" style="margin:auto; text-align:center;" class="form-control" type="text" placeholder="과목추가" ></td>
+                    <td>
+                      <select class="form-select form-select-sm" id="fpl2" onchange="ckfpl2()">
+                        <option th:selected="${sss.get().getFirstPlusType2() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getFirstPlusType2() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getFirstPlusType2() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getFirstPlusType2() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getFirstPlusType2() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getFirstPlusType2() == 'E'}">E</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="spl2" onchange="ckspl2()">
+                        <option th:selected="${sss.get().getSecondPlusType2() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondPlusType2() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondPlusType2() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondPlusType2() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getSecondPlusType2() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getSecondPlusType2() == 'E'}">E</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="tpl2" onchange="cktpl2()">
+                        <option th:selected="${sss.get().getThirdPlusType2() =='선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getThirdPlusType2() =='A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getThirdPlusType2() =='B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getThirdPlusType2() =='C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getThirdPlusType2() =='D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getThirdPlusType2() =='E'}">E</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input th:value="${sss.get().getThirdPlusName()}" id="infpl3" style="margin:auto; text-align:center;" class="form-control" type="text" placeholder="과목추가" ></td>
+                    <td>
+                      <select class="form-select form-select-sm" id="fpl3" onchange="ckfpl3()">
+                        <option th:selected="${sss.get().getFirstPlusType3() =='선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getFirstPlusType3() =='A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getFirstPlusType3() =='B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getFirstPlusType3() =='C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getFirstPlusType3() =='D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getFirstPlusType3() =='E'}">E</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="spl3" onchange="ckspl3()">
+                        <option th:selected="${sss.get().getSecondPlusType3() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondPlusType3() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondPlusType3() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondPlusType3() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getSecondPlusType3() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getSecondPlusType3() == 'E'}">E</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="tpl3" onchange="cktpl3()">
+                        <option th:selected="${sss.get().getThirdPlusType3() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getThirdPlusType3() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getThirdPlusType3() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getThirdPlusType3() == 'C'}">C</option>
+                        <option value="D" th:selected="${sss.get().getThirdPlusType3() == 'D'}">D</option>
+                        <option value="E" th:selected="${sss.get().getThirdPlusType3() == 'E'}">E</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td rowspan="3">체육예술교과</td>
+                    <td>체육</td>
+                    <td>
+                      <select class="form-select form-select-sm" id="sf9" onchange="cksf9()">
+                        <option th:selected="${sss.get().getSecondFirstType9() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondFirstType9() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondFirstType9() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondFirstType9() == 'C'}">C</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="ss9" onchange="ckss9()">
+                        <option th:selected="${sss.get().getSecondSecondType9() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondSecondType9() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondSecondType9() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondSecondType9() == 'C'}">C</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="tf9" onchange="cktf9()">
+                        <option th:selected="${sss.get().getThirdFirstType9() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getThirdFirstType9() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getThirdFirstType9() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getThirdFirstType9() == 'C'}">C</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>미술</td>
+                    <td>
+                      <select class="form-select form-select-sm" id="sf10" onchange="cksf10()">
+                        <option th:selected="${sss.get().getSecondFirstType10() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondFirstType10() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondFirstType10() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondFirstType10() == 'C'}">C</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="ss10" onchange="ckss10()">
+                        <option th:selected="${sss.get().getSecondSecondType10() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondSecondType10() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondSecondType10() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondSecondType10() == 'C'}">C</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="tf10" onchange="cktf10()">
+                        <option th:selected="${sss.get().getThirdFirstType10() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getThirdFirstType10() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getThirdFirstType10() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getThirdFirstType10() == 'C'}">C</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>음악</td>
+                    <td>
+                      <select class="form-select form-select-sm" id="sf11" onchange="cksf11()">
+                        <option th:selected="${sss.get().getSecondFirstType11() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondFirstType11() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondFirstType11() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondFirstType11() == 'C'}">C</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="ss11" onchange="ckss11()">
+                        <option th:selected="${sss.get().getSecondSecondType11() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getSecondSecondType11() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getSecondSecondType11() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getSecondSecondType11() == 'C'}">C</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select form-select-sm" id="tf11" onchange="cktf11()">
+                        <option th:selected="${sss.get().getThirdFirstType11() == '선택'}">선택</option>
+                        <option value="A" th:selected="${sss.get().getThirdFirstType11() == 'A'}">A</option>
+                        <option value="B" th:selected="${sss.get().getThirdFirstType11() == 'B'}">B</option>
+                        <option value="C" th:selected="${sss.get().getThirdFirstType11() == 'C'}">C</option>
+                      </select>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="card" id="grade_type2">
+            <h5 class="card-header" style="font-weight: bold">비교과 성적입력</h5>
+            <div class="card-body">
+              <div class="table-responsive text-nowrap">
+                <table class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td rowspan="3">출결상황</td>
+                    <td colspan="4">1학년</td>
+                    <td colspan="4">2학년</td>
+                    <td colspan="4">3학년</td>
+                  </tr>
+                  <tr>
+                    <td>결석</td>
+                    <td>지각</td>
+                    <td>조퇴</td>
+                    <td>결과</td>
+                    <td>결석</td>
+                    <td>지각</td>
+                    <td>조퇴</td>
+                    <td>결과</td>
+                    <td>결석</td>
+                    <td>지각</td>
+                    <td>조퇴</td>
+                    <td>결과</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input class="form-control form-control-sm"
+                             type="number" min=0 onkeyup="zzz(event)"
+                             placeholder="0" th:value="${sss.get().getFirstAbsant()}" id="fab" />
+                    </td>
+                    <td>
+                      <input class="form-control form-control-sm"
+                             type="number" min=0 onkeyup="zzz(event)"
+                             placeholder="0" th:value="${sss.get().getFirstLate()}" id="fla"/>
+                    </td>
+                    <td>
+                      <input class="form-control form-control-sm"
+                             type="number" min=0 onkeyup="zzz(event)"
+                             placeholder="0" th:value="${sss.get().getFirstLeave()}" id="fle"/>
+                    </td>
+                    <td>
+                      <input class="form-control form-control-sm"
+                             type="number" min=0 onkeyup="zzz(event)"
+                             placeholder="0" th:value="${sss.get().getFirstResult()}" id="fre"/>
+                    </td>
+                    <td>
+                      <input class="form-control form-control-sm"
+                             type="number" min=0 onkeyup="zzz(event)"
+                             placeholder="0" th:value="${sss.get().getSecondAbsant()}" id="sab"/>
+                    </td>
+                    <td>
+                      <input class="form-control form-control-sm"
+                             type="number" min=0 onkeyup="zzz(event)"
+                             placeholder="0" th:value="${sss.get().getSecondLate()}" id="sla"/>
+                    </td>
+                    <td>
+                      <input class="form-control form-control-sm"
+                             type="number" min=0 onkeyup="zzz(event)"
+                             placeholder="0" th:value="${sss.get().getSecondLeave()}" id="sle"/>
+                    </td>
+                    <td>
+                      <input class="form-control form-control-sm"
+                             type="number" min=0 onkeyup="zzz(event)"
+                             placeholder="0" th:value="${sss.get().getSecondResult()}" id="sre"/>
+                    </td>
+                    <td>
+                      <input class="form-control form-control-sm"
+                             type="number" min=0 onkeyup="zzz(event)"
+                             placeholder="0" th:value="${sss.get().getThirdAbsant()}" id="tab"/>
+                    </td>
+                    <td>
+                      <input class="form-control form-control-sm"
+                             type="number" min=0 onkeyup="zzz(event)"
+                             placeholder="0" th:value="${sss.get().getThirdLate()}" id="tla"/>
+                    </td>
+                    <td>
+                      <input class="form-control form-control-sm"
+                             type="number" min=0 onkeyup="zzz(event)"
+                             placeholder="0" th:value="${sss.get().getThirdLeave()}" id="tle"/>
+                    </td>
+                    <td>
+                      <input class="form-control form-control-sm"
+                             type="number" min=0 onkeyup="zzz(event)"
+                             placeholder="0" th:value="${sss.get().getThirdResult()}" id="tre"/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>행동발달</td>
+                    <td colspan="4">
+                      <div style="float: left; width: 25%">기본점</div>
+                      <div style="float: left; width: 25%"><input class="form-control form-control-sm"
+                                                                  type="number"
+                                                                  placeholder="4.5"
+                                                                  readonly/></div>
+                      <div style="float: left; width: 25%">가산/감점</div>
+                      <div style="float: left; width: 25%"><input class="form-control form-control-sm"
+                                                                  type="number" min=-3 max=0.5 step=0.1 th:value="${fbd}" id="fbd"
+                                                                  placeholder="-3 ~ 0.5"/></div>
+                    </td>
+                    <td colspan="4">
+                      <div style="float: left; width: 25%">기본점</div>
+                      <div style="float: left; width: 25%"><input class="form-control form-control-sm"
+                                                                  type="number"
+                                                                  placeholder="4.5"
+                                                                  readonly/></div>
+                      <div style="float: left; width: 25%">가산/감점</div>
+                      <div style="float: left; width: 25%"><input class="form-control form-control-sm"
+                                                                  type="number" min=-3 max=0.5 step=0.1 th:value="${sbd}" id="sbd"
+                                                                  placeholder="-3 ~ 0.5"/></div>
+                    </td>
+                    <td colspan="4">
+                      <div style="float: left; width: 25%">기본점</div>
+                      <div style="float: left; width: 25%"><input class="form-control form-control-sm"
+                                                                  type="number"
+                                                                  placeholder="4.5"
+                                                                  readonly/></div>
+                      <div style="float: left; width: 25%">가산/감점</div>
+                      <div style="float: left; width: 25%"><input class="form-control form-control-sm"
+                                                                  type="number" min=-3 max=0.5 step=0.1 th:value="${tbd}" id="tbd"
+                                                                  placeholder="-3 ~ 0.5"/></div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>창의적체험활동</td>
+                    <td colspan="4">
+                      <div style="float: left; width: 25%">기본점</div>
+                      <div style="float: left; width: 25%"><input class="form-control form-control-sm"
+                                                                  type="number"
+                                                                  placeholder="4.5"
+                                                                  readonly/></div>
+                      <div style="float: left; width: 25%">가산점</div>
+                      <div style="float: left; width: 25%"><input class="form-control form-control-sm" onkeyup="zzz(event)"
+                                                                  type="number" min=0 max=0.5 step=0.1 th:value="${fea}" id="fea"
+                      /></div>
+                    </td>
+                    <td colspan="4">
+                      <div style="float: left; width: 25%">기본점</div>
+                      <div style="float: left; width: 25%"><input class="form-control form-control-sm"
+                                                                  type="number"
+                                                                  placeholder="4.5"
+                                                                  readonly/></div>
+                      <div style="float: left; width: 25%">가산점</div>
+                      <div style="float: left; width: 25%"><input class="form-control form-control-sm" onkeyup="zzz(event)"
+                                                                  type="number" min=0 max=0.5 step=0.1 th:value="${sea}" id="sea"
+                      /></div>
+                    </td>
+                    <td colspan="4">
+                      <div style="float: left; width: 25%">기본점</div>
+                      <div style="float: left; width: 25%"><input class="form-control form-control-sm"
+                                                                  type="number"
+                                                                  placeholder="4.5"
+                                                                  readonly/></div>
+                      <div style="float: left; width: 25%">가산점</div>
+                      <div style="float: left; width: 25%"><input class="form-control form-control-sm" onkeyup="zzz(event)"
+                                                                  type="number" min=0 max=0.5 step=0.1 th:value="${tea}" id="tea"
+                      /></div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>봉사활동(시간)</td>
+                    <td colspan="4"><input class="form-control form-control-sm" style="margin:auto;"
+                                           type="number" th:value="${sss.get().getFirstVolunteerActivityTime()}" id="fvat"
+                                           min=0 onkeyup="zzz(event)"/></td>
+                    <td colspan="4"><input class="form-control form-control-sm" style="margin:auto;"
+                                           type="number" th:value="${sss.get().getSecondVolunteerActivityTime()}" id="svat"
+                                           min=0 onkeyup="zzz(event)"/></td>
+                    <td colspan="4"><input class="form-control form-control-sm" style="margin:auto;"
+                                           type="number" th:value="${sss.get().getThirdVolunteerActivityTime()}" id="tvat"
+                                           min=0 onkeyup="zzz(event)"/></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <h5 class="card-header" style="font-weight: bold">전형 산출점수</h5>
+            <div class="card-body">
+              <div class="table-responsive text-nowrap">
+                <table class="table table-bordered">
+                  <thead>
+                  <tr>
+                    <td style="font-size:18px;" width="33%">교과성적</td>
+                    <td style="font-size:18px;" width="33%">비교과성적</td>
+                    <td style="font-size:18px;" width="33%">총점</td>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td><input id="t1" style="font-size:18px; text-align:center; margin:auto;" class="form-control form-control-sm" readonly th:value="${sss.get().getCurriculumGrades()}"></td>
+                    <td><input id="t2" style="font-size:18px; text-align:center; margin:auto;" class="form-control form-control-sm" readonly th:value="${sss.get().getNonCurriculumGrades()}"></td>
+                    <td><input id="t3" style="font-size:18px; text-align:center; margin:auto;" class="form-control form-control-sm" readonly th:value="${sss.get().getTotalGrades()}"></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div style="width: 100%" id="insertbtn">
+            <div style="width: 180px;margin: auto">
+              <a th:onclick="|javascript:score1(${s1class})|" style="color:white" type="button" class="btn btn-primary">성적산출</a>
+              <a type="button" style="color:white" onclick="insert1()" class="btn btn-warning">수정</a>
+            </div>
+            <div id="defaultFormControlHelp" class="form-text" align = "center">성적산출 후 수정버튼 클릭 바랍니다.</div>
+          </div>
+          <!--/ Bordered Table -->
+
+          <div class="content-backdrop fade"></div>
+        </div>
+        <!-- Content wrapper -->
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+  </div>
+</div>
+<!-- / Layout wrapper -->
+
+<!-- Core JS -->
+<!-- build:js assets/vendor/js/core.js -->
+<script src="/vendor/libs/jquery/jquery.js"></script>
+<script src="/vendor/libs/popper/popper.js"></script>
+<script src="/vendor/js/bootstrap.js"></script>
+<script src="/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+<script src="/vendor/js/menu.js"></script>
+<!-- endbuild -->
+
+<!-- Vendors JS -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+$(document).on('change', '#fab', function() {
+$('#fab').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#fla', function() {
+$('#fla').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#fle', function() {
+$('#fle').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#fre', function() {
+$('#fre').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#sab', function() {
+$('#sab').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#sla', function() {
+$('#sla').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#sle', function() {
+$('#sle').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#sre', function() {
+$('#sre').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#tab', function() {
+$('#tab').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#tla', function() {
+$('#tla').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#tle', function() {
+$('#tle').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#tre', function() {
+$('#tre').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#fbd', function() {
+$('#fbd').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#sbd', function() {
+$('#sbd').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#tbd', function() {
+$('#tbd').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#fea', function() {
+$('#fea').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#sea', function() {
+$('#sea').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#tea', function() {
+$('#tea').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#fvat', function() {
+$('#fvat').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#svat', function() {
+$('#svat').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#tvat', function() {
+$('#tvat').css('backgroundColor', '#ECEEF1');
+});
+</script>
+<!-- Main JS -->
+<script src="/js/main.js"></script>
+<script src="/js/test.js?version=1"></script>
+<!-- Page JS -->
+
+<script src="/js/form-basic-inputs.js"></script>
+
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="/js/Main-regist01.js?Version=1"></script>
+
+</body>
+</html>

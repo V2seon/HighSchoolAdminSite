@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html
+        lang="en"
+        class="light-style layout-menu-fixed"
+        dir="ltr"
+        data-theme="theme-default"
+        data-assets-path="../assets/"
+        data-template="vertical-menu-template-free"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+  <meta charset="utf-8" />
+  <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+  />
+
+  <title>성적입력</title>
+
+  <meta name="description" content="" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet"
+  />
+
+  <!-- Icons. Uncomment required icon fonts -->
+  <link rel="stylesheet" href="/vendor/fonts/boxicons.css" />
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="/vendor/css/core.css" class="template-customizer-core-css" />
+  <link rel="stylesheet" href="/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+  <link rel="stylesheet" href="/css/demo.css" />
+
+  <!-- Vendors CSS -->
+  <link rel="stylesheet" href="/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+  <!-- Page CSS -->
+
+  <!-- Helpers -->
+  <script src="/vendor/js/helpers.js"></script>
+
+  <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+  <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+  <script src="/js/config.js"></script>
+  <style>
+    .result-table{
+      border: 1px solid #444444;
+      border-collapse: collapse;
+    }
+    th, td {
+      text-align: center;
+    }
+    .card-header{
+      text-align: center;
+    }
+    .card{
+      margin-bottom: 20px;
+    }
+    .p1btns{
+      width: 160px;
+      margin: auto;
+    }
+  </style>
+</head>
+
+<body>
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar">
+  <div class="layout-container">
+
+    <!-- Layout container -->
+
+    <!-- Content wrapper -->
+    <div class="content-wrapper">
+      <!-- Content -->
+
+      <div class="container-xxl flex-grow-1 container-p-y">
+        <div style="float: right">2023 - 학년 신입생 입학원서 작성</div>
+        <input id="scck" type="hidden" value="0">
+        <h4 class="fw-bold py-3 mb-4"
+            th:if="${s1class == 0 || s1class == 1 || s1class == 2}"
+            th:id="s1class"
+            th:text="|성적입력 (졸업자)-일반전형|"
+            th:value="${s1class}"></h4>
+        <h4 class="fw-bold py-3 mb-4" id="s1class"
+            th:if="${s1class==3 || s1class==4 ||s1class==5 ||s1class==6 ||
+              s1class==7 ||s1class==8 ||s1class==9 ||s1class==10 ||s1class==11 ||s1class==12}"
+            th:id="s1class"
+            th:text="|성적입력 (졸업자)-사회통합전형|"
+            th:value="${s1class}"></h4>
+
+        <div class="row">
+
+          <!-- Bordered Table -->
+          <div>
+            <div class="card">
+              <h5 class="card-header" style="font-weight: bold">성적 유무 확인</h5>
+              <div class="card-body">
+                <div class="table-responsive text-nowrap">
+                  <table class="table table-bordered">
+                    <tbody>
+                    <colgroup>
+                      <col width="50%" />
+                      <col width="50%" />
+                    </colgroup>
+                    <tr>
+                      <td>교과 및 비 교과 성적이 있다</td>
+                      <td>
+                        <div style="width: 100%">
+                          <div class="form-check" style="width: 20px; margin: auto">
+                            <input
+                                    name="default-radio-1"
+                                    class="form-check-input"
+                                    type="radio"
+                                    value="on"
+                                    id="defaultRadio1"
+                                    onclick='getGradeOn()'
+                                    checked
+                            />
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>없음(석차만 있는 경우)</td>
+                      <td>
+                        <div style="width: 100%">
+                          <div class="form-check" style="width: 20px; margin: auto">
+                            <input
+                                    name="default-radio-1"
+                                    class="form-check-input"
+                                    type="radio"
+                                    value="off"
+                                    id="defaultRadio2"
+                                    onclick='getGradeOff()'
+                            />
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="grade-on">
+            <div class="card" id="grade_type1">
+              <h5 class="card-header" style="font-weight: bold">교과성적입력</h5>
+              <div class="card-body">
+                <div class="table-responsive text-nowrap">
+                  <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                      <td>교과성적</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <input class="form-control form-control-sm" id="grade2"
+                               type="number" style="font-size:18px; text-align:center; margin:auto;" min="0" max="240" step="0.1"
+                               oninput="maxscore1(this)"
+                               onkeypress="onlyNumber()"
+                               th:value="${sss.get().getSecondBehaviorDevelopment()}"/>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <h5 class="card-header" style="font-weight: bold">비교과 성적입력</h5>
+              <div class="card-body">
+                <div class="table-responsive text-nowrap">
+                  <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                      <td>출결점수</td>
+                      <td>행동발달</td>
+                      <td>창체점수</td>
+                      <td>봉사점수</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <input class="form-control form-control-sm" id="0step"
+                               type="number" style="font-size:18px; text-align:center; margin:auto;" min="0" max="15" step="0.1"
+                               oninput="maxscore(this)"
+                               onkeypress="onlyNumber()"
+                               th:value="${sss.get().getTotalBehaviorDevelopment()}"/>
+                      </td>
+                      <td>
+                        <input class="form-control form-control-sm" id="1step"
+                               type="number" style="font-size:18px; text-align:center; margin:auto;" min="0" max="15" step="0.1"
+                               oninput="maxscore(this)"
+                               onkeypress="onlyNumber()"
+                               th:value="${sss.get().getThirdBehaviorDevelopment()}"/>
+                      </td>
+                      <td>
+                        <input class="form-control form-control-sm" id="2step"
+                               type="number" style="font-size:18px; text-align:center; margin:auto;" min="0" max="15" step="0.1"
+                               oninput="maxscore(this)"
+                               onkeypress="onlyNumber()"
+                               th:value="${sss.get().getThirdExpActivities()}"/>
+                      </td>
+                      <td>
+                        <input class="form-control form-control-sm" id="3step"
+                               type="number" style="font-size:18px; text-align:center; margin:auto;" min="0" max="15" step="0.1"
+                               oninput="maxscore(this)"
+                               onkeypress="onlyNumber()"
+                               th:value="${sss.get().getTotalVolunteerActivityTime()}"/>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <h5 class="card-header" style="font-weight: bold">전형 산출점수</h5>
+              <div class="card-body">
+                <div class="table-responsive text-nowrap">
+                  <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                      <td style="font-size:18px;" width="33%">교과성적</td>
+                      <td style="font-size:18px;" width="33%">비교과성적</td>
+                      <td style="font-size:18px;" width="33%">총점</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td><input id="t1" style="font-size:18px; text-align:center; margin:auto;"
+                                 class="form-control form-control-sm" readonly
+                                 th:value="${sss.get().getCurriculumGrades()}"></td>
+                      <td><input id="t2" style="font-size:18px; text-align:center; margin:auto;"
+                                 class="form-control form-control-sm" readonly
+                                 th:value="${sss.get().getNonCurriculumGrades()}"></td>
+                      <td><input id="t3" style="font-size:18px; text-align:center; margin:auto;"
+                                 class="form-control form-control-sm" readonly
+                                 th:value="${sss.get().getTotalGrades()}"></td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="grade-off">
+            <div class="card" id="grade_result">
+              <h5 class="card-header" style="font-weight: bold">졸업자 전형 산출점수</h5>
+              <div class="card-body">
+                <div class="table-responsive text-nowrap">
+                  <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                      <td style="font-size:18px;">석차 백분율</td>
+                      <td style="font-size:18px;">환산총점</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td>
+                        <input class="form-control form-control-sm"
+                               style="font-size:18px; text-align:center; margin:auto;" min=0 step="0.1"
+                               type="number" id="op" th:value="${sss.get().getOrderPercentage()}"
+                               placeholder="백분율 입력" onkeypress="onlyNumber()"/>
+                      </td>
+                      <td>
+                        <input class="form-control form-control-sm"
+                               type="number" id="totalscore" style="font-size:18px; text-align:center; margin:auto;"
+                               placeholder="300 - (300 * 석차백분율 / 100)" th:value="${sss.get().getOrderTotal()}"
+                               readonly/>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="width: 100%" id="insertbtn">
+            <div style="width: 180px;margin: auto">
+              <a th:onclick="|javascript:score2(${s1class})|" style="color:white" type="button" class="btn btn-primary">성적산출</a>
+              <a type="button" style="color:white" onclick="insert1()" class="btn btn-warning">수정</a>
+            </div>
+            <div id="defaultFormControlHelp" class="form-text" align = "center">성적산출 후 다음버튼 클릭 바랍니다.</div>
+          </div>
+          <script>
+              document.getElementById('grade-off').style.display = 'none';
+              function getGradeOn(){
+                $('input[id=defaultRadio1]').attr('value','on');
+                document.getElementById('grade-on').style.display = 'block';
+                document.getElementById('grade-off').style.display = 'none';
+              }
+              function getGradeOff(){
+                $('input[id=defaultRadio1]').attr('value','off');
+                document.getElementById('grade-on').style.display = 'none';
+                document.getElementById('grade-off').style.display = 'block';
+              }
+            </script>
+          <!--/ Bordered Table -->
+
+          <div class="content-backdrop fade"></div>
+        </div>
+        <!-- Content wrapper -->
+      </div>
+      <!-- / Layout page -->
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+  </div>
+</div>
+<!-- / Layout wrapper -->
+<script type="text/javascript">
+  function maxscore(data){
+  if(data.value>15){
+    data.value= null;
+    swal({
+       text: "최대점수는 15점 입니다.",
+       icon: "info",
+       button: "확인"
+       });
+    }
+  }
+  function maxscore1(data){
+  if(data.value>240){
+    data.value= null;
+    swal({
+       text: "최대점수는 240점 입니다.",
+       icon: "info",
+       button: "확인"
+       });
+    }
+  }
+</script>
+
+<!-- Core JS -->
+<!-- build:js assets/vendor/js/core.js -->
+<script src="/vendor/libs/jquery/jquery.js"></script>
+<script src="/vendor/libs/popper/popper.js"></script>
+<script src="/vendor/js/bootstrap.js"></script>
+<script src="/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="/vendor/js/menu.js"></script>
+<!-- endbuild -->
+<!-- Vendors JS -->
+<script type="text/javascript">
+$(document).on('change', '#grade2', function() {
+$('#grade2').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#3step', function() {
+$('#3step').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#2step', function() {
+$('#2step').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#1step', function() {
+$('#1step').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#0step', function() {
+$('#0step').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#fab', function() {
+$('#fab').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#fla', function() {
+$('#fla').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#fle', function() {
+$('#fle').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#fre', function() {
+$('#fre').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#sab', function() {
+$('#sab').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#sla', function() {
+$('#sla').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#sle', function() {
+$('#sle').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#sre', function() {
+$('#sre').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#tab', function() {
+$('#tab').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#tla', function() {
+$('#tla').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#tle', function() {
+$('#tle').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#tre', function() {
+$('#tre').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#fbd', function() {
+$('#fbd').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#sbd', function() {
+$('#sbd').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#tbd', function() {
+$('#tbd').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#fea', function() {
+$('#fea').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#sea', function() {
+$('#sea').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#tea', function() {
+$('#tea').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#fvat', function() {
+$('#fvat').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#svat', function() {
+$('#svat').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#tvat', function() {
+$('#tvat').css('backgroundColor', '#ECEEF1');
+});
+$(document).on('change', '#op', function() {
+$('#op').css('backgroundColor', '#ECEEF1');
+});
+</script>
+<!-- Main JS -->
+<script src="/js/main.js?Version=1"></script>
+<script src="/js/test.js?version=1"></script>
+<!-- Page JS -->
+
+<script src="/js/form-basic-inputs.js"></script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<script src="/js/Main-regist02.js?version=1"></script>
+
+</body>
+</html>
