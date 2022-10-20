@@ -13,7 +13,6 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     <!--    로딩CSS-->
-    <link rel="stylesheet" href="/dist/css/loadscene.css">
     <style>
         #header {
           position: fixed;
@@ -85,7 +84,8 @@
                                         <th style="text-align:center;">교과점수</th>
                                         <th style="text-align:center;">출결점수</th>
                                         <th style="text-align:center;">행동발달</th>
-                                        <th style="text-align:center;">창체</th>
+                                        <th style="text-align:center;">창체점수</th>
+                                        <th style="text-align:center;">봉사점수</th>
                                         <th style="text-align:center;">점수합계</th>
                                         <th style="text-align:center;">석차백분율</th>
                                         <th style="text-align:center;">수정</th>
@@ -112,20 +112,26 @@
                                         </td>
 
                                         <td style="text-align:center;" >
-                                            <span th:if="${Co.TotalVolunteerActivityTime}!= null"
-                                                  th:text="${Co.TotalVolunteerActivityTime}">
+                                            <span th:if="${Co.TotalBehaviorDevelopment}!= null"
+                                                  th:text="${Co.TotalBehaviorDevelopment}">
                                             </span>
                                         </td>
 
                                         <td style="text-align:center;" >
-                                            <span th:if="${Co.FirstBehaviorDevelopment}!= null"
-                                                  th:text="${Co.FirstBehaviorDevelopment + Co.SecondBehaviorDevelopment + Co.ThirdBehaviorDevelopment}">
+                                            <span th:if="${Co.ThirdBehaviorDevelopment}!= null"
+                                                  th:text="${Co.ThirdBehaviorDevelopment}">
                                             </span>
                                         </td>
 
                                         <td style="text-align:center;" >
                                             <span th:if="${Co}!= null"
-                                                  th:text="${Co.FirstExpActivities + Co.SecondExpActivities + Co.ThirdExpActivities}">
+                                                  th:text="${Co.ThirdExpActivities}">
+                                            </span>
+                                        </td>
+
+                                        <td style="text-align:center;" >
+                                            <span th:if="${Co}!= null"
+                                                  th:text="${Co.ThirdExpActivities}">
                                             </span>
                                         </td>
 

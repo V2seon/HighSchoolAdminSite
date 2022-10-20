@@ -16,7 +16,7 @@ public class FinalreceptionPredicate {
         if(!selectKey.equals("전체")){
             if(selectKey.equals("접수번호")){
                 try{
-                    builder.and(qFinalreceptionEntity.seq.eq(Long.valueOf(titleText)));
+                    builder.and(qFinalreceptionEntity.receptionnum.eq(Integer.valueOf((titleText))));
                 }
                 catch (Exception e){
                     builder.and(qFinalreceptionEntity.name.contains(titleText));
@@ -32,12 +32,12 @@ public class FinalreceptionPredicate {
         }
         else if(selectKey.equals("전체")){
             try{
-                builder.and(qFinalreceptionEntity.seq.eq(Long.valueOf(titleText)));
+                builder.and(qFinalreceptionEntity.receptionnum.eq(Integer.valueOf((titleText))));
             }
             catch (Exception e){
                 builder.and(
                         (qFinalreceptionEntity.name.contains(titleText)).or
-                        (qFinalreceptionEntity.birthday.contains(titleText)));
+                                (qFinalreceptionEntity.birthday.contains(titleText)));
             }
 
         }

@@ -13,7 +13,6 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     <!--    로딩CSS-->
-    <link rel="stylesheet" href="/dist/css/loadscene.css">
     <style>
         #header {
           position: fixed;
@@ -113,8 +112,8 @@
                                         </td>
 
                                         <td style="text-align:center;" >
-                                            <span th:if="${Co.TotalVolunteerActivityTime}!= null"
-                                                  th:text="${Co.TotalVolunteerActivityTime}">
+                                            <span th:if="${Co.TotalBehaviorDevelopment}!= null"
+                                                  th:text="${Co.TotalBehaviorDevelopment}">
                                             </span>
                                         </td>
 
@@ -130,8 +129,8 @@
                                             </span>
                                         </td>
                                         <td style="text-align:center;" >
-                                            <span th:if="${Co.TotalBehaviorDevelopment}!= null"
-                                                  th:text="${Co.TotalBehaviorDevelopment}">
+                                            <span th:if="${Co.TotalVolunteerActivityTime}!= null"
+                                                  th:text="${Co.TotalVolunteerActivityTime}">
                                             </span>
                                         </td>
                                         <td style="text-align:center;" >

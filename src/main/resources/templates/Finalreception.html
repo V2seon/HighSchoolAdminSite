@@ -13,7 +13,6 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     <!--    로딩CSS-->
-    <link rel="stylesheet" href="/dist/css/loadscene.css">
     <style>
         #header {
           position: fixed;
@@ -49,7 +48,7 @@
         </section>
 
         <!-- Main content -->
-        <section class="content">
+        <section class="content" id="example3">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
@@ -74,6 +73,11 @@
                                         </button>
                                     </div>
                                 </div>
+                                <div style="float: right;" class="page-item">
+                                    <form action="/excel/download" method="get">
+                                        <button class="page-link1" type="submit">접수현황 다운로드</button>
+                                    </form>
+                                </div>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body table-responsive p-0">
@@ -83,15 +87,15 @@
                                         <th style="text-align:center;">No</th>
                                         <th style="text-align:center;">접수번호</th>
                                         <th style="text-align:center;">이름</th>
-<!--                                        <th style="text-align:center;">상태</th>-->
-                                        <th style="text-align:center;">생년월일</th>
+                                        <!--                                        <th style="text-align:center;">상태</th>-->
                                         <th style="text-align:center;">성별</th>
+                                        <th style="text-align:center;">생년월일</th>
                                         <th style="text-align:center;">휴대전화</th>
                                         <th style="text-align:center;">주소</th>
                                         <th style="text-align:center;">출신중학교</th>
                                     </tr>
                                     </thead>
-                                    <tbody id="treasurehunt_list">
+                                    <tbody id="Finalreception_list">
                                     <tr th:if="${userlist}!=null" th:each="Co : ${userlist}" style="text-align:center;">
 
                                         <td style="text-align:center;">
@@ -118,7 +122,7 @@
                                                   th:text="남"
                                             ></span>
                                             <span th:if="${Co.sex} == 1"
-                                            th:text="여">
+                                                  th:text="여">
                                             </span>
                                         </td>
 
@@ -225,7 +229,7 @@
 <script src="/dist/js/adminlte.min.js"></script>
 <script src="/js/pdf.js"></script>
 <script src="/js/reception.js"></script>
-<script src="/js/Treasurehunt/TreasurehuntInfo.js"></script>
+<script src="/js/Finalreception/Finalreception.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
     window.onbeforeunload = function () {

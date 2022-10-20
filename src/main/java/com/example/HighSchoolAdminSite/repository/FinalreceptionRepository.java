@@ -18,4 +18,5 @@ public interface FinalreceptionRepository extends JpaRepository<FinalreceptionEn
     @Query(value = "SELECT * FROM final_reception" , nativeQuery = true)
     Page<FinalreceptionEntity> findAll( Pageable pageable);
 
+
 }

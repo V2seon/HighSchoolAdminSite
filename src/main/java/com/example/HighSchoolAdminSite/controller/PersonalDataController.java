@@ -255,10 +255,10 @@ public class PersonalDataController {
 
                 double behavior_development = s1.get().getFirstBehaviorDevelopment() + s1.get().getSecondBehaviorDevelopment() + s1.get().getThirdBehaviorDevelopment();
                 double exp_activities = s1.get().getFirstExpActivities() + s1.get().getSecondExpActivities() + s1.get().getThirdExpActivities();
-
-                FinalreceptionDto finalreceptionDto = new FinalreceptionDto(null, sss00.get().getStudentfakeseq(),sss.get().getAname(),sss.get().getAsex(),sss.get().getAbirthday(),sss.get().getAaddress(),sss.get().getAmiddle_school(),
-                        "",sss.get().getAgraduation_type(), sss.get().getAclassification_type(),s1.get().getCurriculumGrades(),1,
-                        behavior_development,exp_activities,1,s1.get().getTotalGrades(),1,1,sss.get().getAphone(),sss.get().getAparental_phone());
+                double per = (1-(s1.get().getTotalGrades()/300))*100;
+                FinalreceptionDto finalreceptionDto = new FinalreceptionDto(null, sss00.get().getStudentfakeseq(),sss.get().getAname(),sss.get().getAsex(),sss.get().getAbirthday(),sss.get().getAarea_name() + " " + sss.get().getAarea2_name(),sss.get().getAmiddle_school(),
+                        "",sss.get().getAgraduation_type(), sss.get().getAclassification_type(),s1.get().getCurriculumGrades(),s1.get().getTotalBehaviorDevelopment(),
+                        behavior_development,exp_activities,s1.get().getTotalVolunteerActivityTime(),s1.get().getTotalGrades(),Math.round(per*1000)/1000.0,1,sss.get().getAphone(),sss.get().getAparental_phone());
 
                 finalreceptionService.save1(finalreceptionDto);
                 msg.put("result","0");
@@ -271,17 +271,16 @@ public class PersonalDataController {
                         ,sss.get().getAgraduation_month(), sss.get().getAgraduation_type(),sss.get().getAclassification_type());
                 personalDataService.save(informationDto);
                 if(s2.get().getIsCheck() == 0){
-                    double behavior_development = s2.get().getFirstBehaviorDevelopment() + s2.get().getSecondBehaviorDevelopment() + s2.get().getThirdBehaviorDevelopment();
-                    double exp_activities = s2.get().getFirstExpActivities() + s2.get().getSecondExpActivities() + s2.get().getThirdExpActivities();
-
-                    FinalreceptionDto finalreceptionDto = new FinalreceptionDto(null,sss00.get().getStudentfakeseq(),sss.get().getAname(),sss.get().getAsex(),sss.get().getAbirthday(),sss.get().getAaddress(),sss.get().getAmiddle_school(),
-                            "",sss.get().getAgraduation_type(), sss.get().getAclassification_type(),s2.get().getCurriculumGrades(),1,
-                            behavior_development,exp_activities,1,s2.get().getTotalGrades(),s2.get().getOrderPercentage(),1,sss.get().getAphone(),sss.get().getAparental_phone());
+                    double per = (1-(s2.get().getOrderTotal()/300))*100;
+                    FinalreceptionDto finalreceptionDto = new FinalreceptionDto(null,sss00.get().getStudentfakeseq(),sss.get().getAname(),sss.get().getAsex(),sss.get().getAbirthday(),sss.get().getAarea_name() + " " + sss.get().getAarea2_name(),sss.get().getAmiddle_school(),
+                            "",sss.get().getAgraduation_type(), sss.get().getAclassification_type(),s2.get().getCurriculumGrades(),s2.get().getTotalBehaviorDevelopment(),
+                            s2.get().getThirdBehaviorDevelopment(),s2.get().getThirdExpActivities(),s2.get().getTotalVolunteerActivityTime(),s2.get().getTotalGrades(),Math.round(per*1000)/1000.0,1,sss.get().getAphone(),sss.get().getAparental_phone());
                     finalreceptionService.save1(finalreceptionDto);
                 }else if(s2.get().getIsCheck() == 1){
-                    FinalreceptionDto finalreceptionDto = new FinalreceptionDto(null,sss00.get().getStudentfakeseq(),sss.get().getAname(),sss.get().getAsex(),sss.get().getAbirthday(),sss.get().getAaddress(),sss.get().getAmiddle_school(),
+                    double per = (1-(s2.get().getOrderTotal()/300))*100;
+                    FinalreceptionDto finalreceptionDto = new FinalreceptionDto(null,sss00.get().getStudentfakeseq(),sss.get().getAname(),sss.get().getAsex(),sss.get().getAbirthday(),sss.get().getAarea_name() + " " + sss.get().getAarea2_name(),sss.get().getAmiddle_school(),
                             "",sss.get().getAgraduation_type(), sss.get().getAclassification_type(),s2.get().getCurriculumGrades(),1,
-                            0,0,1,s2.get().getOrderTotal(),s2.get().getOrderPercentage(),1,sss.get().getAphone(),sss.get().getAparental_phone());
+                            0,0,0,s2.get().getOrderTotal(),Math.round(per*1000)/1000.0,1,sss.get().getAphone(),sss.get().getAparental_phone());
                     finalreceptionService.save1(finalreceptionDto);
                 }
                 System.out.println("gogo");
@@ -294,7 +293,7 @@ public class PersonalDataController {
                         sss.get().getAmiddle_school(),1,sss.get().getAmiddle_school_phone(),sss.get().getAarea_name(),sss.get().getAarea2_name(),sss.get().getAgraduation_year()
                         ,sss.get().getAgraduation_month(), sss.get().getAgraduation_type(),sss.get().getAclassification_type());
                 personalDataService.save(informationDto);
-                FinalreceptionDto finalreceptionDto = new FinalreceptionDto(null,sss00.get().getStudentfakeseq(),sss.get().getAname(),sss.get().getAsex(),sss.get().getAbirthday(),sss.get().getAaddress(),sss.get().getAmiddle_school(),
+                FinalreceptionDto finalreceptionDto = new FinalreceptionDto(null,sss00.get().getStudentfakeseq(),sss.get().getAname(),sss.get().getAsex(),sss.get().getAbirthday(),sss.get().getAarea_name() + " " + sss.get().getAarea2_name(),sss.get().getAmiddle_school(),
                         "",sss.get().getAgraduation_type(), sss.get().getAclassification_type(),s3.get().getGrade1(),1,
                         0,0,1,s3.get().getTotalGrades(),0,1,sss.get().getAphone(),sss.get().getAparental_phone());
                 finalreceptionService.save1(finalreceptionDto);

@@ -1,5 +1,6 @@
 package com.example.HighSchoolAdminSite.repository;
 
+import com.example.HighSchoolAdminSite.entity.FinalreceptionEntity;
 import com.example.HighSchoolAdminSite.entity.PersonalDataEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,5 +19,7 @@ public interface PersonalDataRepository extends JpaRepository<PersonalDataEntity
 
     @Query(value = "SELECT * FROM information where graduation_type =:agraduation_type order by seq DESC" , nativeQuery = true)
     Page<PersonalDataEntity> findAgraduation_typeBy(int agraduation_type, Pageable pageable);
+
+    Optional<PersonalDataEntity> findByastudentfakeseq(int reception_num);
 
 }
