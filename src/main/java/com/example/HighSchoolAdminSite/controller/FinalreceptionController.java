@@ -178,7 +178,7 @@ public class FinalreceptionController {
         // 컨텐츠 타입과 파일명 지정
         response.setContentType("ms-vnd/excel");
 //        response.setHeader("Content-Disposition", "attachment;filename=example.xls");
-        response.setHeader("Content-Disposition", "attachment;filename=example.xlsx");
+        response.setHeader("Content-Disposition", "attachment;filename=최종접수자현황.xlsx");
 
         // Excel File Output
         workbook.write(response.getOutputStream());

@@ -737,12 +737,24 @@ public class DownloadAdmissionApplicationController {
             String vatle = Double.toString(vatscore);
             String totalle = Double.toString(total);
 
-            if (t5le.length() <4){
-                t5le = t5le + ".000";
-            }else if(t5le.length() <6){
-                t5le = t5le + "00";
-            }else if(t5le.length() <7){
-                t5le = t5le + "0";
+            String arr [] = {t1le,t2le,t3le,t4le,t6le,t7le,movele,crele,vatle};
+            for (int i=0; i< arr.length; i++){
+                if (arr[i].length() <3){
+                    arr[i] = arr[i] + ".000";
+                }else if(arr[i].length() <5){
+                    arr[i] = arr[i] + "00";
+                }else if(arr[i].length() <7){
+                    arr[i] = arr[i] + "0";
+                }
+            }
+            for (int i=0; i< arr.length; i++){
+                if (t5le.length() <4){
+                    t5le = t5le + ".000";
+                }else if(t5le.length() <6){
+                    t5le = t5le + "00";
+                }else if(t5le.length() <7){
+                    t5le = t5le + "0";
+                }
             }
 
             if (totalle.length() <4){
@@ -753,17 +765,17 @@ public class DownloadAdmissionApplicationController {
                 totalle = totalle + "0";
             }
 
-            model.addAttribute("t1", Math.round(t1 * 1000) / 1000.0);
-            model.addAttribute("t2", Math.round(t2 * 1000) / 1000.0);
-            model.addAttribute("t3", Math.round(t3 * 1000) / 1000.0);
-            model.addAttribute("t4", Math.round(t4 * 1000) / 1000.0);
+            model.addAttribute("t1", arr[0].substring(0,6));
+            model.addAttribute("t2", arr[1].substring(0,6));
+            model.addAttribute("t3", arr[2].substring(0,6));
+            model.addAttribute("t4", arr[3].substring(0,6));
             model.addAttribute("t5", t5le.substring(0,7));
-            model.addAttribute("t6", Math.round(t6 * 1000) / 1000.0);
-            model.addAttribute("t7", Math.round(t7 * 1000) / 1000.0);
+            model.addAttribute("t6", arr[4].substring(0,5));
+            model.addAttribute("t7", arr[5].substring(0,6));
             model.addAttribute("total",  totalle.substring(0,7));
-            model.addAttribute("movsocre", movsocre);
-            model.addAttribute("cresocre", cresocre);
-            model.addAttribute("vatscore", vatscore);
+            model.addAttribute("movsocre", arr[6].substring(0,5));
+            model.addAttribute("cresocre", arr[7].substring(0,5));
+            model.addAttribute("vatscore", arr[8].substring(0,5));
 
         } else if(PersonalDataEntityes.get().getAgraduation_type() == 1){
             Optional<GradeType2DataEntity> sss = gradeType2dataRepository.findById(seq);
@@ -799,14 +811,24 @@ public class DownloadAdmissionApplicationController {
                     totalle = totalle + "0";
                 }
 
+                String arr [] = {t6le,t7le,movle,crele,vatle};
+                for (int i=0; i< arr.length; i++){
+                    if (arr[i].length() <3){
+                        arr[i] = arr[i] + ".000";
+                    }else if(arr[i].length() <5){
+                        arr[i] = arr[i] + "00";
+                    }else if(arr[i].length() <7){
+                        arr[i] = arr[i] + "0";
+                    }
+                }
 
-                model.addAttribute("t5",sss1.get().getSecondBehaviorDevelopment());
+                model.addAttribute("t5",t5le.substring(0,7));
                 model.addAttribute("total",totalle.substring(0,7));
-                model.addAttribute("t6",sss1.get().getTotalBehaviorDevelopment());
-                model.addAttribute("movsocre",sss1.get().getThirdBehaviorDevelopment());
-                model.addAttribute("cresocre",sss1.get().getThirdExpActivities());
-                model.addAttribute("vatscore",sss1.get().getTotalVolunteerActivityTime());
-                model.addAttribute("t7",sss1.get().getNonCurriculumGrades());
+                model.addAttribute("t6",arr[0].substring(0,5));
+                model.addAttribute("movsocre",arr[2].substring(0,5));
+                model.addAttribute("cresocre",arr[3].substring(0,5));
+                model.addAttribute("vatscore",arr[4].substring(0,5));
+                model.addAttribute("t7",arr[1].substring(0,6));
             } else if(sss.get().getIsCheck() == 1){
                 model.addAttribute("total", sss.get().getOrderTotal());
             }

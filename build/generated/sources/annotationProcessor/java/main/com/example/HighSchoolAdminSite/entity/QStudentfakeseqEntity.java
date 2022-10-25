@@ -21,6 +21,8 @@ public class QStudentfakeseqEntity extends EntityPathBase<StudentfakeseqEntity> 
 
     public final NumberPath<Integer> num = createNumber("num", Integer.class);
 
+    public final NumberPath<Integer> passnum = createNumber("passnum", Integer.class);
+
     public final NumberPath<Long> seq = createNumber("seq", Long.class);
 
     public final NumberPath<Long> sseq = createNumber("sseq", Long.class);

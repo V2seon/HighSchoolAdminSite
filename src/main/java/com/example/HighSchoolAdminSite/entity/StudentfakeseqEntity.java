@@ -28,12 +28,16 @@ public class StudentfakeseqEntity {
     @Column(name = "num")
     private int num;
 
+    @Column(name = "passnum")
+    private int passnum;
+
     @Builder
-    public StudentfakeseqEntity(Long a_seq, Long a_sseq, int a_astudentfakeseq, int a_num) {
+    public StudentfakeseqEntity(Long a_seq, Long a_sseq, int a_astudentfakeseq, int a_num, int a_passnum) {
         this.seq = a_seq;
         this.sseq = a_sseq;
         this.studentfakeseq = a_astudentfakeseq;
         this.num = a_num;
+        this.passnum = a_passnum;
     }
 
     public static StudentfakeseqEntity toSaveEntity (StudentfakeseqDto studentfakeDto){
@@ -42,6 +46,7 @@ public class StudentfakeseqEntity {
         mainEntity.setSseq(studentfakeDto.getA_SSEQ());
         mainEntity.setStudentfakeseq(studentfakeDto.getA_STUDENTFAKESEQ());
         mainEntity.setNum(studentfakeDto.getA_NUM());
+        mainEntity.setNum(studentfakeDto.getA_PASSNUM());
         return mainEntity;
     }
 

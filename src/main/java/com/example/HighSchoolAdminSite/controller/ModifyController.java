@@ -102,37 +102,37 @@ public class ModifyController {
             if (graduation == 0){
                 Optional<StudentfakeseqEntity> s0 = studentfakeseqRepository.findBynum(graduation);
                 if (!s0.isPresent()){
-                    StudentfakeseqDto studentfakeseqDto = new StudentfakeseqDto(null,(Long) session.getAttribute("percode"), 1000001, 0);
+                    StudentfakeseqDto studentfakeseqDto = new StudentfakeseqDto(null,(Long) session.getAttribute("percode"), 1000001, 0,0);
                     studentfakeseqService.save(studentfakeseqDto);
                 }else if (s0.get().getNum() != 0){
-                    StudentfakeseqDto studentfakeseqDto = new StudentfakeseqDto(null,(Long) session.getAttribute("percode"), 1000001, 0);
+                    StudentfakeseqDto studentfakeseqDto = new StudentfakeseqDto(null,(Long) session.getAttribute("percode"), 1000001, 0,0);
                     studentfakeseqService.save(studentfakeseqDto);
                 }else if(s0.get().getNum() == 0){
-                    StudentfakeseqDto studentfakeseqDto = new StudentfakeseqDto(null,(Long) session.getAttribute("percode"), s0.get().getStudentfakeseq()+1, 0);
+                    StudentfakeseqDto studentfakeseqDto = new StudentfakeseqDto(null,(Long) session.getAttribute("percode"), s0.get().getStudentfakeseq()+1, 0,0);
                     studentfakeseqService.save(studentfakeseqDto);
                 }
             }else if(graduation == 1){
                 Optional<StudentfakeseqEntity> s0 = studentfakeseqRepository.findBynum(graduation);
                 if (!s0.isPresent()){
-                    StudentfakeseqDto studentfakeseqDto = new StudentfakeseqDto(null,(Long) session.getAttribute("percode"), 2000001, 1);
+                    StudentfakeseqDto studentfakeseqDto = new StudentfakeseqDto(null,(Long) session.getAttribute("percode"), 2000001, 1,0);
                     studentfakeseqService.save(studentfakeseqDto);
                 }else if (s0.get().getNum() != 1){
-                    StudentfakeseqDto studentfakeseqDto = new StudentfakeseqDto(null,(Long) session.getAttribute("percode"), 2000001, 1);
+                    StudentfakeseqDto studentfakeseqDto = new StudentfakeseqDto(null,(Long) session.getAttribute("percode"), 2000001, 1,0);
                     studentfakeseqService.save(studentfakeseqDto);
                 }else if(s0.get().getNum() == 1){
-                    StudentfakeseqDto studentfakeseqDto = new StudentfakeseqDto(null,(Long) session.getAttribute("percode"), s0.get().getStudentfakeseq()+1, 1);
+                    StudentfakeseqDto studentfakeseqDto = new StudentfakeseqDto(null,(Long) session.getAttribute("percode"), s0.get().getStudentfakeseq()+1, 1,0);
                     studentfakeseqService.save(studentfakeseqDto);
                 }
             }else if(graduation == 2){
                 Optional<StudentfakeseqEntity> s0 = studentfakeseqRepository.findBynum(graduation);
                 if (!s0.isPresent()){
-                    StudentfakeseqDto studentfakeseqDto = new StudentfakeseqDto(null,(Long) session.getAttribute("percode"), 3000001, 2);
+                    StudentfakeseqDto studentfakeseqDto = new StudentfakeseqDto(null,(Long) session.getAttribute("percode"), 3000001, 2,0);
                     studentfakeseqService.save(studentfakeseqDto);
                 }else if (s0.get().getNum() != 2){
-                    StudentfakeseqDto studentfakeseqDto = new StudentfakeseqDto(null,(Long) session.getAttribute("percode"), 3000001, 2);
+                    StudentfakeseqDto studentfakeseqDto = new StudentfakeseqDto(null,(Long) session.getAttribute("percode"), 3000001, 2,0);
                     studentfakeseqService.save(studentfakeseqDto);
                 }else if(s0.get().getNum() == 2){
-                    StudentfakeseqDto studentfakeseqDto = new StudentfakeseqDto(null,(Long) session.getAttribute("percode"), s0.get().getStudentfakeseq()+1, 2);
+                    StudentfakeseqDto studentfakeseqDto = new StudentfakeseqDto(null,(Long) session.getAttribute("percode"), s0.get().getStudentfakeseq()+1, 2,0);
                     studentfakeseqService.save(studentfakeseqDto);
                 }
             }
