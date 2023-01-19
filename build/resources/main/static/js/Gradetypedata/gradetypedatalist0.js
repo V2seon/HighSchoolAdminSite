@@ -4,6 +4,8 @@ function paging(pageValue){
     var titleText = myPageQuery.get('titleText');
     var selectKey = myPageQuery.get('selectKey');
 
+    console.log(pageValue);
+
     $("#load").show();
 
     //문자열 "null" 이 들어가는것 방지하기 위해 값이 null 이라면 공백 문자열 대입
