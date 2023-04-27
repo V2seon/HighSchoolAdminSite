@@ -42,6 +42,7 @@ public class PersonalDataController {
 
     private final String DIR = "/home/DevHighSchoolAddmission/www/uploadfiles/";
 
+    // 메인
     @GetMapping("/main")
     public String movedata(Model m, HttpServletRequest request){
         return "dashboard";
